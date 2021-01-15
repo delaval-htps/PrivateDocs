@@ -1,0 +1,417 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Maven &#8212; Documentation Documentation v0.1</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="css" href="css.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="css.html" title="css"
+             accesskey="P">précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation Documentation v0.1</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="maven">
+<h1>Maven<a class="headerlink" href="#maven" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="creation-projet-mvn-cli">
+<h2>Création Projet Mvn CLI<a class="headerlink" href="#creation-projet-mvn-cli" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Maven s’appuie sur des archétypes pour conserver la convention maven</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn archetype: generate -DarchetypeArtifact=&lt;nom de l&#39;arcchetype&gt; -DarchetypeVersion=&lt;numero de la version&gt;
+</pre></div>
+</div>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/SqueletteMaven.png"><img alt="_images/SqueletteMaven.png" class="align-center" src="_images/SqueletteMaven.png" style="width: 25%;" /></a>
+<div class="admonition warning">
+<p class="first admonition-title">Avertissement</p>
+<p class="last">Attention pensé a changer le JRE utilisé par maven, il ne corresponds jamais à celui d’éclipse et vérifier que l’encodage est en UTF-8</p>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
+    <span class="nt">&lt;maven.compiler.source&gt;</span>11<span class="nt">&lt;/maven.compiler.source&gt;</span>
+        <span class="nt">&lt;maven.compiler.target&gt;</span>${maven.compiler.source}<span class="nt">&lt;/maven.compiler.target&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="compilation-creation-jar">
+<h2>Compilation &amp; Création .Jar<a class="headerlink" href="#compilation-creation-jar" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="docutils">
+<dt>Pour compiler et créer un .jar on utilise la commande suivante:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span>@delaval-lenovo:~/MonApplication$ mvn package
+</pre></div>
+</div>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/targetMvn.png"><img alt="_images/targetMvn.png" class="align-center" src="_images/targetMvn.png" style="width: 50%;" /></a>
+<dl class="docutils">
+<dt>Pour lancer l’application :</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span>@delaval-lenovo:~/MonApplication$ java -cp target/MonApplication.jar org.monpackage.laClassJava
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="etude-pom-xml">
+<h2>Etude POM.xml<a class="headerlink" href="#etude-pom-xml" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="information-maven">
+<h3>Information Maven<a class="headerlink" href="#information-maven" title="Lien permanent vers ce titre">¶</a></h3>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- Information Maven --&gt;</span>
+<span class="nt">&lt;groupId&gt;</span>org.example.demo<span class="nt">&lt;/groupId&gt;</span>
+<span class="nt">&lt;artifactId&gt;</span>MonApplication<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+<span class="c">&lt;!--  numéro de version + Snapshot: détermine que le projet est en cours de développement --&gt;</span>
+<span class="c">&lt;!--  une fois Snapshot enlevé : c&#39;est une release, la version ne bouge plus! --&gt;</span>
+<span class="nt">&lt;packaging&gt;</span>jar<span class="nt">&lt;/packaging&gt;</span>
+<span class="c">&lt;!--  packaging peut etre un war pour tomcat --&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="information-generale">
+<h3>Information générale<a class="headerlink" href="#information-generale" title="Lien permanent vers ce titre">¶</a></h3>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- Information générale --&gt;</span>
+<span class="nt">&lt;name&gt;</span>MonApplication<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;description&gt;</span>La super application qui sert à rien<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;url&gt;</span>http://maven.apache.org<span class="nt">&lt;/url&gt;</span>
+<span class="c">&lt;!-- url de l&#39;application ou la page d&#39;accueil du projet --&gt;</span>
+
+<span class="c">&lt;!-- ==========Organisation======================== --&gt;</span>
+<span class="nt">&lt;organization&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Mon Entreprise<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url&gt;</span>https://www.doriandelaval.fr<span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;/organization&gt;</span>
+
+<span class="c">&lt;!-- ========== Licences =========================== --&gt;</span>
+<span class="nt">&lt;licenses&gt;</span>
+    <span class="nt">&lt;license&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Apache License, Version 2.0<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;url&gt;</span>https://www.apacha.org/licences/LICENSE-2.0.txt<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;/license&gt;</span>
+<span class="nt">&lt;/licenses&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="proprietees">
+<h3>Propriétées<a class="headerlink" href="#proprietees" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Ceux sont des <strong>constantes</strong> qui seront remplacées au moment de la compilation par mvn.</p>
+<p>Example ci dessous on déclare la version de Junit en Propriétée et on la place dans les dépendances à la place du numéro de version en utilisant ${nom de la Propriétée}</p>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- ========== Propriétées ========================= --&gt;</span>
+<span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
+    <span class="nt">&lt;maven.compiler.source&gt;</span>11<span class="nt">&lt;/maven.compiler.source&gt;</span>
+    <span class="nt">&lt;maven.compiler.target&gt;</span>${maven.compiler.source}<span class="nt">&lt;/maven.compiler.target&gt;</span>
+    <span class="nt">&lt;junit.version&gt;</span>3.8.1<span class="nt">&lt;/junit.version&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+
+<span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${junit.version}<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="section" id="proprietes-pre-definies">
+<h4>Propriétés pré-définies<a class="headerlink" href="#proprietes-pre-definies" title="Lien permanent vers ce titre">¶</a></h4>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text">Variables prédéfinies</span><a class="headerlink" href="#id1" title="Lien permanent vers ce tableau">¶</a></caption>
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><th class="stub">project.basedir</th>
+<td>The directory that the current project resides in.</td>
+</tr>
+<tr class="row-even"><th class="stub">project.baseUri</th>
+<td>The directory that the current project resides in, represented as an URI. Since Maven 2.1.0</td>
+</tr>
+<tr class="row-odd"><th class="stub">maven.build.timestamp</th>
+<td>The timestamp that denotes the start of the build (UTC). Since Maven 2.1.0-M1</td>
+</tr>
+</tbody>
+</table>
+<p>&lt;<a class="reference external" href="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Available_Variables">https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Available_Variables</a>&gt;_</p>
+</div>
+<div class="section" id="proprietes-particulieres">
+<h4>Propriétés particulières<a class="headerlink" href="#proprietes-particulieres" title="Lien permanent vers ce titre">¶</a></h4>
+<table border="1" class="colwidths-given docutils" id="id2">
+<caption><span class="caption-text"><strong>Variables particuliéres</strong></span><a class="headerlink" href="#id2" title="Lien permanent vers ce tableau">¶</a></caption>
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><th class="stub">env</th>
+<td>permet de renvoyer la valeur d’une variable d’environnement. Par exemple, <strong>${env.PATH}</strong></td>
+</tr>
+<tr class="row-even"><th class="stub">project</th>
+<td>renvoie la valeur d’une balise dans le fichier pom.xml du projet. Par exemple, <strong>${projet.organization.name}</strong></td>
+</tr>
+<tr class="row-odd"><th class="stub">setting</th>
+<td>renvoie la valeur d’une balise dans le(s) fichier(s) settings.xml utilisé(s) par Maven.</td>
+</tr>
+<tr class="row-even"><th class="stub">java</th>
+<td>renvoie la valeur d’une propriété systeme de Java. même propriété que java.lang.System.getProperties() : exemple <strong>${java.version}</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="le-build">
+<h3>Le Build<a class="headerlink" href="#le-build" title="Lien permanent vers ce titre">¶</a></h3>
+<p>c’est le processus de construction d’un projet par mvn, on peut configurer différement le build en modifiant certains éléments.</p>
+<p>Par exemple, <strong>modifier le repértoire de sortie</strong></p>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!--  ============================================ --&gt;</span>
+<span class="c">&lt;!-- ===========Le Build========================== --&gt;</span>
+<span class="c">&lt;!-- ============================================= --&gt;</span>
+<span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;directory&gt;</span>${project.basedir}/output<span class="nt">&lt;/directory&gt;</span>
+    <span class="c">&lt;!--  on remplace la sortie target par un dossier ici output --&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Par Exemple, <strong>Mettre la class MAin dans le manifest du.jar</strong> pour l’excécuter simplement</p>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+    <span class="c">&lt;!-- ======= gestion des plugins (version)========== --&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>3.2.0<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+            <span class="nt">&lt;archive&gt;</span>
+                <span class="c">&lt;!-- creation du Manifest avec definition de la classe Main --&gt;</span>
+                <span class="nt">&lt;manifest&gt;</span>
+                    <span class="nt">&lt;mainClass&gt;</span>org.example.demo.App<span class="nt">&lt;/mainClass&gt;</span>
+                <span class="nt">&lt;/manifest&gt;</span>
+            <span class="nt">&lt;/archive&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Ligne de commande pour executer directement le .jar</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$java -jar target/MonApplication.jar
+</pre></div>
+</div>
+</div>
+<div class="section" id="le-filtrage-de-ressources">
+<h3>Le Filtrage de ressources<a class="headerlink" href="#le-filtrage-de-ressources" title="Lien permanent vers ce titre">¶</a></h3>
+<ol class="arabic simple">
+<li>créer un repertoires sous : <strong>src/main/resources</strong></li>
+<li>créer un fichier dedans ie: info.properties</li>
+<li>Y mettre les propriétés que l’on veut récupérer avec : <strong>${nom de la propriété}</strong></li>
+<li>Mettre dans le build du pom.xml les informations des ressources et les filtrer pour qu’ils puissent etre utiliser ou pas : option <strong>&lt;filtering&gt; à true ou false</strong></li>
+</ol>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;build&gt;</span>
+    <span class="c">&lt;!-- ===============resources================ --&gt;</span>
+    <span class="nt">&lt;resources&gt;</span>
+            <span class="c">&lt;!-- repertoire permettant le filtrage des ressources --&gt;</span>
+
+            <span class="nt">&lt;resource&gt;</span>
+                    <span class="nt">&lt;directory&gt;</span>src/main/resources/filtered<span class="nt">&lt;/directory&gt;</span>
+                    <span class="nt">&lt;filtering&gt;</span>true<span class="nt">&lt;/filtering&gt;</span>
+            <span class="nt">&lt;/resource&gt;</span>
+
+            <span class="c">&lt;!-- repertoire n&#39;autorisant pas le filtrage des ressources --&gt;</span>
+
+            <span class="nt">&lt;resource&gt;</span>
+                    <span class="nt">&lt;directory&gt;</span>src/main/resources/raw<span class="nt">&lt;/directory&gt;</span>
+                    <span class="nt">&lt;filtering&gt;</span>false<span class="nt">&lt;/filtering&gt;</span>
+            <span class="nt">&lt;/resource&gt;</span>
+    <span class="nt">&lt;/resources&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Utiliser dans l’application les classes <strong>Properties</strong> et <strong>InputStream</strong> pour récupérer ses propriétés</li>
+</ol>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Properties</span> <span class="n">versionProperties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="p">();</span>
+    <span class="n">InputStream</span> <span class="n">versionInputStream</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="n">versionInputStream</span> <span class="o">=</span> <span class="n">App</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="s">&quot;/nom du fichier properties&quot;</span><span class="p">);</span>
+    <span class="n">versionProperties</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="n">versionInputStream</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">versionInputStream</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">versionInputStream</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Application version =&quot;</span> <span class="o">+</span> <span class="n">versionProperties</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&quot;String Key de la properties&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="les-profiles">
+<h3>Les Profiles<a class="headerlink" href="#les-profiles" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Les profiles permettent de créer des options pour le build de mvn</p>
+<p>Example:</p>
+<ol class="arabic simple">
+<li>créons deux repertoires différents un pour la prod et un pour le test <strong>src/main/resources/conf-prod</strong>, <strong>src/main/resources/conf-test</strong></li>
+<li>mettons y un fichier properties dans les deux repertoires: <strong>même nom mais contenu différent</strong></li>
+<li>créeons les profiles dans le pom.xml</li>
+</ol>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!--  ============================================ --&gt;</span>
+<span class="c">&lt;!-- ===========Les Profiles====================== --&gt;</span>
+<span class="c">&lt;!-- ============================================= --&gt;</span>
+
+<span class="nt">&lt;profiles&gt;</span>
+    <span class="nt">&lt;profile&gt;</span>
+        <span class="nt">&lt;id&gt;</span>prod<span class="nt">&lt;/id&gt;</span>
+        <span class="nt">&lt;build&gt;</span>
+            <span class="nt">&lt;resources&gt;</span>
+                <span class="nt">&lt;resource&gt;</span>
+                    <span class="nt">&lt;directory&gt;</span>src/main/resources/filtered/conf-prod<span class="nt">&lt;/directory&gt;</span>
+                    <span class="nt">&lt;filtering&gt;</span>true<span class="nt">&lt;/filtering&gt;</span>
+                <span class="nt">&lt;/resource&gt;</span>
+            <span class="nt">&lt;/resources&gt;</span>
+        <span class="nt">&lt;/build&gt;</span>
+    <span class="nt">&lt;/profile&gt;</span>
+    <span class="nt">&lt;profile&gt;</span>
+        <span class="nt">&lt;id&gt;</span>test<span class="nt">&lt;/id&gt;</span>
+        <span class="nt">&lt;build&gt;</span>
+            <span class="nt">&lt;resources&gt;</span>
+                <span class="nt">&lt;resource&gt;</span>
+                    <span class="nt">&lt;directory&gt;</span>src/main/resources/filtered/conf-test<span class="nt">&lt;/directory&gt;</span>
+                    <span class="nt">&lt;filtering&gt;</span>true<span class="nt">&lt;/filtering&gt;</span>
+                <span class="nt">&lt;/resource&gt;</span>
+            <span class="nt">&lt;/resources&gt;</span>
+        <span class="nt">&lt;/build&gt;</span>
+    <span class="nt">&lt;/profile&gt;</span>
+<span class="nt">&lt;/profiles&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>On a définit deux profiles un pour le test et un pour le prod avec un fichier properties qui aura un contenu différent en fonction du build utiliser</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn clean package -P test ou prod
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Maven</a><ul>
+<li><a class="reference internal" href="#creation-projet-mvn-cli">Création Projet Mvn CLI</a></li>
+<li><a class="reference internal" href="#compilation-creation-jar">Compilation &amp; Création .Jar</a></li>
+<li><a class="reference internal" href="#etude-pom-xml">Etude POM.xml</a><ul>
+<li><a class="reference internal" href="#information-maven">Information Maven</a></li>
+<li><a class="reference internal" href="#information-generale">Information générale</a></li>
+<li><a class="reference internal" href="#proprietees">Propriétées</a><ul>
+<li><a class="reference internal" href="#proprietes-pre-definies">Propriétés pré-définies</a></li>
+<li><a class="reference internal" href="#proprietes-particulieres">Propriétés particulières</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#le-build">Le Build</a></li>
+<li><a class="reference internal" href="#le-filtrage-de-ressources">Le Filtrage de ressources</a></li>
+<li><a class="reference internal" href="#les-profiles">Les Profiles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="css.html"
+                        title="Chapitre précédent">css</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Cette page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/maven.rst.txt"
+            rel="nofollow">Montrer le code source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="css.html" title="css"
+             >précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation Documentation v0.1</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, dorian delaval.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>
