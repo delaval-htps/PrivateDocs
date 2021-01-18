@@ -53,13 +53,44 @@ JUnit & Test Unitaires
 
 Les test unitaires sont crées **pour tester des fonctionnalités**, excécutés de nombreuses fois et stables.
 
+"FIRST"
+=======
+Ils doivent respecter le **FIRST** :
+
+* **F**: fast doit être rapide , exclure lecture fichiers, internet...
+* **I**: isolation , doit être indépendant du système ou d'autre résultat
+* **R**: repeatable, doit etre repetable et autonome et donner toujours le meme résultat
+* **S**: self-validation, doit faire un succes ou echoué , pas d'autre états
+* **T**: Thorought, = Appronfondi" il faut tester tous les cas nominaux et scenarion alternatifs, cas limites, sécurité, comportement innatendu...
+
+Nom des methodes test
+=====================
+
+Utilisation du camelCase:
+
+* **MethodName_StateUnderTest_ExpectedBehavior**
+
+Exemple : add_twoPositiveIntegers_returnsTheirSum()
+
+* **MethodName_ExpectedBehavior_StateUnderTest**
+
+Exemple : add_returnsTheSum_ofTwoPositiveIntegers()
+
+* **givenStateUnderTest_whenMethodAction_thenExpectedBehavior**
+
+Exemple : givenTwoPostiveIntegers_whenAdded_thenTheyShouldBeSummed()
+
+
 #1 **methode Arrange_Act_Assert**
+=================================
 
  .. image:: _static/methode_AAA.png
     :width: 60%
     :align: center
 
-#2 **methode du Red Red Green**: la refactorisation c'est rendre le code plus lisible et/ou plus élégant sans changer son comportement pour conserver le vert ie le test validé...
+#2 **methode du Red Red Green**:
+================================
+ la refactorisation c'est rendre le code plus lisible et/ou plus élégant sans changer son comportement pour conserver le vert ie le test validé...
 
  .. image:: _static/RedGreen.png
     :width: 60%
@@ -89,36 +120,103 @@ un exemple avec un test sur une addition:
 JUnit & ses Annotations
 ***********************
 
+Annotations Standards
+=====================
 
 @BeforeEach
-===========
++++++++++++
 
 Exécutez une méthode avant chaque test. C’est un très bon emplacement pour installer ou organiser un prérequis pour vos tests.
 
 @AfterEach
-==========
+++++++++++
 
 Exécutez une méthode après chaque test. C’est un très bon emplacement pour nettoyer ou satisfaire à une postcondition.
 
 @BeforeAll
-==========
+++++++++++
 
 Désignez une **méthode statique** pour qu’elle soit exécutée avant tous vos tests. Vous pouvez l’utiliser pour installer d’autres variables statiques pour vos tests.
 
 @AfterAll
-=========
++++++++++
 
 Désignez une **méthode statique** pour qu’elle soit exécutée après tous vos tests. Vous pouvez utiliser ceci pour nettoyer les dépendances statiques.
 
 @ParametrizedTest
-=================
++++++++++++++++++
 
 Vous souhaitez réutiliser le même test avec plusieurs entrants (@ValueSource) voire plusieurs entrants/sortants (@CsvSource).
 
 @Timeout
-========
+++++++++
 
 Si vous testez une méthode qui ne doit pas être trop lente, vous pouvez la forcer à échouer le test.
+
+Annotations Avancées
+====================
+
+@tag
+++++
+On peut catégoriser un test grace a cette annotation . un test peut avoir plusieurs tag
+exemple:
+
+.. code-block:: Java
+
+    @tag("le nom de la catégorie des tests")
+
+
+@DisplayName
+++++++++++++
+Permet de nommer les tests de facon plus lisible que le nom de la methode test
+exemple : 
+
+ .. code-block:: Java
+
+    @DisplayName ("Soit une entrée de valeur positive, lorsqu'on applique la méthode , alors on doit avoir comme résultat ... ")
+
+@Nested
++++++++
+Permet de grouper vos tests dans une classe interne. Si un seul test echoué , le groupe échoue 
+example:
+
+ .. code-block:: Java
+
+    @Nested
+	@Tag("TemperatureTests")
+	@DisplayName("Réussir à convertir des températures")
+	class TemperatureTests {
+		@Test
+		@DisplayName("Soit une T° à 0°C, lorsque l'on convertit en °F, alors on obtient 32°F.")
+		public void celsiusToFahrenheit_returnsAFahrenheitTempurature_whenCelsiusIsZero() {
+			Double actualFahrenheit = calculatorUnderTest.celsiusToFahrenheit(0.0);
+			assertThat(actualFahrenheit).isCloseTo(32.0, withinPercentage(0.01));
+		}
+
+		@Test
+		@DisplayName("Soit une T° à 32°F, lorsque l'on convertit en °C, alors on obtient 0°C.")
+		public void fahrenheitToCelsius_returnsZeroCelciusTempurature_whenThirtyTwo() {
+			Double actualCelsius = calculatorUnderTest.fahrenheitToCelsius(32.0);
+			assertThat(actualCelsius).isCloseTo(0.0, withinPercentage(0.01));
+		}
+	}
+
+@ExtendWith
++++++++++++
+
+Permet de modifier le déroulement des tests menés par Junit5 
+entre autre uitlisation d'un logger class de log pour afficher les messages dans un log ou une sortie standard out au lieu d'utiliser des println
+
+@Disable
+++++++++
+
+placé juste au dessus @test , permet de taire un test pour le moment et de pouvoir y revenir aprés.
+Mettre un commentaire pour expliquer ex: 
+
+ .. code-block:: Java
+
+    @Disable("Stoppé car cela arrive tous les mardis")
+
 
 
 

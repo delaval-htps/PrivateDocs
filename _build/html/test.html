@@ -88,13 +88,44 @@
 <div class="section" id="junit-test-unitaires">
 <h2>JUnit &amp; Test Unitaires<a class="headerlink" href="#junit-test-unitaires" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Les test unitaires sont crées <strong>pour tester des fonctionnalités</strong>, excécutés de nombreuses fois et stables.</p>
-<p>#1 <strong>methode Arrange_Act_Assert</strong></p>
+<div class="section" id="first">
+<h3>«&nbsp;FIRST&nbsp;»<a class="headerlink" href="#first" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Ils doivent respecter le <strong>FIRST</strong> :</p>
+<ul class="simple">
+<li><strong>F</strong>: fast doit être rapide , exclure lecture fichiers, internet…</li>
+<li><strong>I</strong>: isolation , doit être indépendant du système ou d’autre résultat</li>
+<li><strong>R</strong>: repeatable, doit etre repetable et autonome et donner toujours le meme résultat</li>
+<li><strong>S</strong>: self-validation, doit faire un succes ou echoué , pas d’autre états</li>
+<li><strong>T</strong>: Thorought, = Appronfondi&nbsp;» il faut tester tous les cas nominaux et scenarion alternatifs, cas limites, sécurité, comportement innatendu…</li>
+</ul>
+</div>
+<div class="section" id="nom-des-methodes-test">
+<h3>Nom des methodes test<a class="headerlink" href="#nom-des-methodes-test" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Utilisation du camelCase:</p>
+<ul class="simple">
+<li><strong>MethodName_StateUnderTest_ExpectedBehavior</strong></li>
+</ul>
+<p>Exemple : add_twoPositiveIntegers_returnsTheirSum()</p>
+<ul class="simple">
+<li><strong>MethodName_ExpectedBehavior_StateUnderTest</strong></li>
+</ul>
+<p>Exemple : add_returnsTheSum_ofTwoPositiveIntegers()</p>
+<ul class="simple">
+<li><strong>givenStateUnderTest_whenMethodAction_thenExpectedBehavior</strong></li>
+</ul>
+<p>Exemple : givenTwoPostiveIntegers_whenAdded_thenTheyShouldBeSummed()</p>
+</div>
+<div class="section" id="methode-arrange-act-assert">
+<h3>#1 <strong>methode Arrange_Act_Assert</strong><a class="headerlink" href="#methode-arrange-act-assert" title="Lien permanent vers ce titre">¶</a></h3>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/methode_AAA.png"><img alt="_images/methode_AAA.png" class="align-center" src="_images/methode_AAA.png" style="width: 60%;" /></a>
 </div></blockquote>
-<p>#2 <strong>methode du Red Red Green</strong>: la refactorisation c’est rendre le code plus lisible et/ou plus élégant sans changer son comportement pour conserver le vert ie le test validé…</p>
+</div>
+<div class="section" id="methode-du-red-red-green">
+<h3>#2 <strong>methode du Red Red Green</strong>:<a class="headerlink" href="#methode-du-red-red-green" title="Lien permanent vers ce titre">¶</a></h3>
 <blockquote>
-<div><a class="reference internal image-reference" href="_images/RedGreen.png"><img alt="_images/RedGreen.png" class="align-center" src="_images/RedGreen.png" style="width: 60%;" /></a>
+<div><p>la refactorisation c’est rendre le code plus lisible et/ou plus élégant sans changer son comportement pour conserver le vert ie le test validé…</p>
+<a class="reference internal image-reference" href="_images/RedGreen.png"><img alt="_images/RedGreen.png" class="align-center" src="_images/RedGreen.png" style="width: 60%;" /></a>
 </div></blockquote>
 <p>un exemple avec un test sur une addition:</p>
 <blockquote>
@@ -117,31 +148,98 @@
 </div>
 </div></blockquote>
 </div>
+</div>
 <div class="section" id="junit-ses-annotations">
 <h2>JUnit &amp; ses Annotations<a class="headerlink" href="#junit-ses-annotations" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="annotations-standards">
+<h3>Annotations Standards<a class="headerlink" href="#annotations-standards" title="Lien permanent vers ce titre">¶</a></h3>
 <div class="section" id="beforeeach">
-<h3>&#64;BeforeEach<a class="headerlink" href="#beforeeach" title="Lien permanent vers ce titre">¶</a></h3>
+<h4>&#64;BeforeEach<a class="headerlink" href="#beforeeach" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Exécutez une méthode avant chaque test. C’est un très bon emplacement pour installer ou organiser un prérequis pour vos tests.</p>
 </div>
 <div class="section" id="aftereach">
-<h3>&#64;AfterEach<a class="headerlink" href="#aftereach" title="Lien permanent vers ce titre">¶</a></h3>
+<h4>&#64;AfterEach<a class="headerlink" href="#aftereach" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Exécutez une méthode après chaque test. C’est un très bon emplacement pour nettoyer ou satisfaire à une postcondition.</p>
 </div>
 <div class="section" id="beforeall">
-<h3>&#64;BeforeAll<a class="headerlink" href="#beforeall" title="Lien permanent vers ce titre">¶</a></h3>
+<h4>&#64;BeforeAll<a class="headerlink" href="#beforeall" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Désignez une <strong>méthode statique</strong> pour qu’elle soit exécutée avant tous vos tests. Vous pouvez l’utiliser pour installer d’autres variables statiques pour vos tests.</p>
 </div>
 <div class="section" id="afterall">
-<h3>&#64;AfterAll<a class="headerlink" href="#afterall" title="Lien permanent vers ce titre">¶</a></h3>
+<h4>&#64;AfterAll<a class="headerlink" href="#afterall" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Désignez une <strong>méthode statique</strong> pour qu’elle soit exécutée après tous vos tests. Vous pouvez utiliser ceci pour nettoyer les dépendances statiques.</p>
 </div>
 <div class="section" id="parametrizedtest">
-<h3>&#64;ParametrizedTest<a class="headerlink" href="#parametrizedtest" title="Lien permanent vers ce titre">¶</a></h3>
+<h4>&#64;ParametrizedTest<a class="headerlink" href="#parametrizedtest" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Vous souhaitez réutiliser le même test avec plusieurs entrants (&#64;ValueSource) voire plusieurs entrants/sortants (&#64;CsvSource).</p>
 </div>
 <div class="section" id="timeout">
-<h3>&#64;Timeout<a class="headerlink" href="#timeout" title="Lien permanent vers ce titre">¶</a></h3>
+<h4>&#64;Timeout<a class="headerlink" href="#timeout" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Si vous testez une méthode qui ne doit pas être trop lente, vous pouvez la forcer à échouer le test.</p>
+</div>
+</div>
+<div class="section" id="annotations-avancees">
+<h3>Annotations Avancées<a class="headerlink" href="#annotations-avancees" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="section" id="tag">
+<h4>&#64;tag<a class="headerlink" href="#tag" title="Lien permanent vers ce titre">¶</a></h4>
+<p>On peut catégoriser un test grace a cette annotation . un test peut avoir plusieurs tag
+exemple:</p>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@tag</span><span class="p">(</span><span class="s">&quot;le nom de la catégorie des tests&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="displayname">
+<h4>&#64;DisplayName<a class="headerlink" href="#displayname" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Permet de nommer les tests de facon plus lisible que le nom de la methode test
+exemple :</p>
+<blockquote>
+<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@DisplayName</span> <span class="p">(</span><span class="s">&quot;Soit une entrée de valeur positive, lorsqu&#39;on applique la méthode , alors on doit avoir comme résultat ... &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="nested">
+<h4>&#64;Nested<a class="headerlink" href="#nested" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Permet de grouper vos tests dans une classe interne. Si un seul test echoué , le groupe échoue
+example:</p>
+<blockquote>
+<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Nested</span>
+    <span class="nd">@Tag</span><span class="p">(</span><span class="s">&quot;TemperatureTests&quot;</span><span class="p">)</span>
+    <span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Réussir à convertir des températures&quot;</span><span class="p">)</span>
+    <span class="kd">class</span> <span class="nc">TemperatureTests</span> <span class="p">{</span>
+            <span class="nd">@Test</span>
+            <span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Soit une T° à 0°C, lorsque l&#39;on convertit en °F, alors on obtient 32°F.&quot;</span><span class="p">)</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">celsiusToFahrenheit_returnsAFahrenheitTempurature_whenCelsiusIsZero</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="n">Double</span> <span class="n">actualFahrenheit</span> <span class="o">=</span> <span class="n">calculatorUnderTest</span><span class="p">.</span><span class="na">celsiusToFahrenheit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
+                    <span class="n">assertThat</span><span class="p">(</span><span class="n">actualFahrenheit</span><span class="p">).</span><span class="na">isCloseTo</span><span class="p">(</span><span class="mf">32.0</span><span class="p">,</span> <span class="n">withinPercentage</span><span class="p">(</span><span class="mf">0.01</span><span class="p">));</span>
+            <span class="p">}</span>
+
+            <span class="nd">@Test</span>
+            <span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Soit une T° à 32°F, lorsque l&#39;on convertit en °C, alors on obtient 0°C.&quot;</span><span class="p">)</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fahrenheitToCelsius_returnsZeroCelciusTempurature_whenThirtyTwo</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="n">Double</span> <span class="n">actualCelsius</span> <span class="o">=</span> <span class="n">calculatorUnderTest</span><span class="p">.</span><span class="na">fahrenheitToCelsius</span><span class="p">(</span><span class="mf">32.0</span><span class="p">);</span>
+                    <span class="n">assertThat</span><span class="p">(</span><span class="n">actualCelsius</span><span class="p">).</span><span class="na">isCloseTo</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">withinPercentage</span><span class="p">(</span><span class="mf">0.01</span><span class="p">));</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="extendwith">
+<h4>&#64;ExtendWith<a class="headerlink" href="#extendwith" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Permet de modifier le déroulement des tests menés par Junit5
+entre autre uitlisation d’un logger class de log pour afficher les messages dans un log ou une sortie standard out au lieu d’utiliser des println</p>
+</div>
+<div class="section" id="disable">
+<h4>&#64;Disable<a class="headerlink" href="#disable" title="Lien permanent vers ce titre">¶</a></h4>
+<p>placé juste au dessus &#64;test , permet de taire un test pour le moment et de pouvoir y revenir aprés.
+Mettre un commentaire pour expliquer ex:</p>
+<blockquote>
+<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Disable</span><span class="p">(</span><span class="s">&quot;Stoppé car cela arrive tous les mardis&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </div>
 </div>
 <div class="section" id="assertj">
@@ -232,14 +330,31 @@
 <li><a class="reference internal" href="#pourquoi-tester">Pourquoi Tester ?</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#junit-test-unitaires">JUnit &amp; Test Unitaires</a></li>
+<li><a class="reference internal" href="#junit-test-unitaires">JUnit &amp; Test Unitaires</a><ul>
+<li><a class="reference internal" href="#first">«&nbsp;FIRST&nbsp;»</a></li>
+<li><a class="reference internal" href="#nom-des-methodes-test">Nom des methodes test</a></li>
+<li><a class="reference internal" href="#methode-arrange-act-assert">#1 <strong>methode Arrange_Act_Assert</strong></a></li>
+<li><a class="reference internal" href="#methode-du-red-red-green">#2 <strong>methode du Red Red Green</strong>:</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#junit-ses-annotations">JUnit &amp; ses Annotations</a><ul>
+<li><a class="reference internal" href="#annotations-standards">Annotations Standards</a><ul>
 <li><a class="reference internal" href="#beforeeach">&#64;BeforeEach</a></li>
 <li><a class="reference internal" href="#aftereach">&#64;AfterEach</a></li>
 <li><a class="reference internal" href="#beforeall">&#64;BeforeAll</a></li>
 <li><a class="reference internal" href="#afterall">&#64;AfterAll</a></li>
 <li><a class="reference internal" href="#parametrizedtest">&#64;ParametrizedTest</a></li>
 <li><a class="reference internal" href="#timeout">&#64;Timeout</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#annotations-avancees">Annotations Avancées</a><ul>
+<li><a class="reference internal" href="#tag">&#64;tag</a></li>
+<li><a class="reference internal" href="#displayname">&#64;DisplayName</a></li>
+<li><a class="reference internal" href="#nested">&#64;Nested</a></li>
+<li><a class="reference internal" href="#extendwith">&#64;ExtendWith</a></li>
+<li><a class="reference internal" href="#disable">&#64;Disable</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#assertj">AssertJ</a></li>
