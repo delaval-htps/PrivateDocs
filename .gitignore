@@ -2,6 +2,5 @@
 
 # Ignore les repertoires suivants
 _build/
-_static/
 _templates/
 docs/doctrees
