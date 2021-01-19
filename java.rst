@@ -7,6 +7,6 @@ Java
 
    collections
    java IO
-   test
+   tests
    
 

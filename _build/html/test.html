@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Les Tests &#8212; Documentation Documentation v0.1</title>
+    <title>Les Tests &#8212; Documentation  v0.1</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -32,7 +32,7 @@
         <li class="right" >
           <a href="java IO.html" title="Java IO"
              accesskey="P">précédent</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Documentation Documentation v0.1</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation  v0.1</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="java.html" accesskey="U">Java</a> &#187;</li> 
       </ul>
     </div>  
@@ -85,8 +85,8 @@
 </ul>
 </div>
 </div>
-<div class="section" id="junit-test-unitaires">
-<h2>JUnit &amp; Test Unitaires<a class="headerlink" href="#junit-test-unitaires" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="conventions">
+<h2>Conventions<a class="headerlink" href="#conventions" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Les test unitaires sont crées <strong>pour tester des fonctionnalités</strong>, excécutés de nombreuses fois et stables.</p>
 <div class="section" id="first">
 <h3>«&nbsp;FIRST&nbsp;»<a class="headerlink" href="#first" title="Lien permanent vers ce titre">¶</a></h3>
@@ -116,13 +116,13 @@
 <p>Exemple : givenTwoPostiveIntegers_whenAdded_thenTheyShouldBeSummed()</p>
 </div>
 <div class="section" id="methode-arrange-act-assert">
-<h3>#1 <strong>methode Arrange_Act_Assert</strong><a class="headerlink" href="#methode-arrange-act-assert" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>#1 methode Arrange_Act_Assert<a class="headerlink" href="#methode-arrange-act-assert" title="Lien permanent vers ce titre">¶</a></h3>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/methode_AAA.png"><img alt="_images/methode_AAA.png" class="align-center" src="_images/methode_AAA.png" style="width: 60%;" /></a>
 </div></blockquote>
 </div>
 <div class="section" id="methode-du-red-red-green">
-<h3>#2 <strong>methode du Red Red Green</strong>:<a class="headerlink" href="#methode-du-red-red-green" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>#2 methode du Red Red Green<a class="headerlink" href="#methode-du-red-red-green" title="Lien permanent vers ce titre">¶</a></h3>
 <blockquote>
 <div><p>la refactorisation c’est rendre le code plus lisible et/ou plus élégant sans changer son comportement pour conserver le vert ie le test validé…</p>
 <a class="reference internal image-reference" href="_images/RedGreen.png"><img alt="_images/RedGreen.png" class="align-center" src="_images/RedGreen.png" style="width: 60%;" /></a>
@@ -149,170 +149,6 @@
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="junit-ses-annotations">
-<h2>JUnit &amp; ses Annotations<a class="headerlink" href="#junit-ses-annotations" title="Lien permanent vers ce titre">¶</a></h2>
-<div class="section" id="annotations-standards">
-<h3>Annotations Standards<a class="headerlink" href="#annotations-standards" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="section" id="beforeeach">
-<h4>&#64;BeforeEach<a class="headerlink" href="#beforeeach" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Exécutez une méthode avant chaque test. C’est un très bon emplacement pour installer ou organiser un prérequis pour vos tests.</p>
-</div>
-<div class="section" id="aftereach">
-<h4>&#64;AfterEach<a class="headerlink" href="#aftereach" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Exécutez une méthode après chaque test. C’est un très bon emplacement pour nettoyer ou satisfaire à une postcondition.</p>
-</div>
-<div class="section" id="beforeall">
-<h4>&#64;BeforeAll<a class="headerlink" href="#beforeall" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Désignez une <strong>méthode statique</strong> pour qu’elle soit exécutée avant tous vos tests. Vous pouvez l’utiliser pour installer d’autres variables statiques pour vos tests.</p>
-</div>
-<div class="section" id="afterall">
-<h4>&#64;AfterAll<a class="headerlink" href="#afterall" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Désignez une <strong>méthode statique</strong> pour qu’elle soit exécutée après tous vos tests. Vous pouvez utiliser ceci pour nettoyer les dépendances statiques.</p>
-</div>
-<div class="section" id="parametrizedtest">
-<h4>&#64;ParametrizedTest<a class="headerlink" href="#parametrizedtest" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Vous souhaitez réutiliser le même test avec plusieurs entrants (&#64;ValueSource) voire plusieurs entrants/sortants (&#64;CsvSource).</p>
-</div>
-<div class="section" id="timeout">
-<h4>&#64;Timeout<a class="headerlink" href="#timeout" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Si vous testez une méthode qui ne doit pas être trop lente, vous pouvez la forcer à échouer le test.</p>
-</div>
-</div>
-<div class="section" id="annotations-avancees">
-<h3>Annotations Avancées<a class="headerlink" href="#annotations-avancees" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="section" id="tag">
-<h4>&#64;tag<a class="headerlink" href="#tag" title="Lien permanent vers ce titre">¶</a></h4>
-<p>On peut catégoriser un test grace a cette annotation . un test peut avoir plusieurs tag
-exemple:</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@tag</span><span class="p">(</span><span class="s">&quot;le nom de la catégorie des tests&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="displayname">
-<h4>&#64;DisplayName<a class="headerlink" href="#displayname" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Permet de nommer les tests de facon plus lisible que le nom de la methode test
-exemple :</p>
-<blockquote>
-<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@DisplayName</span> <span class="p">(</span><span class="s">&quot;Soit une entrée de valeur positive, lorsqu&#39;on applique la méthode , alors on doit avoir comme résultat ... &quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="nested">
-<h4>&#64;Nested<a class="headerlink" href="#nested" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Permet de grouper vos tests dans une classe interne. Si un seul test echoué , le groupe échoue
-example:</p>
-<blockquote>
-<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Nested</span>
-    <span class="nd">@Tag</span><span class="p">(</span><span class="s">&quot;TemperatureTests&quot;</span><span class="p">)</span>
-    <span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Réussir à convertir des températures&quot;</span><span class="p">)</span>
-    <span class="kd">class</span> <span class="nc">TemperatureTests</span> <span class="p">{</span>
-            <span class="nd">@Test</span>
-            <span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Soit une T° à 0°C, lorsque l&#39;on convertit en °F, alors on obtient 32°F.&quot;</span><span class="p">)</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">celsiusToFahrenheit_returnsAFahrenheitTempurature_whenCelsiusIsZero</span><span class="p">()</span> <span class="p">{</span>
-                    <span class="n">Double</span> <span class="n">actualFahrenheit</span> <span class="o">=</span> <span class="n">calculatorUnderTest</span><span class="p">.</span><span class="na">celsiusToFahrenheit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
-                    <span class="n">assertThat</span><span class="p">(</span><span class="n">actualFahrenheit</span><span class="p">).</span><span class="na">isCloseTo</span><span class="p">(</span><span class="mf">32.0</span><span class="p">,</span> <span class="n">withinPercentage</span><span class="p">(</span><span class="mf">0.01</span><span class="p">));</span>
-            <span class="p">}</span>
-
-            <span class="nd">@Test</span>
-            <span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Soit une T° à 32°F, lorsque l&#39;on convertit en °C, alors on obtient 0°C.&quot;</span><span class="p">)</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fahrenheitToCelsius_returnsZeroCelciusTempurature_whenThirtyTwo</span><span class="p">()</span> <span class="p">{</span>
-                    <span class="n">Double</span> <span class="n">actualCelsius</span> <span class="o">=</span> <span class="n">calculatorUnderTest</span><span class="p">.</span><span class="na">fahrenheitToCelsius</span><span class="p">(</span><span class="mf">32.0</span><span class="p">);</span>
-                    <span class="n">assertThat</span><span class="p">(</span><span class="n">actualCelsius</span><span class="p">).</span><span class="na">isCloseTo</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">withinPercentage</span><span class="p">(</span><span class="mf">0.01</span><span class="p">));</span>
-            <span class="p">}</span>
-    <span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="extendwith">
-<h4>&#64;ExtendWith<a class="headerlink" href="#extendwith" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Permet de modifier le déroulement des tests menés par Junit5
-entre autre uitlisation d’un logger class de log pour afficher les messages dans un log ou une sortie standard out au lieu d’utiliser des println</p>
-</div>
-<div class="section" id="disable">
-<h4>&#64;Disable<a class="headerlink" href="#disable" title="Lien permanent vers ce titre">¶</a></h4>
-<p>placé juste au dessus &#64;test , permet de taire un test pour le moment et de pouvoir y revenir aprés.
-Mettre un commentaire pour expliquer ex:</p>
-<blockquote>
-<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Disable</span><span class="p">(</span><span class="s">&quot;Stoppé car cela arrive tous les mardis&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-</div>
-</div>
-<div class="section" id="assertj">
-<h2>AssertJ<a class="headerlink" href="#assertj" title="Lien permanent vers ce titre">¶</a></h2>
-<p>c’est une librairie permettant d’utiliser des Assertions plus parlantes pour l’utilisateur.</p>
-<p>Elle est intéressante car elle comporte différents modules à utiliser pour des cas particuliers: exemple assertJ DB Module</p>
-<p>ci joint le lien vers la doc&lt;<a class="reference external" href="https://assertj.github.io/doc/">https://assertj.github.io/doc/</a>&gt;_</p>
-</div>
-<div class="section" id="la-couverture-du-code">
-<h2>La couverture du code<a class="headerlink" href="#la-couverture-du-code" title="Lien permanent vers ce titre">¶</a></h2>
-<p><strong>La couverture des test = quantité de code couverte par les test / quantité de codes total</strong></p>
-<p>Pour connaitre la couverture du code par les tests, il faut d’abord savoir sur quel critére on se base pour compter la quantité de code :</p>
-<blockquote>
-<div><ul class="simple">
-<li>le nombre de lignes</li>
-<li>le nombres d’instructions</li>
-<li>le nombre de branches (ensemble d’instruction IF/else Try/catch</li>
-<li>le nombre de methodes/fonctionnels</li>
-</ul>
-</div></blockquote>
-<div class="section" id="eclemma-eclipse">
-<h3>EclEmma(Eclipse)<a class="headerlink" href="#eclemma-eclipse" title="Lien permanent vers ce titre">¶</a></h3>
-<p>il suffit d’utiliser le «&nbsp;coverage as &nbsp;» JUnit Test sur la classe Test.</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="_images/eclEmma.png"><img alt="_images/eclEmma.png" src="_images/eclEmma.png" style="width: 60%;" /></a>
-</div></blockquote>
-<p>résultat s’affiche avec le pourcentage total aussi bien avec src/main que src/test qui nous intéresse pas puisque c’est le code du test</p>
-<img alt="_images/CoverageEclEmma.png" src="_images/CoverageEclEmma.png" />
-</div>
-<div class="section" id="jacoco">
-<h3>JACOCO<a class="headerlink" href="#jacoco" title="Lien permanent vers ce titre">¶</a></h3>
-<p><strong>Java Codes Coverage</strong></p>
-<p>Donne un rapport sur page html avec uniquement le pourcentage de couverture de code sur le src/main</p>
-<div class="section" id="config">
-<h4>Config<a class="headerlink" href="#config" title="Lien permanent vers ce titre">¶</a></h4>
-<dl class="docutils">
-<dt>rajouter le plugin <strong>jacoco-maven-plugin</strong></dt>
-<dd><div class="first last highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugin&gt;</span>
-            <span class="nt">&lt;groupId&gt;</span>org.jacoco<span class="nt">&lt;/groupId&gt;</span>
-            <span class="nt">&lt;artifactId&gt;</span>jacoco-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-            <span class="nt">&lt;version&gt;</span>0.8.5<span class="nt">&lt;/version&gt;</span>
-            <span class="nt">&lt;executions&gt;</span>
-                    <span class="nt">&lt;execution&gt;</span>
-                            <span class="nt">&lt;goals&gt;</span>
-                                    <span class="nt">&lt;goal&gt;</span>prepare-agent<span class="nt">&lt;/goal&gt;</span>
-                            <span class="nt">&lt;/goals&gt;</span>
-                    <span class="nt">&lt;/execution&gt;</span>
-                    <span class="nt">&lt;execution&gt;</span>
-                            <span class="nt">&lt;id&gt;</span>report<span class="nt">&lt;/id&gt;</span>
-                            <span class="nt">&lt;phase&gt;</span>test<span class="nt">&lt;/phase&gt;</span>
-                            <span class="nt">&lt;goals&gt;</span>
-                                    <span class="nt">&lt;goal&gt;</span>report<span class="nt">&lt;/goal&gt;</span>
-                            <span class="nt">&lt;/goals&gt;</span>
-                    <span class="nt">&lt;/execution&gt;</span>
-            <span class="nt">&lt;/executions&gt;</span>
-    <span class="nt">&lt;/plugin&gt;</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-</div>
-<div class="section" id="excecution">
-<h4>Excecution<a class="headerlink" href="#excecution" title="Lien permanent vers ce titre">¶</a></h4>
-<blockquote>
-<div><p>Executer dans le terminal:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn clean package
-</pre></div>
-</div>
-</div></blockquote>
-<p>ce qui va créer dans <strong>target/ un fichier index.html</strong> avec le rapport de jacoco</p>
-</div>
-</div>
-</div>
 </div>
 
 
@@ -330,41 +166,11 @@ Mettre un commentaire pour expliquer ex:</p>
 <li><a class="reference internal" href="#pourquoi-tester">Pourquoi Tester ?</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#junit-test-unitaires">JUnit &amp; Test Unitaires</a><ul>
+<li><a class="reference internal" href="#conventions">Conventions</a><ul>
 <li><a class="reference internal" href="#first">«&nbsp;FIRST&nbsp;»</a></li>
 <li><a class="reference internal" href="#nom-des-methodes-test">Nom des methodes test</a></li>
-<li><a class="reference internal" href="#methode-arrange-act-assert">#1 <strong>methode Arrange_Act_Assert</strong></a></li>
-<li><a class="reference internal" href="#methode-du-red-red-green">#2 <strong>methode du Red Red Green</strong>:</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#junit-ses-annotations">JUnit &amp; ses Annotations</a><ul>
-<li><a class="reference internal" href="#annotations-standards">Annotations Standards</a><ul>
-<li><a class="reference internal" href="#beforeeach">&#64;BeforeEach</a></li>
-<li><a class="reference internal" href="#aftereach">&#64;AfterEach</a></li>
-<li><a class="reference internal" href="#beforeall">&#64;BeforeAll</a></li>
-<li><a class="reference internal" href="#afterall">&#64;AfterAll</a></li>
-<li><a class="reference internal" href="#parametrizedtest">&#64;ParametrizedTest</a></li>
-<li><a class="reference internal" href="#timeout">&#64;Timeout</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#annotations-avancees">Annotations Avancées</a><ul>
-<li><a class="reference internal" href="#tag">&#64;tag</a></li>
-<li><a class="reference internal" href="#displayname">&#64;DisplayName</a></li>
-<li><a class="reference internal" href="#nested">&#64;Nested</a></li>
-<li><a class="reference internal" href="#extendwith">&#64;ExtendWith</a></li>
-<li><a class="reference internal" href="#disable">&#64;Disable</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#assertj">AssertJ</a></li>
-<li><a class="reference internal" href="#la-couverture-du-code">La couverture du code</a><ul>
-<li><a class="reference internal" href="#eclemma-eclipse">EclEmma(Eclipse)</a></li>
-<li><a class="reference internal" href="#jacoco">JACOCO</a><ul>
-<li><a class="reference internal" href="#config">Config</a></li>
-<li><a class="reference internal" href="#excecution">Excecution</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#methode-arrange-act-assert">#1 methode Arrange_Act_Assert</a></li>
+<li><a class="reference internal" href="#methode-du-red-red-green">#2 methode du Red Red Green</a></li>
 </ul>
 </li>
 </ul>
@@ -412,7 +218,7 @@ Mettre un commentaire pour expliquer ex:</p>
         <li class="right" >
           <a href="java IO.html" title="Java IO"
              >précédent</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Documentation Documentation v0.1</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation  v0.1</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li> 
       </ul>
     </div>
