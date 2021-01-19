@@ -90,7 +90,7 @@ Propriétées
 
 Ceux sont des **constantes** qui seront remplacées au moment de la compilation par mvn.
 
-Example ci dessous on déclare la version de Junit en Propriétée et on la place dans les dépendances à la place du numéro de version en utilisant ${nom de la Propriétée}
+**Convention** on déclare la version de Junit en Propriétée et on la place dans les dépendances à la place du numéro de version en utilisant ${nom de la Propriétée}
 
  .. code-block:: xml
 

@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u''
+project = u'Documentation'
 copyright = u'2021, dorian delaval'
 author = u'dorian delaval'
 
