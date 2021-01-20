@@ -1,7 +1,17 @@
 *******
 Mockito
 *******
-//todo rajouter une definition de mockito a quoi il sert...
+Un mock sert à simuler une classe A pour pouvoir tester un autre classe B qui utilise la classe A.
+démarche a suivre pour déterminer les mocks:
+
+* Identifiez un comportement unique que vous testez avec votre classe sous-test (CUT).
+* Demandez-vous quelles classes sont nécessaires au comportement à tester.
+* Hormis votre CUT, envisagez toutes les autres classes pour le mocking.
+* Ne mockez pas les classes qui ne servent quasiment qu’à porter des valeurs.
+* Installez les mocks requis.
+* Testez votre CUT.
+* Vérifiez que vos mocks ont été correctement utilisés.
+
 Config Mvn
 **********
 

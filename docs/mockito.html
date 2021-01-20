@@ -45,9 +45,19 @@
             
   <div class="section" id="mockito">
 <h1>Mockito<a class="headerlink" href="#mockito" title="Lien permanent vers ce titre">¶</a></h1>
-<p>//todo rajouter une definition de mockito a quoi il sert…
-Config Mvn
-<strong>******</strong></p>
+<p>Un mock sert à simuler une classe A pour pouvoir tester un autre classe B qui utilise la classe A.
+démarche a suivre pour déterminer les mocks:</p>
+<ul class="simple">
+<li>Identifiez un comportement unique que vous testez avec votre classe sous-test (CUT).</li>
+<li>Demandez-vous quelles classes sont nécessaires au comportement à tester.</li>
+<li>Hormis votre CUT, envisagez toutes les autres classes pour le mocking.</li>
+<li>Ne mockez pas les classes qui ne servent quasiment qu’à porter des valeurs.</li>
+<li>Installez les mocks requis.</li>
+<li>Testez votre CUT.</li>
+<li>Vérifiez que vos mocks ont été correctement utilisés.</li>
+</ul>
+<div class="section" id="config-mvn">
+<h2>Config Mvn<a class="headerlink" href="#config-mvn" title="Lien permanent vers ce titre">¶</a></h2>
 <p>on modifie le <strong>pom.xml</strong></p>
 <blockquote>
 <div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
@@ -66,6 +76,7 @@ Config Mvn
 </pre></div>
 </div>
 </div></blockquote>
+</div>
 <div class="section" id="config-eclipse">
 <h2>Config eclipse<a class="headerlink" href="#config-eclipse" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Pour l’autocompletion des elelements de mockito:</p>
@@ -187,6 +198,7 @@ Config Mvn
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Mockito</a><ul>
+<li><a class="reference internal" href="#config-mvn">Config Mvn</a></li>
 <li><a class="reference internal" href="#config-eclipse">Config eclipse</a></li>
 <li><a class="reference internal" href="#creation-d-un-mock">Creation d’un Mock</a><ul>
 <li><a class="reference internal" href="#declaration">Déclaration</a></li>
