@@ -141,5 +141,11 @@ Et pour le When on utilisera **assertThrows()** pour verifier si une exception e
     }
 
 
+Fonctions avancées
+******************
+
+ArgumentCaptor
+==============
+
 
 

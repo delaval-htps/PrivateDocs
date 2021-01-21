@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'Documentation'
+project = u'Private'
 copyright = u'2021, dorian delaval'
 author = u'dorian delaval'
 
@@ -74,13 +74,21 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'nature'
+html_theme = 'classic'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {
+    "rightsidebar": "false",
+    "stickysidebar": "true", "bodyfont": "arial",
+    "footerbgcolor": "gray",
+    "sidebarbgcolor": "gray",
+    "relbarbgcolor": "#4C4C4C",
+    "headtextcolor": "#60AD8F", "linkcolor": "#3F3F3F", "visitedlinkcolor": "#3F3F3F"
+
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -128,7 +136,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Documentation.tex', u'Documentation Documentation',
+    (master_doc, 'Documentation.tex', u'Documentation',
      u'dorian delaval', 'manual'),
 ]
 
