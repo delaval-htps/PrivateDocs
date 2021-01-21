@@ -171,7 +171,14 @@ et ensuite on récupere dans une liste cette suite d'argument.
 3) Cas de Verification
 ++++++++++++++++++++++
 
-ci dessous un exemple complet de test avec ArgumentCaptor:
+Le but est juste de vérifier si l'appel de la methode a tester a bien récupérer le bon nombre d'argument et si ils ont correctement été récupérés:
+
+* **//GIVEN** :on capture les arguments CaculculationModel utilisé par batchCalculatorService lors de l'appel de la methode batchCalculate() avec calculationModelCaptor
+
+* **//THEN** :on verifie que lorsqu'on appelle batchCalculate (operations) , il y a bien eu 4 appel de calculatorService et on capture les calculationModels avec calculationModelCaptor.capture()
+
+* **//THEN** : on verifie que les calculationModels capturés (recupérés avec calculatioModelCaptor.getAllValue() correspondent au tuple que l'on a ecrit en dure par rapport à la liste d'opérations qu'on a dans // GIVEN. cela se fait en utilisant extracting ( <class> :: <methode get>) voir les lambdas...
+
 
  .. code-block:: java
 
@@ -281,3 +288,10 @@ on vas simplement mettre a la suite des then() qui corrrespondront respectivemen
 	}
 
 
+@Spy
+====
+
+On ne peut pas mocker une methode d'une classe définit en final avec @Mock 
+mais on peut tout de meme utiliser @spy sur la classe pour récupérer des méthodes non final.
+
+En gros , c'est un mock partiel de la classe

@@ -222,7 +222,12 @@ et ensuite on récupere dans une liste cette suite d’argument.</p>
 </div>
 <div class="section" id="cas-de-verification">
 <h4>3) Cas de Verification<a class="headerlink" href="#cas-de-verification" title="Lien permanent vers ce titre">¶</a></h4>
-<p>ci dessous un exemple complet de test avec ArgumentCaptor:</p>
+<p>Le but est juste de vérifier si l’appel de la methode a tester a bien récupérer le bon nombre d’argument et si ils ont correctement été récupérés:</p>
+<ul class="simple">
+<li><strong>//GIVEN</strong> :on capture les arguments CaculculationModel utilisé par batchCalculatorService lors de l’appel de la methode batchCalculate() avec calculationModelCaptor</li>
+<li><strong>//THEN</strong> :on verifie que lorsqu’on appelle batchCalculate (operations) , il y a bien eu 4 appel de calculatorService et on capture les calculationModels avec calculationModelCaptor.capture()</li>
+<li><strong>//THEN</strong> : on verifie que les calculationModels capturés (recupérés avec calculatioModelCaptor.getAllValue() correspondent au tuple que l’on a ecrit en dure par rapport à la liste d’opérations qu’on a dans // GIVEN. cela se fait en utilisant extracting ( &lt;class&gt; :: &lt;methode get&gt;) voir les lambdas…</li>
+</ul>
 <blockquote>
 <div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenOperationsList_whenbatchCalculate_thenCallsServiceWithCorrectArguments</span><span class="p">()</span>
@@ -331,6 +336,12 @@ et ensuite on récupere dans une liste cette suite d’argument.</p>
 </div></blockquote>
 </div>
 </div>
+<div class="section" id="spy">
+<h3>&#64;Spy<a class="headerlink" href="#spy" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On ne peut pas mocker une methode d’une classe définit en final avec &#64;Mock
+mais on peut tout de meme utiliser &#64;spy sur la classe pour récupérer des méthodes non final.</p>
+<p>En gros , c’est un mock partiel de la classe</p>
+</div>
 </div>
 </div>
 
@@ -371,6 +382,7 @@ et ensuite on récupere dans une liste cette suite d’argument.</p>
 <li><a class="reference internal" href="#les-then-chaines">2) Les Then() chainés</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#spy">&#64;Spy</a></li>
 </ul>
 </li>
 </ul>
