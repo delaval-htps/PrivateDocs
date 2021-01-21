@@ -5,8 +5,11 @@ Tests
    :maxdepth: 3
    :caption: Contents:
    
-   test
+   test unitaire
    jUnit
    mockito
+   test integration
+   test fonctionnel
+
 
 

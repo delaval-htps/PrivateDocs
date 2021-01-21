@@ -1,0 +1,82 @@
+*******************
+Tests d'Intégration
+*******************
+
+tests qui permettent de verifier la cohérence et efficacité de l'ensemble des composants du code (classes)
+Il en existe 2 types
+
+Les test d'intégration Composants
+*********************************
+permettent de verifier si plusieurs unités de code fonctionnent entre elles dans un environnement isolé sans lien avec des composants extérieurs
+
+Création d'un IT composant
+==========================
+
+1. Convention
++++++++++++++
+Par convention on nomme une classe de test d'intégration **avec IT à la fin**
+
+exemple: **CalculatorServiceIT.java**
+
+2. Création
++++++++++++
+
+C'est le même principe qu'un **test unitaire mais on n'utilise pas de mock**.
+
+On crée directement une instance de la classe  dont on a besoin pour notre CUT dans la partie //GIVEN:
+
+ .. code-block:: java
+
+    package com.openclassrooms.testing.calcul.service;
+
+    import static org.assertj.core.api.Assertions.assertThat;
+
+    public class CalculatorServiceIT {
+
+	// Mettre en place des objets réels non mockés
+	private final Calculator calculator = new Calculator();
+	private final SolutionFormatter formatter = new SolutionFormatterImpl();
+
+	// Initialiser la classe à tester
+	private final CalculatorService underTest = new CalculatorServiceImpl(calculator, formatter);
+
+	@Test
+	public void calculatorService_shouldCalculateASolution_whenGivenACalculationModel() {
+		// GIVEN
+		final CalculationModel calculation = new CalculationModel(CalculationType.ADDITION,
+				100, 101);
+		// WHEN
+		final CalculationModel result = underTest.calculate(calculation);
+
+		// THEN
+		assertThat(result.getSolution()).isEqualTo(201);
+	    }
+    }
+
+3. lancement des IT
++++++++++++++++++++
+
+On utilise Maven , sachant que **mvn package**, nous fait un build , les tests unitaires et le packaging des sources.
+
+Ici on va utiliser:
+
+::
+    
+    $mvn verify
+
+Les Test d'intégration Système (SIT)
+************************************
+permettent de vérifier le fonctionnement de plusieurs unités au sein d'une config d'application avec des liens à des composants exterieures tels que BDD fichiers, API en réseau...
+
+**On utilisera le FrameWork Spring qui propose des outils pour les SIT.**
+
+
+
+Les Tests d'acceptation
+***********************
+permettent de vérifier directement les exigeances métier exprimé par le client. Ils sont indépendants des test unitaires d'intégration classiques et des test de fonctionnnels. Ils se situent en travers de la pyramide ! 
+
+En général on fera des tests d'acceptation le plus tot possible avec des test d'intégration systeme (SIT).
+On utilisera les **@Tag** pour les regrouper parmis les SIT.
+
+

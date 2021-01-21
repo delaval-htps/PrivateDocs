@@ -1,0 +1,235 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Les Tests &#8212; Documentation Private v0.1</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="JUnit &amp; ses Annotations" href="jUnit.html" />
+    <link rel="prev" title="Tests" href="tests.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="jUnit.html" title="JUnit &amp; ses Annotations"
+             accesskey="N">suivant</a> |</li>
+        <li class="right" >
+          <a href="tests.html" title="Tests"
+             accesskey="P">précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="tests.html" accesskey="U">Tests</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="les-tests">
+<h1>Les Tests<a class="headerlink" href="#les-tests" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="pyramides-des-tests">
+<h2>Pyramides des tests<a class="headerlink" href="#pyramides-des-tests" title="Lien permanent vers ce titre">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/pyramid-test.png"><img alt="_images/pyramid-test.png" class="align-center" src="_images/pyramid-test.png" style="width: 60%;" /></a>
+</div></blockquote>
+<div class="section" id="les-tests-d-integration">
+<h3>Les Tests d’Intégration<a class="headerlink" href="#les-tests-d-integration" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Les test d’intégration <strong>vérifient que les unités de codes fonctionnent ensemble</strong>: test unitaires doivent passés.</p>
+<ul class="simple">
+<li>execution de composants extérieures ( bdd,service web…)</li>
+</ul>
+</div>
+<div class="section" id="les-tests-fonctionnels-end-to-end">
+<h3>Les Tests fonctionnels(End to End)<a class="headerlink" href="#les-tests-fonctionnels-end-to-end" title="Lien permanent vers ce titre">¶</a></h3>
+<p><strong>Simulent le comportement d’un utilisateur final sur l’application, depuis l’interface utilisateur.</strong></p>
+<p>Boite Noire qui ne connait pas les briques et unités de codes de l’application.</p>
+</div>
+<div class="section" id="pourquoi-tester">
+<h3>Pourquoi Tester ?<a class="headerlink" href="#pourquoi-tester" title="Lien permanent vers ce titre">¶</a></h3>
+<ul>
+<li><p class="first">Tester pour <strong>faire face à l’inattendu</strong> :</p>
+<blockquote>
+<div><p>Utiliser les user stories et prévoir les scénarios alternatifs :</p>
+<blockquote>
+<div><p><strong>cas des limites courants et risque de non disponibilité de services extérieurs</strong></p>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">Testez pour <strong>faciliter la maintenance</strong>:</p>
+<blockquote>
+<div><p>Eviter la <strong>régréssion d’un code</strong> en testant pour faciliter la maintenance et la correction de ce dernier</p>
+</div></blockquote>
+</li>
+<li><p class="first">Testez pour <strong>communiquer</strong>:</p>
+<blockquote>
+<div><p>Permet de savoir comment l’application focntionne: plus simple pour communiquer</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="conventions">
+<h2>Conventions<a class="headerlink" href="#conventions" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Les test unitaires sont crées <strong>pour tester des fonctionnalités</strong>, excécutés de nombreuses fois et stables.</p>
+<div class="section" id="first">
+<h3>«&nbsp;FIRST&nbsp;»<a class="headerlink" href="#first" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Ils doivent respecter le <strong>FIRST</strong> :</p>
+<ul class="simple">
+<li><strong>F</strong>: fast doit être rapide , exclure lecture fichiers, internet…</li>
+<li><strong>I</strong>: isolation , doit être indépendant du système ou d’autre résultat</li>
+<li><strong>R</strong>: repeatable, doit etre repetable et autonome et donner toujours le meme résultat</li>
+<li><strong>S</strong>: self-validation, doit faire un succes ou echoué , pas d’autre états</li>
+<li><strong>T</strong>: Thorought, = Appronfondi&nbsp;» il faut tester tous les cas nominaux et scenarion alternatifs, cas limites, sécurité, comportement innatendu…</li>
+</ul>
+</div>
+<div class="section" id="nom-des-methodes-test">
+<h3>Nom des methodes test<a class="headerlink" href="#nom-des-methodes-test" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Utilisation du camelCase:</p>
+<ul class="simple">
+<li><strong>MethodName_StateUnderTest_ExpectedBehavior</strong></li>
+</ul>
+<p>Exemple : add_twoPositiveIntegers_returnsTheirSum()</p>
+<ul class="simple">
+<li><strong>MethodName_ExpectedBehavior_StateUnderTest</strong></li>
+</ul>
+<p>Exemple : add_returnsTheSum_ofTwoPositiveIntegers()</p>
+<ul class="simple">
+<li><strong>givenStateUnderTest_whenMethodAction_thenExpectedBehavior</strong></li>
+</ul>
+<p>Exemple : givenTwoPostiveIntegers_whenAdded_thenTheyShouldBeSummed()</p>
+</div>
+<div class="section" id="methode-arrange-act-assert">
+<h3>Methode Arrange_Act_Assert<a class="headerlink" href="#methode-arrange-act-assert" title="Lien permanent vers ce titre">¶</a></h3>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/methode_AAA.png"><img alt="_images/methode_AAA.png" class="align-center" src="_images/methode_AAA.png" style="width: 60%;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="methode-du-red-red-green">
+<h3>Methode du Red Red Green<a class="headerlink" href="#methode-du-red-red-green" title="Lien permanent vers ce titre">¶</a></h3>
+<blockquote>
+<div><p>la refactorisation c’est rendre le code plus lisible et/ou plus élégant sans changer son comportement pour conserver le vert ie le test validé…</p>
+<a class="reference internal image-reference" href="_images/RedGreen.png"><img alt="_images/RedGreen.png" class="align-center" src="_images/RedGreen.png" style="width: 60%;" /></a>
+</div></blockquote>
+<p>un exemple avec un test sur une addition:</p>
+<blockquote>
+<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">calculator</span><span class="p">;</span>
+<span class="kn">import static</span> <span class="nn">org.junit.jupiter.api.Assertions.assertEquals</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.jupiter.api.Test</span><span class="p">;</span>
+<span class="kd">class</span> <span class="nc">CalculatorTest</span> <span class="p">{</span>
+   <span class="nd">@Test</span>
+   <span class="kt">void</span> <span class="nf">testAddTwoPositiveNumbers</span><span class="p">()</span> <span class="p">{</span>
+       <span class="c1">// ARRANGE</span>
+       <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+       <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+       <span class="n">Calculator</span> <span class="n">calculator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">();</span>
+       <span class="c1">// ACT</span>
+       <span class="kt">int</span> <span class="n">somme</span> <span class="o">=</span> <span class="n">calculator</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+       <span class="c1">// ASSERT</span>
+       <span class="n">assertEquals</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">somme</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Les Tests</a><ul>
+<li><a class="reference internal" href="#pyramides-des-tests">Pyramides des tests</a><ul>
+<li><a class="reference internal" href="#les-tests-d-integration">Les Tests d’Intégration</a></li>
+<li><a class="reference internal" href="#les-tests-fonctionnels-end-to-end">Les Tests fonctionnels(End to End)</a></li>
+<li><a class="reference internal" href="#pourquoi-tester">Pourquoi Tester ?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conventions">Conventions</a><ul>
+<li><a class="reference internal" href="#first">«&nbsp;FIRST&nbsp;»</a></li>
+<li><a class="reference internal" href="#nom-des-methodes-test">Nom des methodes test</a></li>
+<li><a class="reference internal" href="#methode-arrange-act-assert">Methode Arrange_Act_Assert</a></li>
+<li><a class="reference internal" href="#methode-du-red-red-green">Methode du Red Red Green</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="tests.html"
+                        title="Chapitre précédent">Tests</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="jUnit.html"
+                        title="Chapitre suivant">JUnit &amp; ses Annotations</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Cette page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/test unitaire.rst.txt"
+            rel="nofollow">Montrer le code source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="jUnit.html" title="JUnit &amp; ses Annotations"
+             >suivant</a> |</li>
+        <li class="right" >
+          <a href="tests.html" title="Tests"
+             >précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="tests.html" >Tests</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, dorian delaval.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>
