@@ -34,3 +34,7 @@ div.body h5 {
 div.body h6 {
     font-size: 100%;
 }
+
+.highlight {
+    max-width: fit-content;
+}
