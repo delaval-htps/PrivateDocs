@@ -85,7 +85,7 @@ div.documentwrapper {
 */
 
 div.sphinxsidebar h3 {
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: arial;
     color: #ffffff;
     font-size: 1.4em;
     font-weight: normal;
@@ -98,7 +98,7 @@ div.sphinxsidebar h3 a {
 }
 
 div.sphinxsidebar h4 {
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: arial;
     color: #ffffff;
     font-size: 1.3em;
     font-weight: normal;
@@ -158,7 +158,7 @@ div.body h3,
 div.body h4,
 div.body h5,
 div.body h6 {
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: arial;
     background-color: #f2f2f2;
     font-weight: normal;
     color: #60AD8F;

@@ -1,0 +1,36 @@
+div.bodywrapper {
+    margin: 0 0 0 300px;
+}
+
+div.sphinxsidebar {
+    width: auto;
+}
+
+div.body {
+    max-width: 100%;
+}
+
+div.body h1 {
+    font-size: 160%;
+}
+
+div.body h2 {
+    font-size: 140%;
+}
+
+div.body h3 {
+    font-size: 130%;
+}
+
+div.body h4 {
+    font-size: 110%;
+}
+
+div.body h5 {
+    font-size: 100%;
+    font-style: italic;
+}
+
+div.body h6 {
+    font-size: 100%;
+}

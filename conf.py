@@ -82,7 +82,7 @@ html_theme = 'classic'
 #
 html_theme_options = {
     "rightsidebar": "false",
-    "stickysidebar": "true", "bodyfont": "arial",
+    "stickysidebar": "true", "bodyfont": "arial", "headfont": "arial",
     "footerbgcolor": "gray",
     "sidebarbgcolor": "gray",
     "relbarbgcolor": "#4C4C4C",
@@ -97,7 +97,9 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
-#
+html_css_files = [
+    'css/custom.css'
+]
 # The default sidebars (for documents that don't match any pattern) are
 # defined by theme itself.  Builtin themes are using these templates by
 # default: ``['localtoc.html', 'relations.html', 'sourcelink.html',

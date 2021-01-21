@@ -62,8 +62,8 @@ Utilisation dans la classe test d'un mock de l'annotation de Junit **@ExtendWith
 Utilisation
 ============
 
-Static
-++++++
+1) Static
++++++++++
 
 Un exemple d'utilisation dans une methode de test:
 
@@ -89,10 +89,10 @@ Un exemple d'utilisation dans une methode de test:
     assertThat(result).isEqualTo(2);
   }
 
-Générique
-+++++++++
-any()
-~~~~~
+2) Générique
+++++++++++++ 
+a) any()
+~~~~~~~~
 
 on peut simuler le mock sans paramètres précis avec **any()** 
 
@@ -102,16 +102,16 @@ on peut simuler le mock sans paramètres précis avec **any()**
 
 dans tous les cas , cela donnera 3 comme résultat et on peut faire de même avec la methode **verify()**
 
-.. code-block:: java
+ .. code-block:: java
 
     verify(calculator).add(any(Integer.class), any(Integer.class));
 
-times()/never()
-~~~~~~~~~~~~~~~
+b) times()/never()
+~~~~~~~~~~~~~~~~~~
 
 on peut verifier combien de fois la methode du mock a été utilisée avec times() en paramètres
 
-.. code-block:: java
+ .. code-block:: java
 
     verify(calculator,times(1)).add(any(Integer.class), any(Integer.class));
 
@@ -119,8 +119,8 @@ ici il faut qu'elle soit appelée 1 fois seulement si on ne veut pas qu'elle soi
 * times(0)
 * never()
 
-Exceptions
-++++++++++
+3) Exceptions
++++++++++++++
 Si on veut configurer un mock pour lancer une exception on remplace **thenReturn() par thenThrows()**.
 
 Et pour le When on utilisera **assertThrows()** pour verifier si une exception est levée par la methode de la CUT: 
@@ -147,5 +147,137 @@ Fonctions avancées
 ArgumentCaptor
 ==============
 
+Permet **d'enregistrer les arguments utilisés lors de l'appel du mock** pour par la suite en assertion verifier par exemple que ce sont les bons arguments escomptés
+
+1) Déclaration
+++++++++++++++
+Exemple sur la classe CalculationModel:
+
+ .. code-block:: java
+
+    final ArgumentCaptor<CalculationModel> calculationModelCaptor =
+    ArgumentCaptor.forClass(CalculationModel.class);
+
+2) Verification
++++++++++++++++
+On verifie que calculatorService a bien utilisé les arguments de calculationModel
+et ensuite on récupere dans une liste cette suite d'argument.
+
+ .. code-block:: java
+
+    verify(calculatorService, times(4)).calculate(calculationModelCaptor.capture());
+    final List<CalculationModel> calculationModels = calculationModelCaptor.getAllValues();
+
+3) Cas de Verification
+++++++++++++++++++++++
+
+ci dessous un exemple complet de test avec ArgumentCaptor:
+
+ .. code-block:: java
+
+    @Test
+    public void givenOperationsList_whenbatchCalculate_thenCallsServiceWithCorrectArguments()
+    throws IOException, URISyntaxException {
+      // GIVEN
+      final Stream<String> operations =
+          Arrays.asList("2 + 2", "5 - 4", "6 x 8", "9 / 3").stream();
+      final ArgumentCaptor<CalculationModel> calculationModelCaptor =
+          ArgumentCaptor.forClass(CalculationModel.class);
+
+      // WHEN
+      batchCalculatorService.batchCalculate(operations);
+
+      // THEN
+      verify(calculatorService, times(4)).calculate(calculationModelCaptor.capture());
+      final List<CalculationModel> calculationModels = calculationModelCaptor.getAllValues();
+      assertThat(calculationModels)
+          .extracting(CalculationModel::getLeftArgument, 
+                      CalculationModel::getType,
+                      CalculationModel::getRightArgument)
+          .containsExactly(
+              tuple(2, CalculationType.ADDITION, 2),
+              tuple(5, CalculationType.SUBTRACTION, 4),
+              tuple(6, CalculationType.MULTIPLICATION, 8),
+              tuple(9, CalculationType.DIVISION, 3));
+    }
+
+InvocationOnMock
+================
+
+on veut **donner une réponse spécifique en fonction de n'importe quel argument entré** lors de l'appel du mock pour ensuite verifier le résultat de notre methode du CUT.
+
+on utilise **l'interface invocation heritant de InvocationOnMock que l'on redéfinit avec une lambdas** pour déclarer le résultat que l'on souhaite en fonction des arguments données a notre mock.
+
+Deux alternatives s'offre a nous :
+
+1) lambdas avec Invocation
+++++++++++++++++++++++++++
+
+ .. code-block:: java
+
+    @Test
+    public void givenOperationsList_whenbatchCalculate_thenCallsServiceAndReturnsAnswer()
+        throws IOException, URISyntaxException {
+      // GIVEN
+      final Stream<String> operations = Arrays.asList("2 + 2", "5 - 4", "6 x 8", "9 / 3").stream();
+      when(calculatorService.calculate(any(CalculationModel.class)))
+      .then(invocation -> {
+            final CalculationModel model = invocation.getArgument(0, CalculationModel.class);
+            switch (model.getType()) {
+            case ADDITION:
+              model.setSolution(4);
+              break;
+            case SUBTRACTION:
+              model.setSolution(1);
+              break;
+            case MULTIPLICATION:
+              model.setSolution(48);
+              break;
+            case DIVISION:
+              model.setSolution(3);
+              break;
+            default:
+            }
+            return model;
+          });
+
+      // WHEN
+      final List<CalculationModel> results = batchCalculatorService.batchCalculate(operations);
+
+      // THEN
+      verify(calculatorService, times(4)).calculate(any(CalculationModel.class));
+      assertThat(results).extracting("solution").containsExactly(4, 1, 48, 3);
+
+    }
+
+2) Les Then() chainés
++++++++++++++++++++++
+
+on vas simplement mettre a la suite des then() qui corrrespondront respectivement a leur arguments entrées
+
+ .. code-block:: java
+ 
+    @Test
+	  public void givenOperationsList_whenbatchCalculate_thenCallsServiceAndReturnsAnswer2()
+			throws IOException, URISyntaxException {
+		// GIVEN
+		final Stream<String> operations =
+		    Arrays.asList("2 + 2", "5 - 4", "6 x 8", "9 / 3").stream();
+		
+    when(calculatorService.calculate(any(CalculationModel.class)))
+				.thenReturn(new CalculationModel(CalculationType.ADDITION, 2, 2, 4))
+				.thenReturn(new CalculationModel(CalculationType.SUBTRACTION, 5, 4, 1))
+				.thenReturn(new CalculationModel(CalculationType.MULTIPLICATION, 6, 8, 48))
+				.thenReturn(new CalculationModel(CalculationType.DIVISION, 9, 3, 3));
+
+		// WHEN
+		final List<CalculationModel> results =
+		    batchCalculatorService.batchCalculate(operations);
+
+		// THEN
+		verify(calculatorService, times(4)).calculate(any(CalculationModel.class));
+		assertThat(results).extracting("solution").containsExactly(4, 1, 48, 3);
+
+	}
 
 

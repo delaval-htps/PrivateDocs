@@ -81,15 +81,15 @@ Exemple : add_returnsTheSum_ofTwoPositiveIntegers()
 Exemple : givenTwoPostiveIntegers_whenAdded_thenTheyShouldBeSummed()
 
 
-#1 methode Arrange_Act_Assert
-=============================
+Methode Arrange_Act_Assert
+==========================
 
  .. image:: _static/methode_AAA.png
     :width: 60%
     :align: center
 
-#2 methode du Red Red Green
-===========================
+Methode du Red Red Green
+========================
  la refactorisation c'est rendre le code plus lisible et/ou plus élégant sans changer son comportement pour conserver le vert ie le test validé...
 
  .. image:: _static/RedGreen.png
