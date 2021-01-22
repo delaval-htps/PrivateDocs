@@ -107,12 +107,82 @@ Il en existe 2 types</p>
 <div class="section" id="les-test-d-integration-systeme-sit">
 <h2>Les Test d’intégration Système (SIT)<a class="headerlink" href="#les-test-d-integration-systeme-sit" title="Lien permanent vers ce titre">¶</a></h2>
 <p>permettent de vérifier le fonctionnement de plusieurs unités au sein d’une config d’application avec des liens à des composants exterieures tels que BDD fichiers, API en réseau…</p>
+<div class="section" id="id1">
+<h3>Convention<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
+<p><strong>On utilisera le FrameWork Spring qui propose des outils pour les SIT.</strong>
+le nom de classe se termine par <strong>SIT</strong> pour avoir le IT a la fin et que mvn puisse faire la différence avec les test unitaires</p>
 </div>
-<div class="section" id="les-tests-d-acceptation">
-<h2>Les Tests d’acceptation<a class="headerlink" href="#les-tests-d-acceptation" title="Lien permanent vers ce titre">¶</a></h2>
-<p>permettent de vérifier directement les exigeances métier exprimé par le client. Ils sont indépendants des test unitaires d’intégration classiques et des test de fonctionnnels. Ils se situent en travers de la pyramide !</p>
-<p>En général on fera des tests d’acceptation le plus tot possible avec des test d’intégration systeme (SIT).
-On utilisera les <strong>&#64;Tag</strong> pour les regrouper parmis les SIT.</p>
+<div class="section" id="annotations-spring">
+<h3>Annotations Spring<a class="headerlink" href="#annotations-spring" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Du coup il faut utiliser les annotations suivantes:</p>
+<div class="section" id="webmvctest">
+<h4>1. &#64;WebMvcTest<a class="headerlink" href="#webmvctest" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Pour Initialiser les classes utilisées sur lesquels ont veux faire le test SIT ( verifier le comportement )</p>
+</div>
+<div class="section" id="extendwith">
+<h4>2. &#64;ExtendWith<a class="headerlink" href="#extendwith" title="Lien permanent vers ce titre">¶</a></h4>
+<p>on utilise (SpringExtension.class) : c’est Spring qui gére directemetnles Mocks et non mockito</p>
+</div>
+<div class="section" id="inject">
+<h4>3. &#64;Inject<a class="headerlink" href="#inject" title="Lien permanent vers ce titre">¶</a></h4>
+<p>On va injecter le service MockMvc (&#64;Inject = &#64;Autowired mais plus générique)
+l’injection de dépendance peut se faire parceque nous avons déclarer les classes injectées avec:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#64;service</li>
+<li>&#64;Component</li>
+<li>&#64;controller</li>
+<li>&#64;Bean</li>
+<li>&#64;Named, la plus générique de toute</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="mockbean">
+<h4>4.&#64;MockBean<a class="headerlink" href="#mockbean" title="Lien permanent vers ce titre">¶</a></h4>
+<p>on demande à Spring de nous créer les Mocks nécessaire a la réalisation du test</p>
+</div>
+</div>
+<div class="section" id="exemple-de-test-sit">
+<h3>Exemple de test SIT<a class="headerlink" href="#exemple-de-test-sit" title="Lien permanent vers ce titre">¶</a></h3>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span>    <span class="nd">@WebMvcTest</span><span class="p">(</span><span class="n">controllers</span> <span class="o">=</span> <span class="p">{</span><span class="n">CalculatorController</span><span class="p">.</span><span class="na">class</span><span class="p">,</span> <span class="n">CalculatorService</span><span class="p">.</span><span class="na">class</span><span class="p">})</span>
+    <span class="nd">@ExtendWith</span><span class="p">(</span><span class="n">SpringExtension</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalculateurControllerSIT</span> <span class="p">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="n">MockMvc</span> <span class="n">mockMvc</span><span class="p">;</span>
+
+    <span class="nd">@MockBean</span>
+    <span class="kd">private</span> <span class="n">SolutionFormatter</span> <span class="n">solutionFormatter</span><span class="p">;</span>
+
+    <span class="nd">@MockBean</span>
+    <span class="kd">private</span> <span class="n">Calculator</span> <span class="n">calculator</span><span class="p">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenACalculatorApp_whenRequestToAdd_thenSolutionisShow</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+            <span class="c1">// GIVEN on mock calculatr et solutionFormatter</span>
+            <span class="n">when</span><span class="p">(</span><span class="n">calculator</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)).</span><span class="na">thenReturn</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+            <span class="n">when</span><span class="p">(</span><span class="n">solutionFormatter</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="mi">5</span><span class="p">)).</span><span class="na">thenReturn</span><span class="p">(</span><span class="s">&quot;5&quot;</span><span class="p">);</span>
+
+
+<span class="c1">// WHEN on récupére le résultat de la simulation de la requete http et on vérifie le succes</span>
+<span class="n">MvcResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">mockMvc</span>
+    <span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">MockMvcRequestBuilders</span><span class="p">.</span><span class="na">post</span><span class="p">(</span><span class="s">&quot;/calculator&quot;</span><span class="p">).</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;leftArgument&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;calculationType&quot;</span><span class="p">,</span> <span class="s">&quot;ADDITION&quot;</span><span class="p">).</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;rightArgument&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">))</span>
+    <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">MockMvcResultMatchers</span><span class="p">.</span><span class="na">status</span><span class="p">().</span><span class="na">is2xxSuccessful</span><span class="p">()).</span><span class="na">andReturn</span><span class="p">();</span>
+
+<span class="c1">// THEN on verifie les utilisations des mocks et que le résultat est bien 5 dans la réponse html avec l&#39;id solution</span>
+<span class="n">verify</span><span class="p">(</span><span class="n">calculator</span><span class="p">,</span> <span class="n">times</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="na">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">verify</span><span class="p">(</span><span class="n">solutionFormatter</span><span class="p">,</span> <span class="n">times</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="na">format</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">assertThat</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">getResponse</span><span class="p">().</span><span class="na">getContentAsString</span><span class="p">()).</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;id=\&quot;solution\&quot;&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;&gt;5&lt;/span&quot;</span><span class="p">);</span>
+
+            <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </div>
 </div>
 
@@ -134,8 +204,18 @@ On utilisera les <strong>&#64;Tag</strong> pour les regrouper parmis les SIT.</p
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#les-test-d-integration-systeme-sit">Les Test d’intégration Système (SIT)</a></li>
-<li><a class="reference internal" href="#les-tests-d-acceptation">Les Tests d’acceptation</a></li>
+<li><a class="reference internal" href="#les-test-d-integration-systeme-sit">Les Test d’intégration Système (SIT)</a><ul>
+<li><a class="reference internal" href="#id1">Convention</a></li>
+<li><a class="reference internal" href="#annotations-spring">Annotations Spring</a><ul>
+<li><a class="reference internal" href="#webmvctest">1. &#64;WebMvcTest</a></li>
+<li><a class="reference internal" href="#extendwith">2. &#64;ExtendWith</a></li>
+<li><a class="reference internal" href="#inject">3. &#64;Inject</a></li>
+<li><a class="reference internal" href="#mockbean">4.&#64;MockBean</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exemple-de-test-sit">Exemple de test SIT</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

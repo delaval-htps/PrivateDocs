@@ -10,6 +10,7 @@ Tests
    mockito
    test integration
    test fonctionnel
+   test acceptation
 
 
 

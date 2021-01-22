@@ -68,11 +68,78 @@ Les Test d'intégration Système (SIT)
 ************************************
 permettent de vérifier le fonctionnement de plusieurs unités au sein d'une config d'application avec des liens à des composants exterieures tels que BDD fichiers, API en réseau...
 
-Les Tests d'acceptation
-***********************
-permettent de vérifier directement les exigeances métier exprimé par le client. Ils sont indépendants des test unitaires d'intégration classiques et des test de fonctionnnels. Ils se situent en travers de la pyramide ! 
+Convention
+==========
 
-En général on fera des tests d'acceptation le plus tot possible avec des test d'intégration systeme (SIT).
-On utilisera les **@Tag** pour les regrouper parmis les SIT.
+**On utilisera le FrameWork Spring qui propose des outils pour les SIT.**
+le nom de classe se termine par **SIT** pour avoir le IT a la fin et que mvn puisse faire la différence avec les test unitaires
+
+Annotations Spring
+==================
+Du coup il faut utiliser les annotations suivantes:
+
+1. @WebMvcTest
+++++++++++++++
+
+Pour Initialiser les classes utilisées sur lesquels ont veux faire le test SIT ( verifier le comportement ) 
+
+2. @ExtendWith
+++++++++++++++
+on utilise (SpringExtension.class) : c'est Spring qui gére directemetnles Mocks et non mockito
+
+3. @Inject
+++++++++++
+On va injecter le service MockMvc (@Inject = @Autowired mais plus générique)
+l'injection de dépendance peut se faire parceque nous avons déclarer les classes injectées avec:
+	* @service
+	* @Component
+	* @controller
+	* @Bean 
+	* @Named, la plus générique de toute
+
+4.@MockBean
++++++++++++
+on demande à Spring de nous créer les Mocks nécessaire a la réalisation du test
+
+Exemple de test SIT
+===================
+
+ .. code-block:: java
+
+	@WebMvcTest(controllers = {CalculatorController.class, CalculatorService.class})
+	@ExtendWith(SpringExtension.class)
+	public class CalculateurControllerSIT {
+
+	@Inject
+	private MockMvc mockMvc;
+
+	@MockBean
+	private SolutionFormatter solutionFormatter;
+
+	@MockBean
+	private Calculator calculator;
+
+	@Test
+	public void givenACalculatorApp_whenRequestToAdd_thenSolutionisShow() throws Exception {
+		// GIVEN on mock calculatr et solutionFormatter
+		when(calculator.add(3, 2)).thenReturn(5);
+		when(solutionFormatter.format(5)).thenReturn("5");
+
+
+    // WHEN on récupére le résultat de la simulation de la requete http et on vérifie le succes
+    MvcResult result = mockMvc
+        .perform(MockMvcRequestBuilders.post("/calculator").param("leftArgument", "3")
+            .param("calculationType", "ADDITION").param("rightArgument", "2"))
+        .andExpect(MockMvcResultMatchers.status().is2xxSuccessful()).andReturn();
+
+    // THEN on verifie les utilisations des mocks et que le résultat est bien 5 dans la réponse html avec l'id solution
+    verify(calculator, times(1)).add(3, 2);
+    verify(solutionFormatter, times(1)).format(5);
+    assertThat(result.getResponse().getContentAsString()).contains("id=\"solution\"")
+        .contains(">5</span");
+
+  		}
+	}
+
 
 
