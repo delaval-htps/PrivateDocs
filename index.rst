@@ -11,7 +11,7 @@ Personnal Documentation
    :caption: Contents:
 
    java
-   git
+   git & github
    Gestion de Projet
    css
    maven
