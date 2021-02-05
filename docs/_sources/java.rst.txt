@@ -10,6 +10,7 @@ Java
    genericite
    enumeration
    java IO
+   logger
    class Anomyme
    lambdas
    stream
