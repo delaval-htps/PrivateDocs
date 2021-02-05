@@ -25,9 +25,13 @@ Ajouter les dépendences pour log4j2 dans le pom.xml
 Config Log4j2
 *************
 On crée un fichier **log4j2.xml** de configuration que l'on place dans src/main/java/resources
+
 .. warning: sous Eclipse , il sera dans src/resources car eclipse considére que la source = src/main/java
 
-l'example ci dessous, montre une sotie dirigée vers la console avec un script qui permet de modifier le pattern en fonction des levels utilisés.  il emploie également le **highlight** pour coloriser les lignes 
+l'example ci dessous, montre une sotie dirigée vers la console avec un script qui permet de modifier le pattern en fonction des levels utilisés.
+
+il emploie également le **highlight** pour coloriser les lignes.
+
 Attention: utillisation d'une console ansi sinon il ne le detécte pas !!! 
 
  .. code-block:: xml
