@@ -108,9 +108,10 @@ c'est une librairie permettant d'utiliser des Assertions plus parlantes pour l'u
 
 Elle est intéressante car elle comporte différents modules à utiliser pour des cas particuliers: exemple assertJ DB Module
 
-.. seealso: ci joint le lien vers la doc
+.. seealso:: ci joint le lien vers la doc
 	<https://assertj.github.io/doc/>
 	<https://www.javadoc.io/doc/org.assertj> 
+
 
 La couverture du code
 *********************
