@@ -42,6 +42,69 @@
             
   <div class="section" id="maven">
 <h1>Maven<a class="headerlink" href="#maven" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="build-lifecycles">
+<h2>Build lifecycles<a class="headerlink" href="#build-lifecycles" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">Voir aussi</p>
+<p>ref doc technique de Maven</p>
+<p class="last">&lt;<a class="reference external" href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#lifecycle-reference">http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#lifecycle-reference</a>&gt;</p>
+</div>
+<p>les cycles de vie de construction sont aux nombres de 3:</p>
+<ul class="simple">
+<li><strong>default</strong>:  gère le déployement du projet</li>
+<li><strong>clean</strong> :   gére le nettoyage du projet</li>
+<li><strong>site</strong> :    gére la creation de la documentation du site</li>
+</ul>
+</div>
+<div class="section" id="phases-of-lifecycles">
+<h2>Phases of lifecycles<a class="headerlink" href="#phases-of-lifecycles" title="Lien permanent vers ce titre">¶</a></h2>
+<p>un cycle de vie comporte des phases de construction:</p>
+<ul class="simple">
+<li><strong>validate</strong>:  valide le projet s’il est correct</li>
+<li><strong>compile</strong> :   compile le code source</li>
+<li><strong>test</strong> :    effectue les test unitaires</li>
+<li><strong>package</strong>:  crée le un package(conteneur, ex: .jar,.war…) avec le code compilé</li>
+<li><strong>verify</strong>:   lance tous les test ainsi que les test d’intégration.</li>
+<li><strong>install</strong>:  installe le package dans le repertoire local, peut etre utile pour l’utiliser dans d’autre projet</li>
+<li><strong>deploy</strong>:   copie le package dans le repository distant pour etre partagé</li>
+</ul>
+<p>Elles s’effectuent dans l’ordre pour accomplir le lifecycle default.
+Pour les lancer on utilise la commande :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn &lt;nom de la phase&gt;
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">Voir aussi</p>
+<p>ci dessous la liste complete  des phases pour chaque lifecycle:</p>
+<p class="last">&lt;<a class="reference external" href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#lifecycle-reference">http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#lifecycle-reference</a>&gt;</p>
+</div>
+</div>
+<div class="section" id="phases-non-cli">
+<h2>Phases non CLI<a class="headerlink" href="#phases-non-cli" title="Lien permanent vers ce titre">¶</a></h2>
+<p>il existe des phases qui ne sont pas directement appélée par ligne de commande: <strong>«&nbsp;pre-, post-, process-«&nbsp;</strong> et <strong>«&nbsp;integration-test&nbsp;»</strong>.
+Elles permettent de séquencer le build mais ne fournissent pas de resultat nécessaire a sa construction.</p>
+<p>Les outils tels que jacoco, failsafe, surefire et les conteneurs docker, Tomcat… lient des goals à ces phases pour générer des rapports.</p>
+</div>
+<div class="section" id="goals-plugin">
+<h2>Goals plugin<a class="headerlink" href="#goals-plugin" title="Lien permanent vers ce titre">¶</a></h2>
+<p>un plugin comporte un ou plusieurs goal qui vont lui permettre de s’exécuter ou pas dans la phase demandée.</p>
+<p>un goal non lié a une phase peut etre executer seul par l’appel suivant:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn &lt;dependency&gt;:&lt;goal&gt;
+</pre></div>
+</div>
+<p>on peut rajouter des phases en plus qui seront indépendantes de l’appel du goal du plugin.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn clean sonar:sonar
+</pre></div>
+</div>
+<p>si on détermine un goal lié a plusieurs phases , ils seront tous excécuter lors de la phase.
+si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">Voir aussi</p>
+<p>les lifecycles ont pour chacune de leurs phases des plugins avec leur goal déjà implémenté par défaut.</p>
+<p class="last">&lt;<a class="reference external" href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#built-in-lifecycle-bindings">http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#built-in-lifecycle-bindings</a>&gt;</p>
+</div>
+</div>
 <div class="section" id="creation-projet-mvn-cli">
 <h2>Création Projet Mvn CLI<a class="headerlink" href="#creation-projet-mvn-cli" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Maven s’appuie sur des archétypes pour conserver la convention maven</p>
@@ -355,6 +418,10 @@
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Maven</a><ul>
+<li><a class="reference internal" href="#build-lifecycles">Build lifecycles</a></li>
+<li><a class="reference internal" href="#phases-of-lifecycles">Phases of lifecycles</a></li>
+<li><a class="reference internal" href="#phases-non-cli">Phases non CLI</a></li>
+<li><a class="reference internal" href="#goals-plugin">Goals plugin</a></li>
 <li><a class="reference internal" href="#creation-projet-mvn-cli">Création Projet Mvn CLI</a></li>
 <li><a class="reference internal" href="#compilation-creation-jar">Compilation &amp; Création .Jar</a></li>
 <li><a class="reference internal" href="#etude-pom-xml">Etude POM.xml</a><ul>

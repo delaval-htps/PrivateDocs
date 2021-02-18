@@ -26,7 +26,7 @@ Config Log4j2
 *************
 On crée un fichier **log4j2.xml** de configuration que l'on place dans src/main/java/resources
 
-.. warning: sous Eclipse , il sera dans src/resources car eclipse considére que la source = src/main/java
+ .. warning: sous Eclipse , il sera dans src/resources car eclipse considére que la source = src/main/java
 
 l'example ci dessous, montre une sotie dirigée vers la console avec un script qui permet de modifier le pattern en fonction des levels utilisés.
 

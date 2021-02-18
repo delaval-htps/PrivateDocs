@@ -2,6 +2,76 @@
 Maven
 *****
 
+Build lifecycles
+********************
+
+.. seealso:: ref doc technique de Maven
+
+    <http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#lifecycle-reference>
+
+
+les cycles de vie de construction sont aux nombres de 3:
+
+* **default**:  gère le déployement du projet
+* **clean** :   gére le nettoyage du projet
+* **site** :    gére la creation de la documentation du site
+
+Phases of lifecycles
+********************
+
+un cycle de vie comporte des phases de construction:
+
+* **validate**:  valide le projet s'il est correct
+* **compile** :   compile le code source
+* **test** :    effectue les test unitaires 
+* **package**:  crée le un package(conteneur, ex: .jar,.war...) avec le code compilé
+* **verify**:   lance tous les test ainsi que les test d'intégration.
+* **install**:  installe le package dans le repertoire local, peut etre utile pour l'utiliser dans d'autre projet
+* **deploy**:   copie le package dans le repository distant pour etre partagé
+
+Elles s'effectuent dans l'ordre pour accomplir le lifecycle default.
+Pour les lancer on utilise la commande :
+::
+
+    $ mvn <nom de la phase>
+
+.. seealso:: ci dessous la liste complete  des phases pour chaque lifecycle:
+
+ <http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#lifecycle-reference>
+
+
+Phases non CLI
+**************
+il existe des phases qui ne sont pas directement appélée par ligne de commande: **"pre-, post-, process-"** et **"integration-test"**.
+Elles permettent de séquencer le build mais ne fournissent pas de resultat nécessaire a sa construction. 
+
+Les outils tels que jacoco, failsafe, surefire et les conteneurs docker, Tomcat... lient des goals à ces phases pour générer des rapports. 
+
+Goals plugin
+************
+un plugin comporte un ou plusieurs goal qui vont lui permettre de s'exécuter ou pas dans la phase demandée.
+
+un goal non lié a une phase peut etre executer seul par l'appel suivant:
+::
+
+    $ mvn <dependency>:<goal>
+
+
+on peut rajouter des phases en plus qui seront indépendantes de l'appel du goal du plugin.
+
+Example:
+::
+
+    $ mvn clean sonar:sonar 
+
+
+si on détermine un goal lié a plusieurs phases , ils seront tous excécuter lors de la phase.
+si une phase n'a pas de goal alors elle ne s'éxecutera pas.
+
+.. seealso:: 
+    les lifecycles ont pour chacune de leurs phases des plugins avec leur goal déjà implémenté par défaut.
+    
+    <http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#built-in-lifecycle-bindings>
 
 Création Projet Mvn CLI
 ***********************
