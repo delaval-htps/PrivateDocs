@@ -61,10 +61,21 @@
 </ul>
 <div class="section" id="class-application">
 <h4>Class Application<a class="headerlink" href="#class-application" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Class de démarrage du projet qui contient la <strong>methode main():</strong></p>
+<p>Cette dernière appele <strong>SpringApplication.run(&lt;nom de la classe d’application&gt;.class,args);</strong></p>
+<p>C’est cette methode run qui lancera l’application.</p>
+</div>
+<div class="section" id="ajout-de-code-dans-la-classe-application">
+<h4>Ajout de code dans la classe Application<a class="headerlink" href="#ajout-de-code-dans-la-classe-application" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Pour lancer du code depuis cette class Application:
+* Ne pas toucher a la methode <strong>SpringApplication.run(&lt;nom de la classe d’application&gt;.class,args);</strong>
+* faire implementer la class Application a <strong>l’interface CommandeLineRunner</strong>
+* <strong>overrider la methode run(String … args)</strong> de cette interface pour y mettre notre code</p>
+<p>Au démarrage, SpringBoot exécutera en premier la méthode run() overridée</p>
 </div>
 <div class="section" id="application-properties">
 <h4>application.properties<a class="headerlink" href="#application-properties" title="Lien permanent vers ce titre">¶</a></h4>
-<p>fichier de configuration ou l’on mets les parametres de configuration:</p>
+<p>Fichier de configuration ou l’on mets les parametres de configuration(propriétés):</p>
 <p>exemple:</p>
 <ul class="simple">
 <li>spring.application.name : permet de donner un nom à notre application Spring Boot.</li>
@@ -89,6 +100,7 @@
 <li><a class="reference internal" href="#springboot-starter">SpringBoot Starter</a></li>
 <li><a class="reference internal" href="#springbootapplication">&#64;SpringBootApplication</a><ul>
 <li><a class="reference internal" href="#class-application">Class Application</a></li>
+<li><a class="reference internal" href="#ajout-de-code-dans-la-classe-application">Ajout de code dans la classe Application</a></li>
 <li><a class="reference internal" href="#application-properties">application.properties</a></li>
 </ul>
 </li>

@@ -24,10 +24,25 @@ Annotation utilisée pour permettre au container de SpringBoot de manipuler les 
 
 Class Application 
 =================
+Class de démarrage du projet qui contient la **methode main():**
+
+Cette dernière appele **SpringApplication.run(<nom de la classe d'application>.class,args);**
+
+C'est cette methode run qui lancera l'application.
+
+Ajout de code dans la classe Application
+========================================
+
+Pour lancer du code depuis cette class Application:
+* Ne pas toucher a la methode **SpringApplication.run(<nom de la classe d'application>.class,args);**
+* faire implementer la class Application a **l'interface CommandeLineRunner**
+* **overrider la methode run(String ... args)** de cette interface pour y mettre notre code
+
+Au démarrage, SpringBoot exécutera en premier la méthode run() overridée 
 
 application.properties
 ======================
-fichier de configuration ou l'on mets les parametres de configuration:
+Fichier de configuration ou l'on mets les parametres de configuration(propriétés):
 
 exemple:
 
