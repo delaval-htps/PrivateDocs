@@ -19,7 +19,8 @@
     <script type="text/javascript" src="_static/translations.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Recherche" href="search.html" /> 
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="SpringBoot" href="springBoot.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -27,7 +28,11 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li> 
+        <li class="right" >
+          <a href="springBoot.html" title="SpringBoot"
+             accesskey="P">précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="springBoot.html" accesskey="U">SpringBoot</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -42,6 +47,31 @@
 <h2>Creation Projet<a class="headerlink" href="#creation-projet" title="Lien permanent vers ce titre">¶</a></h2>
 <div class="section" id="springboot-starter">
 <h3>SpringBoot Starter<a class="headerlink" href="#springboot-starter" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Uliliser Springboot initializer ou springboot Starter dans eclipse.</p>
+<p>Renseigner les différents stater à utiliser.</p>
+<p>N epas oublier d’importer le projet si uitlisation de SpringBoot initializer.</p>
+</div>
+<div class="section" id="springbootapplication">
+<h3>&#64;SpringBootApplication<a class="headerlink" href="#springbootapplication" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Annotation utilisée pour permettre au container de SpringBoot de manipuler les classes. Elle se compose de trois Annotations:</p>
+<ul class="simple">
+<li><strong>&#64;SpringBootConfiguration</strong>: la classe sera utiliser pour la configuration.</li>
+<li><strong>&#64;EnableAutoConfiguration</strong>: active la fonctionnalité d’auto configuration de SpringBoot.</li>
+<li><strong>&#64;ComponentScan</strong>: active le scanning des classes et packages dans lesquels il trouvera les beans.</li>
+</ul>
+<div class="section" id="class-application">
+<h4>Class Application<a class="headerlink" href="#class-application" title="Lien permanent vers ce titre">¶</a></h4>
+</div>
+<div class="section" id="application-properties">
+<h4>application.properties<a class="headerlink" href="#application-properties" title="Lien permanent vers ce titre">¶</a></h4>
+<p>fichier de configuration ou l’on mets les parametres de configuration:</p>
+<p>exemple:</p>
+<ul class="simple">
+<li>spring.application.name : permet de donner un nom à notre application Spring Boot.</li>
+<li>logging.level.[package] : permet d’indiquer le log level pour un package donné.</li>
+</ul>
+<p>pour d’autre propriétés voir &lt;<a class="reference external" href="https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html">https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html</a>&gt;</p>
+</div>
 </div>
 </div>
 </div>
@@ -57,12 +87,20 @@
 <li><a class="reference internal" href="#">Création d’une REST API</a><ul>
 <li><a class="reference internal" href="#creation-projet">Creation Projet</a><ul>
 <li><a class="reference internal" href="#springboot-starter">SpringBoot Starter</a></li>
+<li><a class="reference internal" href="#springbootapplication">&#64;SpringBootApplication</a><ul>
+<li><a class="reference internal" href="#class-application">Class Application</a></li>
+<li><a class="reference internal" href="#application-properties">application.properties</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="springBoot.html"
+                        title="Chapitre précédent">SpringBoot</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -92,7 +130,11 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Index général"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li> 
+        <li class="right" >
+          <a href="springBoot.html" title="SpringBoot"
+             >précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="springBoot.html" >SpringBoot</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
