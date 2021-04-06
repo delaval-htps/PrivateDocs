@@ -203,15 +203,6 @@ Il faut parametrer le **pom xml** avec les dépendances suivantes
 		    <artifactId>junit-vintage-engine</artifactId>
 		    <scope>test</scope>
 		</dependency>
-    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm -->
-		<dependency>
-		    <groupId>io.cucumber</groupId>
-		    <artifactId>cucumber-jvm</artifactId>
-		    <version>${cucumber.version}</version>
-		    <scope>test</scope>
-		    <type>pom</type>
-		</dependency>
-		
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-spring -->
     <dependency>
         <groupId>io.cucumber</groupId>
