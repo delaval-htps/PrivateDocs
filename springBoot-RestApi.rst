@@ -34,6 +34,8 @@ Ajout de code dans la classe Application
 ========================================
 
 Pour lancer du code depuis cette class Application:
+
+
 * Ne pas toucher a la methode **SpringApplication.run(<nom de la classe d'application>.class,args);**
 * faire implementer la class Application a **l'interface CommandeLineRunner**
 * **overrider la methode run(String ... args)** de cette interface pour y mettre notre code
