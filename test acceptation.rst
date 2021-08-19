@@ -11,7 +11,8 @@ En général on fera des tests d'acceptation le plus tot possible avec des test 
 On utilisera les **@Tag** pour les regrouper parmis les SIT.
 
 **ATDD/TDD** de Londres
-*******************
+***********************
+
 **Acceptance Test Driven Developement**
 
 Démarche a suivre
@@ -91,6 +92,7 @@ Etape 6
 +++++++
 
 Ecrivez un cas de test unitaire rouge pour de nouvelles classe et méthode :
+
 **Calculator.add(Integer a, Integer b) ;**
 
 Etape 7
@@ -259,7 +261,8 @@ C'est le récit utilisateur mais sous forme de user story e avec critére d'acce
 
 On crée un lanceur vide qui va juste indiquer a Spring que l'on travaille avec cucumber 
 
-.. warning:: 
+.. warning::
+ 
     Ne pas oublier **@RunWith et @CucumberOptions avec ses options
  
 .. code-block:: java

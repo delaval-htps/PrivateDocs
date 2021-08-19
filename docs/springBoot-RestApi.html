@@ -20,6 +20,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Relation SQL" href="sql.html" />
     <link rel="prev" title="SpringBoot" href="springBoot.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -28,6 +29,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sql.html" title="Relation SQL"
+             accesskey="N">suivant</a> |</li>
         <li class="right" >
           <a href="springBoot.html" title="SpringBoot"
              accesskey="P">précédent</a> |</li>
@@ -67,10 +71,12 @@
 </div>
 <div class="section" id="ajout-de-code-dans-la-classe-application">
 <h4>Ajout de code dans la classe Application<a class="headerlink" href="#ajout-de-code-dans-la-classe-application" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Pour lancer du code depuis cette class Application:
-* Ne pas toucher a la methode <strong>SpringApplication.run(&lt;nom de la classe d’application&gt;.class,args);</strong>
-* faire implementer la class Application a <strong>l’interface CommandeLineRunner</strong>
-* <strong>overrider la methode run(String … args)</strong> de cette interface pour y mettre notre code</p>
+<p>Pour lancer du code depuis cette class Application:</p>
+<ul class="simple">
+<li>Ne pas toucher a la methode <strong>SpringApplication.run(&lt;nom de la classe d’application&gt;.class,args);</strong></li>
+<li>faire implementer la class Application a <strong>l’interface CommandeLineRunner</strong></li>
+<li><strong>overrider la methode run(String … args)</strong> de cette interface pour y mettre notre code</li>
+</ul>
 <p>Au démarrage, SpringBoot exécutera en premier la méthode run() overridée</p>
 </div>
 <div class="section" id="application-properties">
@@ -113,6 +119,9 @@
   <h4>Sujet précédent</h4>
   <p class="topless"><a href="springBoot.html"
                         title="Chapitre précédent">SpringBoot</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="sql.html"
+                        title="Chapitre suivant">Relation SQL</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -142,6 +151,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Index général"
              >index</a></li>
+        <li class="right" >
+          <a href="sql.html" title="Relation SQL"
+             >suivant</a> |</li>
         <li class="right" >
           <a href="springBoot.html" title="SpringBoot"
              >précédent</a> |</li>
