@@ -19,18 +19,20 @@ Démarche a suivre
 =================
 On commence par les Test d'accaptation et ensuite on descend la pyramide
 
- .. image:: _static/ATDD.png
+.. image:: _static/ATDD.png
     :width: 60%
     :align: center
+    :alt: Attd
 
 Convention
 ==========
 
 Tout comme les tests unitaires RED-GREEN-REFACTOR on a le schéma suivant:
 
- .. image:: _static/ATDD-RGR.png
+.. image:: _static/ATDD-RGR.png
     :width: 60%
     :align: center
+    :alt: RED-GREEN-REFACTOR
 
 Création par l'exemple
 ======================
@@ -167,7 +169,7 @@ Base de départ
 
 On part donc non plus d'une user story mais d'**un récit utilisateur** ie:
 
- .. note:: 
+.. note:: 
 
     **Fonctionnalité:**     Additionner deux nombres
 
@@ -195,7 +197,7 @@ configuration
 
 Il faut parametrer le **pom xml** avec les dépendances suivantes
 
- .. code-block:: xml
+.. code-block:: xml
     
     <!-- https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine -->
     <!-- permet d'utiliser Junit 4 avec Junit5 car cucumber fonctionne avec le Junit4 -->
@@ -243,7 +245,7 @@ ce fichier est en gherkin et ressemble à cela.
 
 C'est le récit utilisateur mais sous forme de user story e avec critére d'acceptation
 
- .. code-block:: xml
+.. code-block:: xml
 
     # language:  fr
 
@@ -261,12 +263,10 @@ C'est le récit utilisateur mais sous forme de user story e avec critére d'acce
 
 On crée un lanceur vide qui va juste indiquer a Spring que l'on travaille avec cucumber 
 
-.. warning::
- 
-    Ne pas oublier **@RunWith et @CucumberOptions avec ses options
+.. warning::Ne pas oublier **@RunWith et @CucumberOptions avec ses options
  
 .. code-block:: java
-    
+  
     package com.openclassrooms.testing.calcul.acceptance;
 
     import org.junit.runner.RunWith;
@@ -293,7 +293,7 @@ on  a plus qu'a ecrire le SIT dans une classe calculatorStep.java
 On remarque les @ GIVEN, WHEN, THEN qui reprénnent les String du fichier .Feature et de plus on récupére les arguments "2" "5" et "7" grace au  {int} ...  (configurable et réutilisiation pour d'autre fonctionnalité )
 
 
- .. code-block:: java
+.. code-block:: java
     
     @SpringBootTest
     @CucumberContextConfiguration

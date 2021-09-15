@@ -55,10 +55,36 @@
 <li><p><em>data.sql</em> : pour inserer des données.</p></li>
 </ul>
 <p>SpringBoot lira automatiquement au démarrage ces fichiers pour créer et persister les données.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
 <p>il faut penser a désactiver l” option <strong>spring.jpa.hibernate.dll-auto= none</strong>  dans application.properties pour ne pas laisser hibernate creér lui même la base de donnée.</p>
 </div>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text"><strong>option spring.jpa.hibernate.dll-auto</strong></span><a class="headerlink" href="#id1" title="Lien permanent vers ce tableau">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>valeur</p></th>
+<th class="head"><p>definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>none</strong></p></td>
+<td><p>hibernate ne créera aucune base de donnée</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>create-drop</strong></p></td>
+<td><p>hibernate va créer la base de donnée et les tables en fonction des entités et la dropera a la fin de l’application</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>create</strong></p></td>
+<td><p>hibernate va uniquement créer la database et les tablesen fonction des entités et les laissera présentes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>update</strong></p></td>
+<td><p>hibernate mettra a jour la database et les tables existantes</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
