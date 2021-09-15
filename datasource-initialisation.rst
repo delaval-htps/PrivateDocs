@@ -14,7 +14,7 @@ SpringBoot lira automatiquement au démarrage ces fichiers pour créer et persis
 
 .. note:: il faut penser a désactiver l' option **spring.jpa.hibernate.dll-auto= none**  dans application.properties pour ne pas laisser hibernate creér lui même la base de donnée.
 
-    fmlqsdkfmlqkdsjfùqksdjfùlqkdsfùlqskdfj
+
 
 
 
