@@ -6,12 +6,14 @@ Git flow
 
     .. image:: _static/git-flow-schema.png
         :align: right
+        :alt:  gitflow schema
 
 Initialisation
 **************
 Crée la branche develop et checkout dessus
+
 ::
-    $ git fow init
+       $ git fow init
 
 Les branches
 ************
@@ -32,18 +34,21 @@ Gestion d'une feature
 Création
 ========
 Pour créer une feature
+
 ::
    $ git flow feature start <nom de la feature>
 
 publication
 ===========
 Pour publier sur un serveur distant notre feature:
+
 ::
    $ git flow feature publish < nom de la feature>
 
 fin de la feature
 =================
 Une fois qu’on a terminé notre feature, il suffit de taper la commande 
+
 ::
    $ git flow feature finish <nom de la feature>
     
@@ -58,18 +63,21 @@ Gestion d'une realease
 Création
 ========
 Pour créer une realease
+
 ::
    $ git flow release start <v0.1>
 
 publication
 ===========
 Pour publier sur un serveur distant notre release:
+
 ::
    $ git flow release publish < v0.1>
 
 fin de la release
 =================
 Une fois qu’on a terminé notre release, il suffit de taper la commande 
+
 ::
    $ git flow release finish <V0.1>
     
@@ -82,10 +90,12 @@ Git Flow va donc :
 * **nous balancer sur la branche develop.**
 
 reste à publier les modifications de version:
+
 :: 
     git push --tags
 
 publier les modification sur la master
+
 ::
     git push origin master
 
@@ -94,12 +104,14 @@ Gestion d'une hotfix
 Création
 ========
 Pour créer une hotfix
+
 ::
    $ git flow hotfix start bug
 
 fin de la hotfix
 =================
 Une fois qu’on a terminé notre hotfix, il suffit de taper la commande 
+
 ::
    $ git flow hotfix finish bug
     

@@ -1,27 +1,26 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html lang="fr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>JUnit &amp; ses Annotations &#8212; Documentation Private v0.1</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Mockito" href="mockito.html" />
-    <link rel="prev" title="Les Tests" href="test unitaire.html" /> 
+    <link rel="prev" title="Les Tests" href="test%20unitaire.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -33,11 +32,12 @@
           <a href="mockito.html" title="Mockito"
              accesskey="N">suivant</a> |</li>
         <li class="right" >
-          <a href="test unitaire.html" title="Les Tests"
+          <a href="test%20unitaire.html" title="Les Tests"
              accesskey="P">précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="tests.html" accesskey="U">Tests</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="tests.html" accesskey="U">Tests</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">JUnit &amp; ses Annotations</a></li> 
       </ul>
     </div>  
 
@@ -46,46 +46,46 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="junit-ses-annotations">
+  <section id="junit-ses-annotations">
 <h1>JUnit &amp; ses Annotations<a class="headerlink" href="#junit-ses-annotations" title="Lien permanent vers ce titre">¶</a></h1>
-<div class="section" id="annotations-standards">
+<section id="annotations-standards">
 <h2>Annotations Standards<a class="headerlink" href="#annotations-standards" title="Lien permanent vers ce titre">¶</a></h2>
-<div class="section" id="beforeeach">
+<section id="beforeeach">
 <h3>&#64;BeforeEach<a class="headerlink" href="#beforeeach" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Exécutez une méthode avant chaque test. C’est un très bon emplacement pour installer ou organiser un prérequis pour vos tests.</p>
-</div>
-<div class="section" id="aftereach">
+</section>
+<section id="aftereach">
 <h3>&#64;AfterEach<a class="headerlink" href="#aftereach" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Exécutez une méthode après chaque test. C’est un très bon emplacement pour nettoyer ou satisfaire à une postcondition.</p>
-</div>
-<div class="section" id="beforeall">
+</section>
+<section id="beforeall">
 <h3>&#64;BeforeAll<a class="headerlink" href="#beforeall" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Désignez une <strong>méthode statique</strong> pour qu’elle soit exécutée avant tous vos tests. Vous pouvez l’utiliser pour installer d’autres variables statiques pour vos tests.</p>
-</div>
-<div class="section" id="afterall">
+</section>
+<section id="afterall">
 <h3>&#64;AfterAll<a class="headerlink" href="#afterall" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Désignez une <strong>méthode statique</strong> pour qu’elle soit exécutée après tous vos tests. Vous pouvez utiliser ceci pour nettoyer les dépendances statiques.</p>
-</div>
-<div class="section" id="parametrizedtest">
+</section>
+<section id="parametrizedtest">
 <h3>&#64;ParametrizedTest<a class="headerlink" href="#parametrizedtest" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Vous souhaitez réutiliser le même test avec plusieurs entrants (&#64;ValueSource) voire plusieurs entrants/sortants (&#64;CsvSource).</p>
-</div>
-<div class="section" id="timeout">
+</section>
+<section id="timeout">
 <h3>&#64;Timeout<a class="headerlink" href="#timeout" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Si vous testez une méthode qui ne doit pas être trop lente, vous pouvez la forcer à échouer le test.</p>
-</div>
-</div>
-<div class="section" id="annotations-avancees">
+</section>
+</section>
+<section id="annotations-avancees">
 <h2>Annotations Avancées<a class="headerlink" href="#annotations-avancees" title="Lien permanent vers ce titre">¶</a></h2>
-<div class="section" id="tag">
+<section id="tag">
 <h3>&#64;tag<a class="headerlink" href="#tag" title="Lien permanent vers ce titre">¶</a></h3>
 <p>On peut catégoriser un test grace a cette annotation . un test peut avoir plusieurs tag
 exemple:</p>
 <div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@tag</span><span class="p">(</span><span class="s">&quot;le nom de la catégorie des tests&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="displayname">
+</section>
+<section id="displayname">
 <h3>&#64;DisplayName<a class="headerlink" href="#displayname" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Permet de nommer les tests de facon plus lisible que le nom de la methode test
 exemple :</p>
@@ -94,8 +94,8 @@ exemple :</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="nested">
+</section>
+<section id="nested">
 <h3>&#64;Nested<a class="headerlink" href="#nested" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Permet de grouper vos tests dans une classe interne. Si un seul test echoué , le groupe échoue
 example:</p>
@@ -121,13 +121,13 @@ example:</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="extendwith">
+</section>
+<section id="extendwith">
 <h3>&#64;ExtendWith<a class="headerlink" href="#extendwith" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Permet de modifier le déroulement des tests menés par Junit5
 entre autre uitlisation d’un logger class de log pour afficher les messages dans un log ou une sortie standard out au lieu d’utiliser des println</p>
-</div>
-<div class="section" id="disable">
+</section>
+<section id="disable">
 <h3>&#64;Disable<a class="headerlink" href="#disable" title="Lien permanent vers ce titre">¶</a></h3>
 <p>placé juste au dessus &#64;test , permet de taire un test pour le moment et de pouvoir y revenir aprés.
 Mettre un commentaire pour expliquer ex:</p>
@@ -136,50 +136,49 @@ Mettre un commentaire pour expliquer ex:</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="assertj">
+</section>
+</section>
+<section id="assertj">
 <h2>AssertJ<a class="headerlink" href="#assertj" title="Lien permanent vers ce titre">¶</a></h2>
 <p>c’est une librairie permettant d’utiliser des Assertions plus parlantes pour l’utilisateur.</p>
 <p>Elle est intéressante car elle comporte différents modules à utiliser pour des cas particuliers: exemple assertJ DB Module</p>
 <div class="admonition seealso">
-<p class="first admonition-title">Voir aussi</p>
-<p class="last">ci joint le lien vers la doc
+<p class="admonition-title">Voir aussi</p>
+<p>ci joint le lien vers la doc
 &lt;<a class="reference external" href="https://assertj.github.io/doc/">https://assertj.github.io/doc/</a>&gt;
 &lt;<a class="reference external" href="https://www.javadoc.io/doc/org.assertj">https://www.javadoc.io/doc/org.assertj</a>&gt;</p>
 </div>
-</div>
-<div class="section" id="la-couverture-du-code">
+</section>
+<section id="la-couverture-du-code">
 <h2>La couverture du code<a class="headerlink" href="#la-couverture-du-code" title="Lien permanent vers ce titre">¶</a></h2>
 <p><strong>La couverture des test = quantité de code couverte par les test / quantité de codes total</strong></p>
 <p>Pour connaitre la couverture du code par les tests, il faut d’abord savoir sur quel critére on se base pour compter la quantité de code :</p>
 <blockquote>
 <div><ul class="simple">
-<li>le nombre de lignes</li>
-<li>le nombres d’instructions</li>
-<li>le nombre de branches (ensemble d’instruction IF/else Try/catch</li>
-<li>le nombre de methodes/fonctionnels</li>
+<li><p>le nombre de lignes</p></li>
+<li><p>le nombres d’instructions</p></li>
+<li><p>le nombre de branches (ensemble d’instruction IF/else Try/catch</p></li>
+<li><p>le nombre de methodes/fonctionnels</p></li>
 </ul>
 </div></blockquote>
-<div class="section" id="eclemma-eclipse">
+<section id="eclemma-eclipse">
 <h3>EclEmma(Eclipse)<a class="headerlink" href="#eclemma-eclipse" title="Lien permanent vers ce titre">¶</a></h3>
-<p>il suffit d’utiliser le «&nbsp;coverage as &nbsp;» JUnit Test sur la classe Test.</p>
+<p>il suffit d’utiliser le « coverage as  » JUnit Test sur la classe Test.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/eclEmma.png"><img alt="_images/eclEmma.png" src="_images/eclEmma.png" style="width: 60%;" /></a>
 </div></blockquote>
 <p>résultat s’affiche avec le pourcentage total aussi bien avec src/main que src/test qui nous intéresse pas puisque c’est le code du test</p>
 <img alt="_images/CoverageEclEmma.png" src="_images/CoverageEclEmma.png" />
-</div>
-<div class="section" id="jacoco">
+</section>
+<section id="jacoco">
 <h3>JACOCO<a class="headerlink" href="#jacoco" title="Lien permanent vers ce titre">¶</a></h3>
 <p><strong>Java Codes Coverage</strong></p>
 <p>Donne un rapport sur page html avec uniquement le pourcentage de couverture de code sur le src/main</p>
-</div>
-<div class="section" id="config">
+</section>
+<section id="config">
 <h3>Config<a class="headerlink" href="#config" title="Lien permanent vers ce titre">¶</a></h3>
-<dl class="docutils">
-<dt>rajouter le plugin <strong>jacoco-maven-plugin</strong></dt>
-<dd><div class="first last highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugin&gt;</span>
+<dl>
+<dt>rajouter le plugin <strong>jacoco-maven-plugin</strong></dt><dd><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugin&gt;</span>
             <span class="nt">&lt;groupId&gt;</span>org.jacoco<span class="nt">&lt;/groupId&gt;</span>
             <span class="nt">&lt;artifactId&gt;</span>jacoco-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
             <span class="nt">&lt;version&gt;</span>0.8.5<span class="nt">&lt;/version&gt;</span>
@@ -202,8 +201,8 @@ Mettre un commentaire pour expliquer ex:</p>
 </div>
 </dd>
 </dl>
-</div>
-<div class="section" id="excecution">
+</section>
+<section id="excecution">
 <h3>Excecution<a class="headerlink" href="#excecution" title="Lien permanent vers ce titre">¶</a></h3>
 <blockquote>
 <div><p>Executer dans le terminal:</p>
@@ -212,17 +211,18 @@ Mettre un commentaire pour expliquer ex:</p>
 </div>
 </div></blockquote>
 <p>ce qui va créer dans <strong>target/ un fichier index.html</strong> avec le rapport de jacoco</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
+  <h3><a href="index.html">Table des matières</a></h3>
   <ul>
 <li><a class="reference internal" href="#">JUnit &amp; ses Annotations</a><ul>
 <li><a class="reference internal" href="#annotations-standards">Annotations Standards</a><ul>
@@ -255,7 +255,7 @@ Mettre un commentaire pour expliquer ex:</p>
 </ul>
 
   <h4>Sujet précédent</h4>
-  <p class="topless"><a href="test unitaire.html"
+  <p class="topless"><a href="test%20unitaire.html"
                         title="Chapitre précédent">Les Tests</a></p>
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="mockito.html"
@@ -268,17 +268,15 @@ Mettre un commentaire pour expliquer ex:</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Recherche rapide</h3>
+  <h3 id="searchlabel">Recherche rapide</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -293,16 +291,17 @@ Mettre un commentaire pour expliquer ex:</p>
           <a href="mockito.html" title="Mockito"
              >suivant</a> |</li>
         <li class="right" >
-          <a href="test unitaire.html" title="Les Tests"
+          <a href="test%20unitaire.html" title="Les Tests"
              >précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="tests.html" >Tests</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="tests.html" >Tests</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">JUnit &amp; ses Annotations</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

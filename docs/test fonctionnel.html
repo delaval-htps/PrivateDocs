@@ -1,27 +1,26 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html lang="fr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tests fonctionnels &#8212; Documentation Private v0.1</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Tests d’acceptation" href="test acceptation.html" />
-    <link rel="prev" title="Tests d’Intégration" href="test integration.html" /> 
+    <link rel="next" title="Tests d’acceptation" href="test%20acceptation.html" />
+    <link rel="prev" title="Tests d’Intégration" href="test%20integration.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -30,14 +29,15 @@
           <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="test acceptation.html" title="Tests d’acceptation"
+          <a href="test%20acceptation.html" title="Tests d’acceptation"
              accesskey="N">suivant</a> |</li>
         <li class="right" >
-          <a href="test integration.html" title="Tests d’Intégration"
+          <a href="test%20integration.html" title="Tests d’Intégration"
              accesskey="P">précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="tests.html" accesskey="U">Tests</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="tests.html" accesskey="U">Tests</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tests fonctionnels</a></li> 
       </ul>
     </div>  
 
@@ -46,47 +46,45 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="tests-fonctionnels">
+  <section id="tests-fonctionnels">
 <h1>Tests fonctionnels<a class="headerlink" href="#tests-fonctionnels" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Appelés aussi <strong>End to End</strong>, ils servent a obtenir le bon résultat en partant de l’interface utilisateur, selon un scénario prédéfini.</p>
 <p>Ces tests utilisent une automatisation soit:</p>
 <blockquote>
 <div><ul class="simple">
-<li>par navigateur avec <strong>WebDriver de Selenium</strong> &lt;<a class="reference external" href="https://github.com/bonigarcia/webdrivermanager/">https://github.com/bonigarcia/webdrivermanager/</a>&gt;</li>
-<li>par interface mobile avec <strong>Appium</strong>.&lt;<a class="reference external" href="http://appium.io/">http://appium.io/</a>&gt;</li>
+<li><p>par navigateur avec <strong>WebDriver de Selenium</strong> &lt;<a class="reference external" href="https://github.com/bonigarcia/webdrivermanager/">https://github.com/bonigarcia/webdrivermanager/</a>&gt;</p></li>
+<li><p>par interface mobile avec <strong>Appium</strong>.&lt;<a class="reference external" href="http://appium.io/">http://appium.io/</a>&gt;</p></li>
 </ul>
 </div></blockquote>
-<div class="section" id="configuration">
+<section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre">¶</a></h2>
-<div class="section" id="nomenclature-des-fichiers">
+<section id="nomenclature-des-fichiers">
 <h3>nomenclature des fichiers<a class="headerlink" href="#nomenclature-des-fichiers" title="Lien permanent vers ce titre">¶</a></h3>
-<dl class="docutils">
-<dt>Créer un package pour le test fonctionnel:</dt>
-<dd><ul class="first last simple">
-<li><strong>package com.openclassrooms.testing.calcul.e2e</strong></li>
-<li>une classe test <strong>&lt;nomDuTestE2E&gt;</strong> pour End to End.</li>
+<dl class="simple">
+<dt>Créer un package pour le test fonctionnel:</dt><dd><ul class="simple">
+<li><p><strong>package com.openclassrooms.testing.calcul.e2e</strong></p></li>
+<li><p>une classe test <strong>&lt;nomDuTestE2E&gt;</strong> pour End to End.</p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="annotations-spring">
+</section>
+<section id="annotations-spring">
 <h3>Annotations Spring<a class="headerlink" href="#annotations-spring" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Forcément, ils sont implémentés dans une application Spring. il faut donc utiliser les annotations suivantes:</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>&#64;ExtendWith(SpringExtension.class)</strong> : extension de Junit 5 pour Spring</li>
-<li><strong>&#64;SpringBootTest</strong> pour démarrer l’application avec SpringBootTest</li>
+<li><p><strong>&#64;ExtendWith(SpringExtension.class)</strong> : extension de Junit 5 pour Spring</p></li>
+<li><p><strong>&#64;SpringBootTest</strong> pour démarrer l’application avec SpringBootTest</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="parametrage-de-webdriver">
+</section>
+<section id="parametrage-de-webdriver">
 <h3>Parametrage de WebDriver<a class="headerlink" href="#parametrage-de-webdriver" title="Lien permanent vers ce titre">¶</a></h3>
 <p>On utilise webdrivermanager pour initialiser notre navigateur de test (port,setup, navigateur,url)</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><strong>&#64;SpringBootTest(webEnvironnement = SpringBootTest.WebEnvironnement.RANDOM_PORT)</strong> pour indiquer d’utiliser un port aléatoire autre que ce utiliser par le seveur ou autre application</p>
-</li>
-<li><p class="first">Pour déclarer un port</p>
+<li><p><strong>&#64;SpringBootTest(webEnvironnement = SpringBootTest.WebEnvironnement.RANDOM_PORT)</strong> pour indiquer d’utiliser un port aléatoire autre que ce utiliser par le seveur ou autre application</p></li>
+<li><p>Pour déclarer un port</p>
 <blockquote>
 <div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@LocalServerPort</span>
 <span class="kd">private</span> <span class="n">Integer</span> <span class="n">port</span><span class="p">;</span>
@@ -94,7 +92,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Pour initialiser le driver pour le navigateur firefox</p>
+<li><p>Pour initialiser le driver pour le navigateur firefox</p>
 <blockquote>
 <div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@BeforeAll</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setUpFirefoxDriver</span><span class="p">()</span> <span class="p">{</span>
@@ -104,7 +102,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Pour créer une instance du driver pour le navigateur firefox</p>
+<li><p>Pour créer une instance du driver pour le navigateur firefox</p>
 <blockquote>
 <div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@BeforeEach</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUpWebDriver</span><span class="p">()</span> <span class="p">{</span>
@@ -115,7 +113,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Enfin pour quitter proprement le driver pour le navigateur firefox</p>
+<li><p>Enfin pour quitter proprement le driver pour le navigateur firefox</p>
 <blockquote>
 <div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@AfterEach</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quitWebDriver</span><span class="p">()</span> <span class="p">{</span>
@@ -129,9 +127,9 @@
 </li>
 </ul>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="example-de-test-e2e">
+</section>
+</section>
+<section id="example-de-test-e2e">
 <h2>Example de test E2E<a class="headerlink" href="#example-de-test-e2e" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Ce qui nous donne une classe comme celle ci</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.openclassrooms.testing.calcul.e2e</span><span class="p">;</span>
@@ -191,18 +189,18 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="pageobject">
+</section>
+<section id="pageobject">
 <h2>PageObject<a class="headerlink" href="#pageobject" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Pour eviter de refactoriser des test E2E qui seraient similaire et pour eviter que tout pete si on modifie la page du navigateur, on utilise une pageObject.</p>
 <p>Le principe est de créer une page web et de récupérer depuis cette dernière les elements qui nous intéresse</p>
 <p>On crée une pageObject avec une classe &lt;CalulatorPage&gt; dans le package E2E</p>
-<div class="section" id="declaration-des-attributs">
+<section id="declaration-des-attributs">
 <h3>Déclaration des attributs<a class="headerlink" href="#declaration-des-attributs" title="Lien permanent vers ce titre">¶</a></h3>
 <p>On récupére les id qui nous intéresse:</p>
 <p>exemple:</p>
-</div>
-<div class="section" id="methode-d-operation-pageobject">
+</section>
+<section id="methode-d-operation-pageobject">
 <h3>Methode d’operation PageObject<a class="headerlink" href="#methode-d-operation-pageobject" title="Lien permanent vers ce titre">¶</a></h3>
 <p>une fois les elements récupérés , il nous faut appeler le resultat en ajoutant depuis notre PageObject une methode permettant de lancer le travail quel doit faire avec les elements. exemple pour le calcul:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span> <span class="n">String</span> <span class="nf">calculate</span><span class="p">(</span><span class="n">String</span> <span class="n">calculationTypeValue</span><span class="p">,</span> <span class="n">String</span> <span class="n">leftValue</span><span class="p">,</span> <span class="n">String</span> <span class="n">rightValue</span><span class="p">)</span> <span class="p">{</span>
@@ -225,8 +223,8 @@
 </pre></div>
 </div>
 <p>cette methode récupére les id de la page web leftvalue et rightvalue pour faire l’addition en appelant notre methode opération</p>
-</div>
-<div class="section" id="modification-classe2e">
+</section>
+<section id="modification-classe2e">
 <h3>Modification classE2E<a class="headerlink" href="#modification-classe2e" title="Lien permanent vers ce titre">¶</a></h3>
 <p>On peut maintenant simplifier notre class test E2E en remplacant les GIVEN WHEN et THEN par l’appel de notre PageObject</p>
 <p>Avant:</p>
@@ -270,17 +268,18 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
+  <h3><a href="index.html">Table des matières</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Tests fonctionnels</a><ul>
 <li><a class="reference internal" href="#configuration">Configuration</a><ul>
@@ -301,10 +300,10 @@
 </ul>
 
   <h4>Sujet précédent</h4>
-  <p class="topless"><a href="test integration.html"
+  <p class="topless"><a href="test%20integration.html"
                         title="Chapitre précédent">Tests d’Intégration</a></p>
   <h4>Sujet suivant</h4>
-  <p class="topless"><a href="test acceptation.html"
+  <p class="topless"><a href="test%20acceptation.html"
                         title="Chapitre suivant">Tests d’acceptation</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
@@ -314,17 +313,15 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Recherche rapide</h3>
+  <h3 id="searchlabel">Recherche rapide</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -336,19 +333,20 @@
           <a href="genindex.html" title="Index général"
              >index</a></li>
         <li class="right" >
-          <a href="test acceptation.html" title="Tests d’acceptation"
+          <a href="test%20acceptation.html" title="Tests d’acceptation"
              >suivant</a> |</li>
         <li class="right" >
-          <a href="test integration.html" title="Tests d’Intégration"
+          <a href="test%20integration.html" title="Tests d’Intégration"
              >précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="tests.html" >Tests</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="tests.html" >Tests</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tests fonctionnels</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

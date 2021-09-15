@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Java &#8212; Documentation Private v0.1</title>
+    <title>datasource-initialisation &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Collections" href="collections.html" />
-    <link rel="prev" title="Personnal Documentation" href="index.html" /> 
+    <link rel="next" title="Relation SQL" href="sql.html" />
+    <link rel="prev" title="Création d’une REST API" href="springBoot-RestApi.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -29,13 +29,14 @@
           <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="collections.html" title="Collections"
+          <a href="sql.html" title="Relation SQL"
              accesskey="N">suivant</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Personnal Documentation"
+          <a href="springBoot-RestApi.html" title="Création d’une REST API"
              accesskey="P">précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Java</a></li> 
+          <li class="nav-item nav-item-1"><a href="springBoot.html" accesskey="U">SpringBoot</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">datasource-initialisation</a></li> 
       </ul>
     </div>  
 
@@ -44,35 +45,21 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="java">
-<h1>Java<a class="headerlink" href="#java" title="Lien permanent vers ce titre">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="collections.html#hashmap">HashMap</a></li>
+  <section id="datasource-initialisation">
+<h1>datasource-initialisation<a class="headerlink" href="#datasource-initialisation" title="Lien permanent vers ce titre">¶</a></h1>
+<section id="initialiser-une-base-de-donnees-a-l-aide-de-scripts-sql-de-base">
+<h2>Initialiser une base de données à l’aide de scripts SQL de base<a class="headerlink" href="#initialiser-une-base-de-donnees-a-l-aide-de-scripts-sql-de-base" title="Lien permanent vers ce titre">¶</a></h2>
+<p>il suffit de mettre directement dans /src/main/resources les fichiers:</p>
+<ul class="simple">
+<li><p>schema.sql : pour créer la database et les tables</p></li>
+<li><p>data.sql : pour inserer des données.</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="java%20IO.html">Java IO</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="java%20IO.html#fermeture">Fermeture</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="logger.html">Log4j2</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="logger.html#config-maven">Config Maven</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logger.html#config-log4j2">Config Log4j2</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="test%20unitaire.html">Les Tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jUnit.html">JUnit &amp; ses Annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mockito.html">Mockito</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test%20integration.html">Tests d’Intégration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test%20fonctionnel.html">Tests fonctionnels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test%20acceptation.html">Tests d’acceptation</a></li>
-</ul>
-</li>
-</ul>
+<p>SpringBoot lira automatiquement au démarrage ces fichiers pour créer et persister les données.</p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>il faut penser a désactiver l” option <strong>spring.jpa.hibernate.dll-auto</strong>  en la mettant à <strong>none</strong> dans application.properties pour ne pas laisser hibernate creér lui meme la base de donnée sinon il utilise les entitys fournis pour créer la bdd.</p>
 </div>
+</section>
 </section>
 
 
@@ -82,16 +69,24 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table des matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">datasource-initialisation</a><ul>
+<li><a class="reference internal" href="#initialiser-une-base-de-donnees-a-l-aide-de-scripts-sql-de-base">Initialiser une base de données à l’aide de scripts SQL de base</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Sujet précédent</h4>
-  <p class="topless"><a href="index.html"
-                        title="Chapitre précédent">Personnal Documentation</a></p>
+  <p class="topless"><a href="springBoot-RestApi.html"
+                        title="Chapitre précédent">Création d’une REST API</a></p>
   <h4>Sujet suivant</h4>
-  <p class="topless"><a href="collections.html"
-                        title="Chapitre suivant">Collections</a></p>
+  <p class="topless"><a href="sql.html"
+                        title="Chapitre suivant">Relation SQL</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/java.rst.txt"
+      <li><a href="_sources/datasource-initialisation.rst.txt"
             rel="nofollow">Montrer le code source</a></li>
     </ul>
    </div>
@@ -116,13 +111,14 @@
           <a href="genindex.html" title="Index général"
              >index</a></li>
         <li class="right" >
-          <a href="collections.html" title="Collections"
+          <a href="sql.html" title="Relation SQL"
              >suivant</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Personnal Documentation"
+          <a href="springBoot-RestApi.html" title="Création d’une REST API"
              >précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Java</a></li> 
+          <li class="nav-item nav-item-1"><a href="springBoot.html" >SpringBoot</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">datasource-initialisation</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

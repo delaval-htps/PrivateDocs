@@ -12,7 +12,7 @@ La relation 1:1 est semblable a celle de 1:Many , elle peut s'effectuer de deux 
 * Créer un Fk unique dans une des tables mais avec son id (pointant sur l'id de la seconde table)
 
 
- .. code-block:: sql
+  .. code-block:: sql
 
     DROP DATABASE IF EXISTS test;
     CREATE DATABASE test CHARSET = utf8 COLLATE = utf8_general_ci;

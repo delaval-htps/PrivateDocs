@@ -1,26 +1,25 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html lang="fr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Mockito &#8212; Documentation Private v0.1</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Tests d’Intégration" href="test integration.html" />
+    <link rel="next" title="Tests d’Intégration" href="test%20integration.html" />
     <link rel="prev" title="JUnit &amp; ses Annotations" href="jUnit.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -30,14 +29,15 @@
           <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="test integration.html" title="Tests d’Intégration"
+          <a href="test%20integration.html" title="Tests d’Intégration"
              accesskey="N">suivant</a> |</li>
         <li class="right" >
           <a href="jUnit.html" title="JUnit &amp; ses Annotations"
              accesskey="P">précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="tests.html" accesskey="U">Tests</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="tests.html" accesskey="U">Tests</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Mockito</a></li> 
       </ul>
     </div>  
 
@@ -46,20 +46,20 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="mockito">
+  <section id="mockito">
 <h1>Mockito<a class="headerlink" href="#mockito" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Un mock sert à simuler une classe A pour pouvoir tester un autre classe B qui utilise la classe A.
 démarche a suivre pour déterminer les mocks:</p>
 <ul class="simple">
-<li>Identifiez un comportement unique que vous testez avec votre classe sous-test (CUT).</li>
-<li>Demandez-vous quelles classes sont nécessaires au comportement à tester.</li>
-<li>Hormis votre CUT, envisagez toutes les autres classes pour le mocking.</li>
-<li>Ne mockez pas les classes qui ne servent quasiment qu’à porter des valeurs.</li>
-<li>Installez les mocks requis.</li>
-<li>Testez votre CUT.</li>
-<li>Vérifiez que vos mocks ont été correctement utilisés.</li>
+<li><p>Identifiez un comportement unique que vous testez avec votre classe sous-test (CUT).</p></li>
+<li><p>Demandez-vous quelles classes sont nécessaires au comportement à tester.</p></li>
+<li><p>Hormis votre CUT, envisagez toutes les autres classes pour le mocking.</p></li>
+<li><p>Ne mockez pas les classes qui ne servent quasiment qu’à porter des valeurs.</p></li>
+<li><p>Installez les mocks requis.</p></li>
+<li><p>Testez votre CUT.</p></li>
+<li><p>Vérifiez que vos mocks ont été correctement utilisés.</p></li>
 </ul>
-<div class="section" id="config-mvn">
+<section id="config-mvn">
 <h2>Config Mvn<a class="headerlink" href="#config-mvn" title="Lien permanent vers ce titre">¶</a></h2>
 <p>on modifie le <strong>pom.xml</strong></p>
 <blockquote>
@@ -79,19 +79,19 @@ démarche a suivre pour déterminer les mocks:</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="config-eclipse">
+</section>
+<section id="config-eclipse">
 <h2>Config eclipse<a class="headerlink" href="#config-eclipse" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Pour l’autocompletion des elelements de mockito:</p>
 <p>Dans <strong>windows/preferences/java/editor/ContentAssist/Favorites</strong> ajouter:</p>
 <ul class="simple">
-<li>org.Mockito.ArgumentMatchers.*</li>
-<li>org.mockito.Mockito.*</li>
+<li><p>org.Mockito.ArgumentMatchers.*</p></li>
+<li><p>org.mockito.Mockito.*</p></li>
 </ul>
-</div>
-<div class="section" id="creation-d-un-mock">
+</section>
+<section id="creation-d-un-mock">
 <h2>Creation d’un Mock<a class="headerlink" href="#creation-d-un-mock" title="Lien permanent vers ce titre">¶</a></h2>
-<div class="section" id="declaration">
+<section id="declaration">
 <h3>Déclaration<a class="headerlink" href="#declaration" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Utilisation dans la classe test d’un mock de l’annotation de Junit <strong>&#64;ExtendWith(MockitoExtension.class) et &#64;Mock</strong></p>
 <blockquote>
@@ -104,20 +104,19 @@ démarche a suivre pour déterminer les mocks:</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="utilisation">
+</section>
+<section id="utilisation">
 <h3>Utilisation<a class="headerlink" href="#utilisation" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="section" id="static">
+<section id="static">
 <h4>1) Static<a class="headerlink" href="#static" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Un exemple d’utilisation dans une methode de test:</p>
 <ul class="simple">
-<li><strong>GIVEN</strong> : on utilise le mock pour <strong>simuler avec «&nbsp;When the x method is called then return y&nbsp;»</strong></li>
-<li><strong>WHEN</strong> : on récupére le résultat de la methode de la classe a tester</li>
-<li><dl class="first docutils">
-<dt><strong>THEN</strong> :</dt>
-<dd><ul class="first last">
-<li>on verifie que <strong>la classe mockée a bien été utilisée avec verify(mock).methode();</strong></li>
-<li>on verifie avec <strong>asserThat</strong> que le resultat de la methode de la classe a tester est correct</li>
+<li><p><strong>GIVEN</strong> : on utilise le mock pour <strong>simuler avec « When the x method is called then return y »</strong></p></li>
+<li><p><strong>WHEN</strong> : on récupére le résultat de la methode de la classe a tester</p></li>
+<li><dl class="simple">
+<dt><strong>THEN</strong> :</dt><dd><ul>
+<li><p>on verifie que <strong>la classe mockée a bien été utilisée avec verify(mock).methode();</strong></p></li>
+<li><p>on verifie avec <strong>asserThat</strong> que le resultat de la methode de la classe a tester est correct</p></li>
 </ul>
 </dd>
 </dl>
@@ -140,10 +139,10 @@ démarche a suivre pour déterminer les mocks:</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="generique">
+</section>
+<section id="generique">
 <h4>2) Générique<a class="headerlink" href="#generique" title="Lien permanent vers ce titre">¶</a></h4>
-<div class="section" id="a-any">
+<section id="a-any">
 <h5>a) any()<a class="headerlink" href="#a-any" title="Lien permanent vers ce titre">¶</a></h5>
 <p>on peut simuler le mock sans paramètres précis avec <strong>any()</strong></p>
 <blockquote>
@@ -157,8 +156,8 @@ démarche a suivre pour déterminer les mocks:</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="b-times-never">
+</section>
+<section id="b-times-never">
 <h5>b) times()/never()<a class="headerlink" href="#b-times-never" title="Lien permanent vers ce titre">¶</a></h5>
 <p>on peut verifier combien de fois la methode du mock a été utilisée avec times() en paramètres</p>
 <blockquote>
@@ -169,9 +168,9 @@ démarche a suivre pour déterminer les mocks:</p>
 <p>ici il faut qu’elle soit appelée 1 fois seulement si on ne veut pas qu’elle soit appelé on utilise soit:
 * times(0)
 * never()</p>
-</div>
-</div>
-<div class="section" id="exceptions">
+</section>
+</section>
+<section id="exceptions">
 <h4>3) Exceptions<a class="headerlink" href="#exceptions" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Si on veut configurer un mock pour lancer une exception on remplace <strong>thenReturn() par thenThrows()</strong>.</p>
 <p>Et pour le When on utilisera <strong>assertThrows()</strong> pour verifier si une exception est levée par la methode de la CUT:</p>
@@ -191,15 +190,15 @@ démarche a suivre pour déterminer les mocks:</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-</div>
-</div>
-<div class="section" id="fonctions-avancees">
+</section>
+</section>
+</section>
+<section id="fonctions-avancees">
 <h2>Fonctions avancées<a class="headerlink" href="#fonctions-avancees" title="Lien permanent vers ce titre">¶</a></h2>
-<div class="section" id="argumentcaptor">
+<section id="argumentcaptor">
 <h3>ArgumentCaptor<a class="headerlink" href="#argumentcaptor" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Permet <strong>d’enregistrer les arguments utilisés lors de l’appel du mock</strong> pour par la suite en assertion verifier par exemple que ce sont les bons arguments escomptés</p>
-<div class="section" id="id1">
+<section id="id1">
 <h4>1) Déclaration<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Exemple sur la classe CalculationModel:</p>
 <blockquote>
@@ -208,8 +207,8 @@ démarche a suivre pour déterminer les mocks:</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="verification">
+</section>
+<section id="verification">
 <h4>2) Verification<a class="headerlink" href="#verification" title="Lien permanent vers ce titre">¶</a></h4>
 <p>On verifie que calculatorService a bien utilisé les arguments de calculationModel
 et ensuite on récupere dans une liste cette suite d’argument.</p>
@@ -219,14 +218,14 @@ et ensuite on récupere dans une liste cette suite d’argument.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="cas-de-verification">
+</section>
+<section id="cas-de-verification">
 <h4>3) Cas de Verification<a class="headerlink" href="#cas-de-verification" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Le but est juste de vérifier si l’appel de la methode a tester a bien récupérer le bon nombre d’argument et si ils ont correctement été récupérés:</p>
 <ul class="simple">
-<li><strong>//GIVEN</strong> :on capture les arguments CaculculationModel utilisé par batchCalculatorService lors de l’appel de la methode batchCalculate() avec calculationModelCaptor</li>
-<li><strong>//THEN</strong> :on verifie que lorsqu’on appelle batchCalculate (operations) , il y a bien eu 4 appel de calculatorService et on capture les calculationModels avec calculationModelCaptor.capture()</li>
-<li><strong>//THEN</strong> : on verifie que les calculationModels capturés (recupérés avec calculatioModelCaptor.getAllValue() correspondent au tuple que l’on a ecrit en dure par rapport à la liste d’opérations qu’on a dans // GIVEN. cela se fait en utilisant extracting ( &lt;class&gt; :: &lt;methode get&gt;) voir les lambdas…</li>
+<li><p><strong>//GIVEN</strong> :on capture les arguments CaculculationModel utilisé par batchCalculatorService lors de l’appel de la methode batchCalculate() avec calculationModelCaptor</p></li>
+<li><p><strong>//THEN</strong> :on verifie que lorsqu’on appelle batchCalculate (operations) , il y a bien eu 4 appel de calculatorService et on capture les calculationModels avec calculationModelCaptor.capture()</p></li>
+<li><p><strong>//THEN</strong> : on verifie que les calculationModels capturés (recupérés avec calculatioModelCaptor.getAllValue() correspondent au tuple que l’on a ecrit en dure par rapport à la liste d’opérations qu’on a dans // GIVEN. cela se fait en utilisant extracting ( &lt;class&gt; :: &lt;methode get&gt;) voir les lambdas…</p></li>
 </ul>
 <blockquote>
 <div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Test</span>
@@ -257,14 +256,14 @@ et ensuite on récupere dans une liste cette suite d’argument.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="invocationonmock">
+</section>
+</section>
+<section id="invocationonmock">
 <h3>InvocationOnMock<a class="headerlink" href="#invocationonmock" title="Lien permanent vers ce titre">¶</a></h3>
 <p>on veut <strong>donner une réponse spécifique en fonction de n’importe quel argument entré</strong> lors de l’appel du mock pour ensuite verifier le résultat de notre methode du CUT.</p>
 <p>on utilise <strong>l’interface invocation heritant de InvocationOnMock que l’on redéfinit avec une lambdas</strong> pour déclarer le résultat que l’on souhaite en fonction des arguments données a notre mock.</p>
 <p>Deux alternatives s’offre a nous :</p>
-<div class="section" id="lambdas-avec-invocation">
+<section id="lambdas-avec-invocation">
 <h4>1) lambdas avec Invocation<a class="headerlink" href="#lambdas-avec-invocation" title="Lien permanent vers ce titre">¶</a></h4>
 <blockquote>
 <div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Test</span>
@@ -304,8 +303,8 @@ et ensuite on récupere dans une liste cette suite d’argument.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="les-then-chaines">
+</section>
+<section id="les-then-chaines">
 <h4>2) Les Then() chainés<a class="headerlink" href="#les-then-chaines" title="Lien permanent vers ce titre">¶</a></h4>
 <p>on vas simplement mettre a la suite des then() qui corrrespondront respectivement a leur arguments entrées</p>
 <blockquote>
@@ -334,24 +333,25 @@ et ensuite on récupere dans une liste cette suite d’argument.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="spy">
+</section>
+</section>
+<section id="spy">
 <h3>&#64;Spy<a class="headerlink" href="#spy" title="Lien permanent vers ce titre">¶</a></h3>
 <p>On ne peut pas mocker une methode d’une classe définit en final avec &#64;Mock
 mais on peut tout de meme utiliser &#64;spy sur la classe pour récupérer des méthodes non final.</p>
 <p>En gros , c’est un mock partiel de la classe</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
+  <h3><a href="index.html">Table des matières</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Mockito</a><ul>
 <li><a class="reference internal" href="#config-mvn">Config Mvn</a></li>
@@ -393,7 +393,7 @@ mais on peut tout de meme utiliser &#64;spy sur la classe pour récupérer des m
   <p class="topless"><a href="jUnit.html"
                         title="Chapitre précédent">JUnit &amp; ses Annotations</a></p>
   <h4>Sujet suivant</h4>
-  <p class="topless"><a href="test integration.html"
+  <p class="topless"><a href="test%20integration.html"
                         title="Chapitre suivant">Tests d’Intégration</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
@@ -403,17 +403,15 @@ mais on peut tout de meme utiliser &#64;spy sur la classe pour récupérer des m
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Recherche rapide</h3>
+  <h3 id="searchlabel">Recherche rapide</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -425,19 +423,20 @@ mais on peut tout de meme utiliser &#64;spy sur la classe pour récupérer des m
           <a href="genindex.html" title="Index général"
              >index</a></li>
         <li class="right" >
-          <a href="test integration.html" title="Tests d’Intégration"
+          <a href="test%20integration.html" title="Tests d’Intégration"
              >suivant</a> |</li>
         <li class="right" >
           <a href="jUnit.html" title="JUnit &amp; ses Annotations"
              >précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="tests.html" >Tests</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="tests.html" >Tests</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Mockito</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

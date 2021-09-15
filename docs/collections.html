@@ -1,26 +1,25 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html lang="fr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Collections &#8212; Documentation Private v0.1</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Java IO" href="java IO.html" />
+    <link rel="next" title="Java IO" href="java%20IO.html" />
     <link rel="prev" title="Java" href="java.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -30,13 +29,14 @@
           <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="java IO.html" title="Java IO"
+          <a href="java%20IO.html" title="Java IO"
              accesskey="N">suivant</a> |</li>
         <li class="right" >
           <a href="java.html" title="Java"
              accesskey="P">précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="java.html" accesskey="U">Java</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="java.html" accesskey="U">Java</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Collections</a></li> 
       </ul>
     </div>  
 
@@ -45,11 +45,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="collections">
+  <section id="collections">
 <h1>Collections<a class="headerlink" href="#collections" title="Lien permanent vers ce titre">¶</a></h1>
-<div class="section" id="hashmap">
+<section id="hashmap">
 <h2>HashMap<a class="headerlink" href="#hashmap" title="Lien permanent vers ce titre">¶</a></h2>
-<div class="section" id="iteration">
+<section id="iteration">
 <h3>itération<a class="headerlink" href="#iteration" title="Lien permanent vers ce titre">¶</a></h3>
 <p>If you’re only interested in the keys, you can iterate through the keySet() of the map:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="p">...;</span>
@@ -79,17 +79,18 @@
 <p>TreeMap: Ordered by the key</p>
 <p>HashTable: Unlike HashMap, it is synchronized</p>
 <p>Refer here for better understanding with examples.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
+  <h3><a href="index.html">Table des matières</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Collections</a><ul>
 <li><a class="reference internal" href="#hashmap">HashMap</a><ul>
@@ -104,7 +105,7 @@
   <p class="topless"><a href="java.html"
                         title="Chapitre précédent">Java</a></p>
   <h4>Sujet suivant</h4>
-  <p class="topless"><a href="java IO.html"
+  <p class="topless"><a href="java%20IO.html"
                         title="Chapitre suivant">Java IO</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
@@ -114,17 +115,15 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Recherche rapide</h3>
+  <h3 id="searchlabel">Recherche rapide</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -136,18 +135,19 @@
           <a href="genindex.html" title="Index général"
              >index</a></li>
         <li class="right" >
-          <a href="java IO.html" title="Java IO"
+          <a href="java%20IO.html" title="Java IO"
              >suivant</a> |</li>
         <li class="right" >
           <a href="java.html" title="Java"
              >précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Collections</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>
