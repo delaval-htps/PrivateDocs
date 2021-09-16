@@ -247,7 +247,7 @@ C'est le récit utilisateur mais sous forme de user story e avec critére d'acce
 
 .. code-block:: xml
 
-    # language:  fr
+    #language:fr
 
     Fonctionnalité:  Additioner deux nombres 
  
