@@ -5,6 +5,9 @@ Java
    :maxdepth: 2
    :caption: Contents: 
 
+   types
+   operateurs
+   tableaux
    collections
    exceptions
    genericite
@@ -14,6 +17,5 @@ Java
    class Anomyme
    lambdas
    stream
-   tests
    
 

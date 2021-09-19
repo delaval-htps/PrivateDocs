@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Java IO" href="java%20IO.html" />
-    <link rel="prev" title="Java" href="java.html" /> 
+    <link rel="prev" title="Les Opérateurs" href="operateurs.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -32,7 +32,7 @@
           <a href="java%20IO.html" title="Java IO"
              accesskey="N">suivant</a> |</li>
         <li class="right" >
-          <a href="java.html" title="Java"
+          <a href="operateurs.html" title="Les Opérateurs"
              accesskey="P">précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="java.html" accesskey="U">Java</a> &#187;</li>
@@ -47,6 +47,25 @@
             
   <section id="collections">
 <h1>Collections<a class="headerlink" href="#collections" title="Lien permanent vers ce titre">¶</a></h1>
+<section id="generalites">
+<h2>Généralités<a class="headerlink" href="#generalites" title="Lien permanent vers ce titre">¶</a></h2>
+<section id="genericite">
+<h3>généricité<a class="headerlink" href="#genericite" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Par definition, les collections utilisent la <strong>généricité</strong> pour contenir des Objets.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="p">;</span>
+</pre></div>
+</div>
+<p>Donc, dans une collection, on ne peut utiliser que le même type d’Objet.</p>
+</section>
+<section id="references-d-objet">
+<h3>références d’Objet<a class="headerlink" href="#references-d-objet" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Lorsqu’on introduit un Objet dans une collection, on ne fait pas de copie !</p>
+<p>On utilise la référence de l’Objet. Ce qui est logique, puisque cela permet de modifier les contenus directement.</p>
+</section>
+</section>
+<section id="methodes-communes">
+<h2>Methodes communes<a class="headerlink" href="#methodes-communes" title="Lien permanent vers ce titre">¶</a></h2>
+</section>
 <section id="hashmap">
 <h2>HashMap<a class="headerlink" href="#hashmap" title="Lien permanent vers ce titre">¶</a></h2>
 <section id="iteration">
@@ -93,6 +112,12 @@
   <h3><a href="index.html">Table des matières</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Collections</a><ul>
+<li><a class="reference internal" href="#generalites">Généralités</a><ul>
+<li><a class="reference internal" href="#genericite">généricité</a></li>
+<li><a class="reference internal" href="#references-d-objet">références d’Objet</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methodes-communes">Methodes communes</a></li>
 <li><a class="reference internal" href="#hashmap">HashMap</a><ul>
 <li><a class="reference internal" href="#iteration">itération</a></li>
 </ul>
@@ -102,8 +127,8 @@
 </ul>
 
   <h4>Sujet précédent</h4>
-  <p class="topless"><a href="java.html"
-                        title="Chapitre précédent">Java</a></p>
+  <p class="topless"><a href="operateurs.html"
+                        title="Chapitre précédent">Les Opérateurs</a></p>
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="java%20IO.html"
                         title="Chapitre suivant">Java IO</a></p>
@@ -138,7 +163,7 @@
           <a href="java%20IO.html" title="Java IO"
              >suivant</a> |</li>
         <li class="right" >
-          <a href="java.html" title="Java"
+          <a href="operateurs.html" title="Les Opérateurs"
              >précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="java.html" >Java</a> &#187;</li>

@@ -17,6 +17,5 @@ Java
    class Anomyme
    lambdas
    stream
-   tests
    
 

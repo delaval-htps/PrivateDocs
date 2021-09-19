@@ -1,4 +1,8 @@
 ***
 CSS
 ***
- `Flexbox Cheatsheet <_static/FlexboxCheatsheet.html>`_
+
+Les Flexbox
+***********
+
+* `Flexbox Cheatsheet <_static/FlexboxCheatsheet.html>`_

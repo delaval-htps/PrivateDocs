@@ -11,8 +11,9 @@ Personnal Documentation
    :caption: Contents:
 
    java
+   tests
    git & github
-   Gestion de Projet
+   gestion de Projet
    css
    maven
    springBoot

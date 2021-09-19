@@ -51,7 +51,7 @@
 <h2>Initialisation<a class="headerlink" href="#initialisation" title="Lien permanent vers ce titre">¶</a></h2>
 <section id="initialisation-git">
 <h3>Initialisation git<a class="headerlink" href="#initialisation-git" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git init
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git init
 
 $ git flow init     // pour initialiser avec gitflow
 </pre></div>
@@ -59,24 +59,25 @@ $ git flow init     // pour initialiser avec gitflow
 </section>
 <section id="config-depots">
 <h3>Config dépôts<a class="headerlink" href="#config-depots" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git remove -v     // liste tous les repertoires distants existants
-
-$ git remote add &lt; nomDepotLocal &gt; &lt; url: https://mondepotdistant &gt;     //nomDepotLocal pointera sur mondepotdistant
-
-$ git clone &lt;monDepotDistant&gt;   // pour cloner un depot distant en local
-</pre></div>
-</div>
-<aside class="sidebar">
-<p class="sidebar-title">Avec git remote</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Avec git remote</p>
 <ul class="simple">
 <li><p>origin    =    le depot local forké sur Github</p></li>
 <li><p>upstream  =    le depot distant d’origine</p></li>
 </ul>
-</aside>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git remove -v     // liste tous les repertoires distants existants
+
+$ git remote add &lt; nomDepotLocal &gt; &lt; url: https://mondepotdistant &gt;     //nomDepotLocal pointera sur mondepotdistant
+
+$ git clone &lt;monDepotDistant&gt;   // pour cloner un depot distant en <span class="nb">local</span>
+</pre></div>
+</div>
 </section>
 <section id="liste-config-git">
 <h3>Liste config git<a class="headerlink" href="#liste-config-git" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --list
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git config --list
 </pre></div>
 </div>
 </section>
@@ -85,7 +86,7 @@ $ git clone &lt;monDepotDistant&gt;   // pour cloner un depot distant en local
 <h2>Commandes principales<a class="headerlink" href="#commandes-principales" title="Lien permanent vers ce titre">¶</a></h2>
 <section id="branches">
 <h3>Branches<a class="headerlink" href="#branches" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git branch    //liste toutes les branches existantes
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git branch    //liste toutes les branches existantes
 
 $ git branch &lt;newBranch&gt;    //crée une nouvelle branches
 
@@ -99,27 +100,28 @@ $ git checkout &lt;branch&gt;     //se positionner sur la branch
 </section>
 <section id="staging">
 <h3>Staging<a class="headerlink" href="#staging" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status    //affiche l&#39;état du staging dans la branch
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git status    //affiche l<span class="s1">&#39;état du staging dans la branch</span>
 
-$ git add &lt;fichier&gt;     //ajout d&#39;un fichier dans le Staging
+<span class="s1">$ git add &lt;fichier&gt;     //ajout d&#39;</span>un fichier dans le Staging
 </pre></div>
 </div>
 </section>
 <section id="commit">
 <h3>Commit<a class="headerlink" href="#commit" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &quot;message du commit&quot;     // enregistre un commit et avance la HEAD a ce dernier
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;message du commit&quot;</span>     // enregistre un commit et avance la HEAD a ce dernier
 </pre></div>
 </div>
 </section>
 <section id="history">
 <h3>History<a class="headerlink" href="#history" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log [--oneline] [--graph] //liste des commits avec toutes les infos sur une branche
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git log [--oneline] [--graph] //liste des commits avec toutes les infos sur une branche
 
     options:
         --oneline   donne juste la liste de tous les commits (une ligne pour chaque commit)
         --graph     crée une sorte de graph , permet de voir la création d&#39;autre branche
-
-$ git reflog    // liste toutes les actions faites (commit, checkout,merge...) sur toutes les branches
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git reflog    // liste toutes les actions faites <span class="o">(</span>commit, checkout,merge...<span class="o">)</span> sur toutes les branches
 </pre></div>
 </div>
 </section>

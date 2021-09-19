@@ -2,11 +2,37 @@
 Collections
 ***********
 
+Généralités
+***********
+
+généricité
+++++++++++
+
+Par definition, les collections utilisent la **généricité** pour contenir des Objets.
+
+.. code-block:: java
+    
+    Collection<E> collection ;
+
+Donc, dans une collection, on ne peut utiliser que le même type d'Objet.
+
+références d'Objet
+++++++++++++++++++
+
+Lorsqu'on introduit un Objet dans une collection, on ne fait pas de copie !
+
+On utilise la référence de l'Objet. Ce qui est logique, puisque cela permet de modifier les contenus directement.
+
+
+Methodes communes
+*****************
+
+
 HashMap
 *******
 
 itération
-=========
++++++++++
 
 If you're only interested in the keys, you can iterate through the keySet() of the map:
 

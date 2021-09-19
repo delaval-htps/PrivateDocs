@@ -11,6 +11,7 @@ Personnal Documentation
    :caption: Contents:
 
    java
+   tests
    git & github
    gestion de Projet
    css

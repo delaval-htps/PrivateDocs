@@ -7,7 +7,7 @@ Initialisation
 Initialisation git
 ------------------
 
-::
+.. code-block:: shell
 
     $ git init
     
@@ -16,10 +16,14 @@ Initialisation git
   
 Config dépôts
 -------------
+.. note:: Avec git remote
+
+    * origin    =    le depot local forké sur Github 
+    * upstream  =    le depot distant d'origine
 
 
-::
-
+.. code-block:: shell
+    
     $ git remove -v     // liste tous les repertoires distants existants
     
     $ git remote add < nomDepotLocal > < url: https://mondepotdistant >     //nomDepotLocal pointera sur mondepotdistant
@@ -27,16 +31,11 @@ Config dépôts
     $ git clone <monDepotDistant>   // pour cloner un depot distant en local
 
 
-.. sidebar:: Avec git remote
-
-    * origin    =    le depot local forké sur Github 
-    * upstream  =    le depot distant d'origine
-
 Liste config git
 ----------------
 
-::
-
+.. code-block:: shell
+    
     $ git config --list
 
 Commandes principales
@@ -45,8 +44,8 @@ Commandes principales
 Branches
 --------
 
-::
-
+.. code-block:: shell
+    
     $ git branch    //liste toutes les branches existantes
 
     $ git branch <newBranch>    //crée une nouvelle branches
@@ -61,8 +60,8 @@ Branches
 Staging
 -------
 
-::
-
+.. code-block:: shell
+    
     $ git status    //affiche l'état du staging dans la branch 
 
     $ git add <fichier>     //ajout d'un fichier dans le Staging
@@ -70,15 +69,15 @@ Staging
 Commit
 ------
 
-::
-
+.. code-block:: shell
+    
     $ git commit -m "message du commit"     // enregistre un commit et avance la HEAD a ce dernier
 
 
 History
 -------
 
-::
+.. code-block:: shell
 
     $ git log [--oneline] [--graph] //liste des commits avec toutes les infos sur une branche
 
@@ -86,10 +85,9 @@ History
             --oneline   donne juste la liste de tous les commits (une ligne pour chaque commit)
             --graph     crée une sorte de graph , permet de voir la création d'autre branche
 
+.. code-block:: shell
+    
     $ git reflog    // liste toutes les actions faites (commit, checkout,merge...) sur toutes les branches 
-
-
-
 
 
 
