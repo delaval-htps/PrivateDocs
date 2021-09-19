@@ -7,7 +7,7 @@ Initialisation
 Initialisation git
 ------------------
 
-.. code-block:: shell
+.. code-block:: 
 
     $ git init
     
@@ -22,7 +22,7 @@ Config dépôts
     * upstream  =    le depot distant d'origine
 
 
-.. code-block:: shell
+.. code-block:: 
     
     $ git remove -v     // liste tous les repertoires distants existants
     
@@ -34,7 +34,7 @@ Config dépôts
 Liste config git
 ----------------
 
-.. code-block:: shell
+.. code-block:: 
     
     $ git config --list
 
@@ -44,7 +44,7 @@ Commandes principales
 Branches
 --------
 
-.. code-block:: shell
+.. code-block:: 
     
     $ git branch    //liste toutes les branches existantes
 
@@ -60,7 +60,7 @@ Branches
 Staging
 -------
 
-.. code-block:: shell
+.. code-block:: 
     
     $ git status    //affiche l'état du staging dans la branch 
 
@@ -69,7 +69,7 @@ Staging
 Commit
 ------
 
-.. code-block:: shell
+.. code-block:: 
     
     $ git commit -m "message du commit"     // enregistre un commit et avance la HEAD a ce dernier
 
@@ -77,7 +77,7 @@ Commit
 History
 -------
 
-.. code-block:: shell
+.. code-block:: 
 
     $ git log [--oneline] [--graph] //liste des commits avec toutes les infos sur une branche
 
@@ -85,7 +85,7 @@ History
             --oneline   donne juste la liste de tous les commits (une ligne pour chaque commit)
             --graph     crée une sorte de graph , permet de voir la création d'autre branche
 
-.. code-block:: shell
+.. code-block:: 
     
     $ git reflog    // liste toutes les actions faites (commit, checkout,merge...) sur toutes les branches 
 
