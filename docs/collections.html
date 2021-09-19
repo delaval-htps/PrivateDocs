@@ -65,6 +65,81 @@
 </section>
 <section id="methodes-communes">
 <h2>Methodes communes<a class="headerlink" href="#methodes-communes" title="Lien permanent vers ce titre">¶</a></h2>
+<section id="comparaison-de-deux-elements">
+<h3>Comparaison de deux elements<a class="headerlink" href="#comparaison-de-deux-elements" title="Lien permanent vers ce titre">¶</a></h3>
+<section id="compareto">
+<h4>compareTo()<a class="headerlink" href="#compareto" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Si l’on veut comparer des objets de type String,File ou Wrapper d’une collection:</p>
+<p>On peut utiliser la methode <strong>compareTo(E object)</strong> puisqu’ils implementent l’interface <strong>Comparable</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Cependant, si on crée nos propres Object alors il faut leur faire implementer cette interface pour pouvoir les comparer avec cette methode.</p>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CompareElements</span> <span class="p">{</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span>
+        <span class="s">&quot;comparaison &quot;</span>
+            <span class="o">+</span> <span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="o">+</span> <span class="s">&quot; et &quot;</span>
+            <span class="o">+</span> <span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="o">+</span> <span class="s">&quot;: &quot;</span>
+            <span class="o">+</span> <span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">compareTo</span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>comparaison <span class="m">1</span> et <span class="m">2</span>: -1
+comparaison <span class="m">2</span> et <span class="m">3</span>: -1
+comparaison <span class="m">3</span> et <span class="m">3</span>: <span class="m">0</span>
+comparaison <span class="m">3</span> et <span class="m">2</span>: <span class="m">1</span>
+comparaison <span class="m">2</span> et <span class="m">1</span>: <span class="m">1</span>
+</pre></div>
+</div>
+</section>
+<section id="comparator">
+<h4>Comparator<a class="headerlink" href="#comparator" title="Lien permanent vers ce titre">¶</a></h4>
+<p>On peut créer un Objet de type Interface <strong>Comparator</strong> qui n’a qu’une seule methode <strong>compare(E o1, E o2)</strong> qu’il faudra redefinir.</p>
+<p>pour comparer chaque valeur de la collection. Ce type d’Objet s’appelle un <strong>un Objet Fonction</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComparatorObject</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">comparator</span> <span class="o">=</span>
+            <span class="k">new</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="p">(</span><span class="n">Integer</span> <span class="n">arg0</span><span class="p">,</span> <span class="n">Integer</span> <span class="n">arg1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">arg0</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">arg1</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">arg0</span> <span class="o">&gt;</span> <span class="n">arg1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="p">};</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span>
+            <span class="s">&quot;comparaison &quot;</span>
+                <span class="o">+</span> <span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s">&quot; et &quot;</span>
+                <span class="o">+</span> <span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s">&quot;: &quot;</span>
+                <span class="o">+</span> <span class="n">comparator</span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 <section id="hashmap">
 <h2>HashMap<a class="headerlink" href="#hashmap" title="Lien permanent vers ce titre">¶</a></h2>
@@ -117,7 +192,14 @@
 <li><a class="reference internal" href="#references-d-objet">références d’Objet</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#methodes-communes">Methodes communes</a></li>
+<li><a class="reference internal" href="#methodes-communes">Methodes communes</a><ul>
+<li><a class="reference internal" href="#comparaison-de-deux-elements">Comparaison de deux elements</a><ul>
+<li><a class="reference internal" href="#compareto">compareTo()</a></li>
+<li><a class="reference internal" href="#comparator">Comparator</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#hashmap">HashMap</a><ul>
 <li><a class="reference internal" href="#iteration">itération</a></li>
 </ul>
