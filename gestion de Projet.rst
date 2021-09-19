@@ -12,6 +12,7 @@ Par définition, ce document est très simple à utiliser. Il fait écho à la m
 .. image:: _static/leancanvas.png
     :width: 60%
     :align: center
+    :alt: leancanvas
 
 Methodologie agile
 ******************
@@ -21,6 +22,7 @@ Definie en 2001 : manifeste d'agilité
 .. image:: _static/agileManifesto.png
     :width: 60%
     :align: center
+    :alt: agileManifesto
 
 1. Les individus et leurs interactions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

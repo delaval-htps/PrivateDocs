@@ -12,7 +12,7 @@ Personnal Documentation
 
    java
    git & github
-   Gestion de Projet
+   gestion de Projet
    css
    maven
    springBoot
