@@ -2,6 +2,17 @@
 Log4j2
 ******
 
+Ordre hierarchique
+******************
+
+priorité de log dans l'ordre croissant
+
+* DEBUG
+* INFO
+* WARN 
+* ERROR
+* FATAL
+
 Config Maven
 ************
 Ajouter les dépendences pour log4j2 dans le pom.xml
