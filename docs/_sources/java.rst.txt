@@ -14,6 +14,7 @@ Java
    enumeration
    java IO
    logger
+   interfaces
    class Anomyme
    lambdas
    stream
