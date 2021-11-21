@@ -37,12 +37,7 @@ Unidirectionnel
 
 * **@JoinColumn** : on y met le nom de l'attribut de notre entité ici produit **qui sera la FK dans l'autre entity: PostComment**
 
-.. note:: On ne mets rien dans l'autre classe: pas de references 
-
-.. image::  docs/_images/many-to-one.png
-  :width: 30%
-  :align: center
-
+.. warning:: On ne mets rien dans l'autre classe: pas de references 
 
 Bidirectionnel
 **************
@@ -71,6 +66,49 @@ Bidirectionnel
 .. note:: dans une relation bidriectionnelle, le @JoinColum est toujours dans le ManytoOne
 
 Dans notre classe PostComment, on ajoute un attribut post et on utilise le @JoinColum pour obtenir un fk sur cette table Post
+
+.. image::  docs/_images/many-to-one.png
+  :width: 30%
+  :align: center
+
+
+Helpers Method
+**************
+On utilise **des Helpers Method dans la classe OneToMany** pour permettre de simplifier la persistance en cascade.
+
+.. code-block:: java
+
+   public void addComment(PostComment comment) {
+        comments.add(comment);
+        comment.setPost(this);
+    }
+ 
+    public void removeComment(PostComment comment) {
+        comments.remove(comment);
+        comment.setPost(null);
+    }
+
+Override equals & hashcode
+**************************
+Dans la classe Many to One,il est recommandé de redefinir les methodes equals et hashcode
+
+en prennant en compte l'identifiant Id:
+
+.. code-block:: java
+
+  @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PostComment )) return false;
+        return id != null && id.equals(((PostComment) o).getId());
+    }
+ 
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
+
 
 
 

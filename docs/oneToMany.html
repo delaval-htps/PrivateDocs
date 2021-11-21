@@ -79,11 +79,10 @@
 <ul class="simple">
 <li><p><strong>&#64;JoinColumn</strong> : on y met le nom de l’attribut de notre entité ici produit <strong>qui sera la FK dans l’autre entity: PostComment</strong></p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
 <p>On ne mets rien dans l’autre classe: pas de references</p>
 </div>
-<a class="reference internal image-reference" href="_images/many-to-one.png"><img alt="_images/many-to-one.png" class="align-center" src="_images/many-to-one.png" style="width: 30%;" /></a>
 </section>
 <section id="bidirectionnel">
 <h2>Bidirectionnel<a class="headerlink" href="#bidirectionnel" title="Lien permanent vers ce titre">¶</a></h2>
@@ -112,6 +111,40 @@
 <p>dans une relation bidriectionnelle, le &#64;JoinColum est toujours dans le ManytoOne</p>
 </div>
 <p>Dans notre classe PostComment, on ajoute un attribut post et on utilise le &#64;JoinColum pour obtenir un fk sur cette table Post</p>
+<a class="reference internal image-reference" href="_images/many-to-one.png"><img alt="_images/many-to-one.png" class="align-center" src="_images/many-to-one.png" style="width: 30%;" /></a>
+</section>
+<section id="helpers-method">
+<h2>Helpers Method<a class="headerlink" href="#helpers-method" title="Lien permanent vers ce titre">¶</a></h2>
+<p>On utilise <strong>des Helpers Method dans la classe OneToMany</strong> pour permettre de simplifier la persistance en cascade.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">addComment</span><span class="p">(</span><span class="n">PostComment</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">comments</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">comment</span><span class="p">);</span>
+     <span class="n">comment</span><span class="p">.</span><span class="na">setPost</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+ <span class="p">}</span>
+
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeComment</span><span class="p">(</span><span class="n">PostComment</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">comments</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">comment</span><span class="p">);</span>
+     <span class="n">comment</span><span class="p">.</span><span class="na">setPost</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="override-equals-hashcode">
+<h2>Override equals &amp; hashcode<a class="headerlink" href="#override-equals-hashcode" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Dans la classe Many to One,il est recommandé de redefinir les methodes equals et hashcode</p>
+<p>en prennant en compte l’identifiant Id:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Object</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">o</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">PostComment</span> <span class="p">))</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="k">return</span> <span class="n">id</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">id</span><span class="p">.</span><span class="na">equals</span><span class="p">(((</span><span class="n">PostComment</span><span class="p">)</span> <span class="n">o</span><span class="p">).</span><span class="na">getId</span><span class="p">());</span>
+  <span class="p">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">getClass</span><span class="p">().</span><span class="na">hashCode</span><span class="p">();</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -127,6 +160,8 @@
 <li><a class="reference internal" href="#">oneToMany</a><ul>
 <li><a class="reference internal" href="#unidirectionnel">Unidirectionnel</a></li>
 <li><a class="reference internal" href="#bidirectionnel">Bidirectionnel</a></li>
+<li><a class="reference internal" href="#helpers-method">Helpers Method</a></li>
+<li><a class="reference internal" href="#override-equals-hashcode">Override equals &amp; hashcode</a></li>
 </ul>
 </li>
 </ul>
