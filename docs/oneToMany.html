@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>OneToMany &#8212; Documentation Private v0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">OneToMany</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="onetomany">
+<h1>OneToMany<a class="headerlink" href="#onetomany" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Pour une description plus détaillée cf le lien suivant</p>
+<p><a class="reference external" href="https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/">OneToMany relationship with JPA &amp; hibernate</a></p>
+<section id="unidirectionnel">
+<h2>Unidirectionnel<a class="headerlink" href="#unidirectionnel" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Post</span><span class="p">{</span>
+
+  <span class="nd">@OneToMany</span><span class="p">(</span>
+      <span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">,</span>
+      <span class="n">orphanRemoval</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="n">fetch</span> <span class="o">=</span> <span class="n">FetchType</span><span class="p">.</span><span class="na">EAGER</span><span class="p">)</span>
+
+  <span class="nd">@JoinColumn</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;produit_id&quot;</span><span class="p">)</span> <span class="c1">// c&#39;est la FK qui sera dans la table &#39;comment&#39;</span>
+      <span class="n">List</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span> <span class="n">postComments</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+<ul>
+<li><p><strong>cascade</strong> permet de définir quel impact l’action sur une entité aura sur son entité associée.</p>
+<p>Le type ‘ALL’ signifie que toutes les actions sur l’entité Produit seront propagées sur l’entité Commentaires.</p>
+<p>Exemple : si on supprime le produit, les commentaires associés seront également supprimés.</p>
+</li>
+<li><p><strong>orphanRemoval=true</strong> permet d’activer un mécanisme qui garantit la non-existence de commentaire orphelin de son produit.</p>
+<p>Si on supprime un commentaire de la liste des commentaires du Product, alors le commentaire devient orphelin, et il est supprimé de la base de données.</p>
+</li>
+<li><p><strong>fetch</strong> possède la valeur EAGER, et cela signifie qu’à la récupération du produit, tous les commentaires seront également récupérés.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Par defaut, hibernate met tous les fetch en LAZY</p>
+</div>
+<ul class="simple">
+<li><p><strong>&#64;JoinColumn</strong> : on y met le nom de l’attribut de notre entité ici produit <strong>qui sera la FK dans l’autre entity: PostComment</strong></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On ne mets rien dans l’autre classe: pas de references</p>
+</div>
+<img alt="_images/many-to-one.png" src="_images/many-to-one.png" />
+</section>
+<section id="bidirectionnel">
+<h2>Bidirectionnel<a class="headerlink" href="#bidirectionnel" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Post</span><span class="p">{</span>
+
+  <span class="nd">@OneToMany</span><span class="p">(</span>
+      <span class="n">mappedBy</span> <span class="o">=</span> <span class="s">&quot;post&quot;</span> <span class="c1">// on fait référence à l&#39;attribut dans l&#39;autre classe: PostComment</span>
+      <span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">,</span>
+      <span class="n">orphanRemoval</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span> <span class="n">postComments</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>il n’y a plus de FetchType EAGER : <strong>on garde le fetch FetchType:LAZY par défaut d’hibernate</strong></p></li>
+<li><p>On supprime le <strong>&#64;JoinColumn et on le remplace par mappedBy</strong> avec comme référence l’attribut qui est désigné dans l’autre classe :PostComment</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PostComment</span><span class="p">{</span>
+
+  <span class="nd">@ManyToOne</span><span class="p">(</span><span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">)</span>
+  <span class="nd">@JoinColumn</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;postID&quot;</span><span class="p">)</span> <span class="c1">//référence FK dans la table PostComment sur la colonne de Post: postID&#39;</span>
+  <span class="kd">private</span> <span class="n">Post</span> <span class="n">post</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>dans une relation bidriectionnelle, le &#64;JoinColum est toujours dans le ManytoOne</p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table des matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">OneToMany</a><ul>
+<li><a class="reference internal" href="#unidirectionnel">Unidirectionnel</a></li>
+<li><a class="reference internal" href="#bidirectionnel">Bidirectionnel</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>Cette page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/oneToMany.rst.txt"
+            rel="nofollow">Montrer le code source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">OneToMany</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, dorian delaval.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+  </body>
+</html>
