@@ -6,6 +6,6 @@ Hibernate
    :maxdepth: 2
    :caption: Contents:
 
-    OneToOne
-    OneToMany
-    ManytoMany
+    oneToOne
+    oneToMany
+    manytoMany
