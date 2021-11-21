@@ -40,6 +40,8 @@ Unidirectionnel
 .. note:: On ne mets rien dans l'autre classe: pas de references 
 
 .. image::  docs/_images/many-to-one.png
+  :width: 60%
+  :align: center
 
 
 Bidirectionnel
