@@ -1,3 +1,6 @@
+*********
+Hibernate
+*********
 
 .. toctree::
    :maxdepth: 2
