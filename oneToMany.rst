@@ -40,7 +40,7 @@ Unidirectionnel
 .. note:: On ne mets rien dans l'autre classe: pas de references 
 
 .. image::  docs/_images/many-to-one.png
-  :width: 60%
+  :width: 30%
   :align: center
 
 
@@ -69,6 +69,8 @@ Bidirectionnel
     private Post post;
 	
 .. note:: dans une relation bidriectionnelle, le @JoinColum est toujours dans le ManytoOne
+
+Dans notre classe PostComment, on ajoute un attribut post et on utilise le @JoinColum pour obtenir un fk sur cette table Post
 
 
 
