@@ -1,5 +1,5 @@
 *********
-OneToMany
+oneToMany
 *********
 Pour une description plus détaillée cf le lien suivant
 
