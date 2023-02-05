@@ -4,7 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>SQL &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,12 +14,13 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="prev" title="datasource-initialisation" href="datasource-initialisation.html" /> 
+    <link rel="prev" title="oneToMany" href="oneToMany.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -28,7 +29,7 @@
           <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="datasource-initialisation.html" title="datasource-initialisation"
+          <a href="oneToMany.html" title="oneToMany"
              accesskey="P">précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">SQL</a></li> 
@@ -41,38 +42,38 @@
           <div class="body" role="main">
             
   <section id="sql">
-<h1>SQL<a class="headerlink" href="#sql" title="Lien permanent vers ce titre">¶</a></h1>
+<h1>SQL<a class="headerlink" href="#sql" title="Lien permanent vers cette rubrique">¶</a></h1>
 <section id="one-to-one">
-<h2>One to One<a class="headerlink" href="#one-to-one" title="Lien permanent vers ce titre">¶</a></h2>
+<h2>One to One<a class="headerlink" href="#one-to-one" title="Lien permanent vers cette rubrique">¶</a></h2>
 <p>La relation 1:1 est semblable a celle de 1:Many , elle peut s’effectuer de deux maniéres:</p>
 <ul>
 <li><p>Créer un FK avec le PK de chaque table dans les 2 tables: cela consiste a créer deux 1:M entre les deux tables</p></li>
 <li><p>Créer un Fk unique dans une des tables mais avec son id (pointant sur l’id de la seconde table)</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">DATABASE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">test</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">test</span> <span class="n">CHARSET</span> <span class="o">=</span> <span class="n">utf8</span> <span class="k">COLLATE</span> <span class="o">=</span> <span class="n">utf8_general_ci</span><span class="p">;</span>
-<span class="n">USE</span> <span class="n">test</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">test</span><span class="p">;</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="n">CHARSET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">utf8</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">utf8_general_ci</span><span class="p">;</span><span class="w"></span>
+<span class="n">USE</span><span class="w"> </span><span class="n">test</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span><span class="p">(</span>
-<span class="n">id</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
-<span class="n">user_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-<span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="p">)</span> <span class="n">ENGINE</span> <span class="o">=</span> <span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span> <span class="o">=</span> <span class="n">utf8</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="w"></span>
+<span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w"></span>
+<span class="n">user_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InnoDB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">utf8</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">accounts</span><span class="p">(</span>
-<span class="n">id</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
-<span class="n">account_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-<span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
-<span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="p">)</span> <span class="n">ENGINE</span> <span class="o">=</span> <span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span> <span class="o">=</span> <span class="n">utf8</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">accounts</span><span class="p">(</span><span class="w"></span>
+<span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w"></span>
+<span class="n">account_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">),</span><span class="w"></span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InnoDB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">utf8</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 </ul>
 </section>
 <section id="transaction">
-<h2>Transaction<a class="headerlink" href="#transaction" title="Lien permanent vers ce titre">¶</a></h2>
+<h2>Transaction<a class="headerlink" href="#transaction" title="Lien permanent vers cette rubrique">¶</a></h2>
 <section id="definition">
-<h3>Definition<a class="headerlink" href="#definition" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Definition<a class="headerlink" href="#definition" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>Les transactions permettent de regrouper plusieurs requetes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -90,20 +91,20 @@
 </div>
 </section>
 <section id="utilisation">
-<h3>Utilisation<a class="headerlink" href="#utilisation" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Utilisation<a class="headerlink" href="#utilisation" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>Par Défaut, Mysql est en mode “autocommit”, ie: chaque requete est directement commitée sans retour en arriéré  possible.</p>
 <p>Pour quitter ce mode on peut faire la commande suivante:</p>
-<div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">autocommit</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span><span class="w"> </span><span class="n">autocommit</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Il faudra ensuite commiter ou revenir en arriére manuellement pour chaque requete…</p>
 <p>Pour démarrer une transaction on utilise la commande suivante:</p>
-<div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="k">START</span> <span class="k">TRANSACTION</span><span class="p">;</span>
+<div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Pour valider et/ou annuler une transaction on utilisera les commandes suivantes:</p>
-<div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="k">ROLLBACK</span><span class="p">;</span>
+<div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="k">COMMIT</span><span class="p">;</span><span class="w"></span>
+<span class="k">ROLLBACK</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -117,8 +118,9 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table des matières</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table des matières</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">SQL</a><ul>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#transaction">Transaction</a><ul>
@@ -130,9 +132,12 @@
 </li>
 </ul>
 
-  <h4>Sujet précédent</h4>
-  <p class="topless"><a href="datasource-initialisation.html"
-                        title="Chapitre précédent">datasource-initialisation</a></p>
+  </div>
+  <div>
+    <h4>Sujet précédent</h4>
+    <p class="topless"><a href="oneToMany.html"
+                          title="Chapitre précédent">oneToMany</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -149,7 +154,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -161,7 +166,7 @@
           <a href="genindex.html" title="Index général"
              >index</a></li>
         <li class="right" >
-          <a href="datasource-initialisation.html" title="datasource-initialisation"
+          <a href="oneToMany.html" title="oneToMany"
              >précédent</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Documentation Private v0.1</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">SQL</a></li> 
@@ -169,7 +174,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>

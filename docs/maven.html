@@ -4,7 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Maven &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,6 +14,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     
@@ -45,9 +46,9 @@
           <div class="body" role="main">
             
   <section id="maven">
-<h1>Maven<a class="headerlink" href="#maven" title="Lien permanent vers ce titre">¶</a></h1>
+<h1>Maven<a class="headerlink" href="#maven" title="Lien permanent vers cette rubrique">¶</a></h1>
 <section id="build-lifecycles">
-<h2>Build lifecycles<a class="headerlink" href="#build-lifecycles" title="Lien permanent vers ce titre">¶</a></h2>
+<h2>Build lifecycles<a class="headerlink" href="#build-lifecycles" title="Lien permanent vers cette rubrique">¶</a></h2>
 <div class="admonition seealso">
 <p class="admonition-title">Voir aussi</p>
 <p>ref doc technique de Maven</p>
@@ -61,7 +62,7 @@
 </ul>
 </section>
 <section id="phases-of-lifecycles">
-<h2>Phases of lifecycles<a class="headerlink" href="#phases-of-lifecycles" title="Lien permanent vers ce titre">¶</a></h2>
+<h2>Phases of lifecycles<a class="headerlink" href="#phases-of-lifecycles" title="Lien permanent vers cette rubrique">¶</a></h2>
 <p>un cycle de vie comporte des phases de construction:</p>
 <ul class="simple">
 <li><p><strong>validate</strong>:  valide le projet s’il est correct</p></li>
@@ -84,13 +85,13 @@ Pour les lancer on utilise la commande :</p>
 </div>
 </section>
 <section id="phases-non-cli">
-<h2>Phases non CLI<a class="headerlink" href="#phases-non-cli" title="Lien permanent vers ce titre">¶</a></h2>
+<h2>Phases non CLI<a class="headerlink" href="#phases-non-cli" title="Lien permanent vers cette rubrique">¶</a></h2>
 <p>il existe des phases qui ne sont pas directement appélée par ligne de commande: <strong>« pre-, post-, process- »</strong> et <strong>« integration-test »</strong>.
 Elles permettent de séquencer le build mais ne fournissent pas de resultat nécessaire a sa construction.</p>
 <p>Les outils tels que jacoco, failsafe, surefire et les conteneurs docker, Tomcat… lient des goals à ces phases pour générer des rapports.</p>
 </section>
 <section id="goals-plugin">
-<h2>Goals plugin<a class="headerlink" href="#goals-plugin" title="Lien permanent vers ce titre">¶</a></h2>
+<h2>Goals plugin<a class="headerlink" href="#goals-plugin" title="Lien permanent vers cette rubrique">¶</a></h2>
 <p>un plugin comporte un ou plusieurs goal qui vont lui permettre de s’exécuter ou pas dans la phase demandée.</p>
 <p>un goal non lié a une phase peut etre executer seul par l’appel suivant:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn &lt;dependency&gt;:&lt;goal&gt;
@@ -110,7 +111,7 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 </div>
 </section>
 <section id="creation-projet-mvn-cli">
-<h2>Création Projet Mvn CLI<a class="headerlink" href="#creation-projet-mvn-cli" title="Lien permanent vers ce titre">¶</a></h2>
+<h2>Création Projet Mvn CLI<a class="headerlink" href="#creation-projet-mvn-cli" title="Lien permanent vers cette rubrique">¶</a></h2>
 <p>Maven s’appuie sur des archétypes pour conserver la convention maven</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn archetype: generate -DarchetypeArtifact=&lt;nom de l&#39;arcchetype&gt; -DarchetypeVersion=&lt;numero de la version&gt;
@@ -131,7 +132,7 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 </div>
 </section>
 <section id="compilation-creation-jar">
-<h2>Compilation &amp; Création .Jar<a class="headerlink" href="#compilation-creation-jar" title="Lien permanent vers ce titre">¶</a></h2>
+<h2>Compilation &amp; Création .Jar<a class="headerlink" href="#compilation-creation-jar" title="Lien permanent vers cette rubrique">¶</a></h2>
 <dl>
 <dt>Pour compiler et créer un .jar on utilise la commande suivante:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@delaval-lenovo:~/MonApplication$ mvn package
 </pre></div>
@@ -147,38 +148,38 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 </dl>
 </section>
 <section id="etude-pom-xml">
-<h2>Etude POM.xml<a class="headerlink" href="#etude-pom-xml" title="Lien permanent vers ce titre">¶</a></h2>
+<h2>Etude POM.xml<a class="headerlink" href="#etude-pom-xml" title="Lien permanent vers cette rubrique">¶</a></h2>
 <section id="information-maven">
-<h3>Information Maven<a class="headerlink" href="#information-maven" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Information Maven<a class="headerlink" href="#information-maven" title="Lien permanent vers cette rubrique">¶</a></h3>
 <blockquote>
-<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- Information Maven --&gt;</span>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- Information Maven --&gt;</span>
 <span class="nt">&lt;groupId&gt;</span>org.example.demo<span class="nt">&lt;/groupId&gt;</span>
 <span class="nt">&lt;artifactId&gt;</span>MonApplication<span class="nt">&lt;/artifactId&gt;</span>
 <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
-<span class="c">&lt;!--  numéro de version + Snapshot: détermine que le projet est en cours de développement --&gt;</span>
-<span class="c">&lt;!--  une fois Snapshot enlevé : c&#39;est une release, la version ne bouge plus! --&gt;</span>
+<span class="cm">&lt;!--  numéro de version + Snapshot: détermine que le projet est en cours de développement --&gt;</span>
+<span class="cm">&lt;!--  une fois Snapshot enlevé : c&#39;est une release, la version ne bouge plus! --&gt;</span>
 <span class="nt">&lt;packaging&gt;</span>jar<span class="nt">&lt;/packaging&gt;</span>
-<span class="c">&lt;!--  packaging peut etre un war pour tomcat --&gt;</span>
+<span class="cm">&lt;!--  packaging peut etre un war pour tomcat --&gt;</span>
 </pre></div>
 </div>
 </div></blockquote>
 </section>
 <section id="information-generale">
-<h3>Information générale<a class="headerlink" href="#information-generale" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Information générale<a class="headerlink" href="#information-generale" title="Lien permanent vers cette rubrique">¶</a></h3>
 <blockquote>
-<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- Information générale --&gt;</span>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- Information générale --&gt;</span>
 <span class="nt">&lt;name&gt;</span>MonApplication<span class="nt">&lt;/name&gt;</span>
 <span class="nt">&lt;description&gt;</span>La super application qui sert à rien<span class="nt">&lt;/description&gt;</span>
 <span class="nt">&lt;url&gt;</span>http://maven.apache.org<span class="nt">&lt;/url&gt;</span>
-<span class="c">&lt;!-- url de l&#39;application ou la page d&#39;accueil du projet --&gt;</span>
+<span class="cm">&lt;!-- url de l&#39;application ou la page d&#39;accueil du projet --&gt;</span>
 
-<span class="c">&lt;!-- ==========Organisation======================== --&gt;</span>
+<span class="cm">&lt;!-- ==========Organisation======================== --&gt;</span>
 <span class="nt">&lt;organization&gt;</span>
     <span class="nt">&lt;name&gt;</span>Mon Entreprise<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;url&gt;</span>https://www.doriandelaval.fr<span class="nt">&lt;/url&gt;</span>
 <span class="nt">&lt;/organization&gt;</span>
 
-<span class="c">&lt;!-- ========== Licences =========================== --&gt;</span>
+<span class="cm">&lt;!-- ========== Licences =========================== --&gt;</span>
 <span class="nt">&lt;licenses&gt;</span>
     <span class="nt">&lt;license&gt;</span>
         <span class="nt">&lt;name&gt;</span>Apache License, Version 2.0<span class="nt">&lt;/name&gt;</span>
@@ -190,11 +191,11 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 </div></blockquote>
 </section>
 <section id="proprietees">
-<h3>Propriétées<a class="headerlink" href="#proprietees" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Propriétées<a class="headerlink" href="#proprietees" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>Ceux sont des <strong>constantes</strong> qui seront remplacées au moment de la compilation par mvn.</p>
 <p><strong>Convention</strong> on déclare la version de Junit en Propriétée et on la place dans les dépendances à la place du numéro de version en utilisant ${nom de la Propriétée}</p>
 <blockquote>
-<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- ========== Propriétées ========================= --&gt;</span>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- ========== Propriétées ========================= --&gt;</span>
 <span class="nt">&lt;properties&gt;</span>
     <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
     <span class="nt">&lt;maven.compiler.source&gt;</span>11<span class="nt">&lt;/maven.compiler.source&gt;</span>
@@ -214,12 +215,12 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 </div>
 </div></blockquote>
 <section id="proprietes-pre-definies">
-<h4>Propriétés pré-définies<a class="headerlink" href="#proprietes-pre-definies" title="Lien permanent vers ce titre">¶</a></h4>
-<table class="colwidths-given docutils align-default" id="id1">
+<h4>Propriétés pré-définies<a class="headerlink" href="#proprietes-pre-definies" title="Lien permanent vers cette rubrique">¶</a></h4>
+<table class="docutils align-default" id="id1">
 <caption><span class="caption-text">Variables prédéfinies</span><a class="headerlink" href="#id1" title="Lien permanent vers ce tableau">¶</a></caption>
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 89%" />
+<col style="width: 11.1%" />
+<col style="width: 88.9%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><th class="stub"><p>project.basedir</p></th>
@@ -236,12 +237,12 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 <p>&lt;<a class="reference external" href="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Available_Variables">https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Available_Variables</a>&gt;_</p>
 </section>
 <section id="proprietes-particulieres">
-<h4>Propriétés particulières<a class="headerlink" href="#proprietes-particulieres" title="Lien permanent vers ce titre">¶</a></h4>
-<table class="colwidths-given docutils align-default" id="id2">
+<h4>Propriétés particulières<a class="headerlink" href="#proprietes-particulieres" title="Lien permanent vers cette rubrique">¶</a></h4>
+<table class="docutils align-default" id="id2">
 <caption><span class="caption-text"><strong>Variables particuliéres</strong></span><a class="headerlink" href="#id2" title="Lien permanent vers ce tableau">¶</a></caption>
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 89%" />
+<col style="width: 11.1%" />
+<col style="width: 88.9%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><th class="stub"><p>env</p></th>
@@ -261,16 +262,16 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 </section>
 </section>
 <section id="le-build">
-<h3>Le Build<a class="headerlink" href="#le-build" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Le Build<a class="headerlink" href="#le-build" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>c’est le processus de construction d’un projet par mvn, on peut configurer différement le build en modifiant certains éléments.</p>
 <p>Par exemple, <strong>modifier le repértoire de sortie</strong></p>
 <blockquote>
-<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!--  ============================================ --&gt;</span>
-<span class="c">&lt;!-- ===========Le Build========================== --&gt;</span>
-<span class="c">&lt;!-- ============================================= --&gt;</span>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!--  ============================================ --&gt;</span>
+<span class="cm">&lt;!-- ===========Le Build========================== --&gt;</span>
+<span class="cm">&lt;!-- ============================================= --&gt;</span>
 <span class="nt">&lt;build&gt;</span>
     <span class="nt">&lt;directory&gt;</span>${project.basedir}/output<span class="nt">&lt;/directory&gt;</span>
-    <span class="c">&lt;!--  on remplace la sortie target par un dossier ici output --&gt;</span>
+    <span class="cm">&lt;!--  on remplace la sortie target par un dossier ici output --&gt;</span>
 <span class="nt">&lt;/build&gt;</span>
 </pre></div>
 </div>
@@ -279,14 +280,14 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 <blockquote>
 <div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;build&gt;</span>
     <span class="nt">&lt;plugins&gt;</span>
-    <span class="c">&lt;!-- ======= gestion des plugins (version)========== --&gt;</span>
+    <span class="cm">&lt;!-- ======= gestion des plugins (version)========== --&gt;</span>
         <span class="nt">&lt;plugin&gt;</span>
             <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
             <span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
             <span class="nt">&lt;version&gt;</span>3.2.0<span class="nt">&lt;/version&gt;</span>
             <span class="nt">&lt;configuration&gt;</span>
             <span class="nt">&lt;archive&gt;</span>
-                <span class="c">&lt;!-- creation du Manifest avec definition de la classe Main --&gt;</span>
+                <span class="cm">&lt;!-- creation du Manifest avec definition de la classe Main --&gt;</span>
                 <span class="nt">&lt;manifest&gt;</span>
                     <span class="nt">&lt;mainClass&gt;</span>org.example.demo.App<span class="nt">&lt;/mainClass&gt;</span>
                 <span class="nt">&lt;/manifest&gt;</span>
@@ -304,7 +305,7 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 </div>
 </section>
 <section id="le-filtrage-de-ressources">
-<h3>Le Filtrage de ressources<a class="headerlink" href="#le-filtrage-de-ressources" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Le Filtrage de ressources<a class="headerlink" href="#le-filtrage-de-ressources" title="Lien permanent vers cette rubrique">¶</a></h3>
 <ol class="arabic simple">
 <li><p>créer un repertoires sous : <strong>src/main/resources</strong></p></li>
 <li><p>créer un fichier dedans ie: info.properties</p></li>
@@ -313,16 +314,16 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 </ol>
 <blockquote>
 <div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;build&gt;</span>
-    <span class="c">&lt;!-- ===============resources================ --&gt;</span>
+    <span class="cm">&lt;!-- ===============resources================ --&gt;</span>
     <span class="nt">&lt;resources&gt;</span>
-            <span class="c">&lt;!-- repertoire permettant le filtrage des ressources --&gt;</span>
+            <span class="cm">&lt;!-- repertoire permettant le filtrage des ressources --&gt;</span>
 
             <span class="nt">&lt;resource&gt;</span>
                     <span class="nt">&lt;directory&gt;</span>src/main/resources/filtered<span class="nt">&lt;/directory&gt;</span>
                     <span class="nt">&lt;filtering&gt;</span>true<span class="nt">&lt;/filtering&gt;</span>
             <span class="nt">&lt;/resource&gt;</span>
 
-            <span class="c">&lt;!-- repertoire n&#39;autorisant pas le filtrage des ressources --&gt;</span>
+            <span class="cm">&lt;!-- repertoire n&#39;autorisant pas le filtrage des ressources --&gt;</span>
 
             <span class="nt">&lt;resource&gt;</span>
                     <span class="nt">&lt;directory&gt;</span>src/main/resources/raw<span class="nt">&lt;/directory&gt;</span>
@@ -336,32 +337,32 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 <li><p>Utiliser dans l’application les classes <strong>Properties</strong> et <strong>InputStream</strong> pour récupérer ses propriétés</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Properties</span> <span class="n">versionProperties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="p">();</span>
-    <span class="n">InputStream</span> <span class="n">versionInputStream</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Properties</span><span class="w"> </span><span class="n">versionProperties</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Properties</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">InputStream</span><span class="w"> </span><span class="n">versionInputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">try</span> <span class="p">{</span>
-    <span class="n">versionInputStream</span> <span class="o">=</span> <span class="n">App</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="s">&quot;/nom du fichier properties&quot;</span><span class="p">);</span>
-    <span class="n">versionProperties</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="n">versionInputStream</span><span class="p">);</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">versionInputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="s">&quot;/nom du fichier properties&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">versionProperties</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="n">versionInputStream</span><span class="p">);</span><span class="w"></span>
 
-<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
-<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">versionInputStream</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">try</span> <span class="p">{</span>
-            <span class="n">versionInputStream</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
-        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">versionInputStream</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">versionInputStream</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Application version =&quot;</span> <span class="o">+</span> <span class="n">versionProperties</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&quot;String Key de la properties&quot;</span><span class="p">));</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Application version =&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">versionProperties</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&quot;String Key de la properties&quot;</span><span class="p">));</span><span class="w"></span>
 </pre></div>
 </div>
 </div></blockquote>
 </section>
 <section id="les-profiles">
-<h3>Les Profiles<a class="headerlink" href="#les-profiles" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Les Profiles<a class="headerlink" href="#les-profiles" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>Les profiles permettent de créer des options pour le build de mvn</p>
 <p>Example:</p>
 <ol class="arabic simple">
@@ -370,9 +371,9 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 <li><p>créeons les profiles dans le pom.xml</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!--  ============================================ --&gt;</span>
-<span class="c">&lt;!-- ===========Les Profiles====================== --&gt;</span>
-<span class="c">&lt;!-- ============================================= --&gt;</span>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!--  ============================================ --&gt;</span>
+<span class="cm">&lt;!-- ===========Les Profiles====================== --&gt;</span>
+<span class="cm">&lt;!-- ============================================= --&gt;</span>
 
 <span class="nt">&lt;profiles&gt;</span>
     <span class="nt">&lt;profile&gt;</span>
@@ -418,8 +419,9 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table des matières</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table des matières</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Maven</a><ul>
 <li><a class="reference internal" href="#build-lifecycles">Build lifecycles</a></li>
 <li><a class="reference internal" href="#phases-of-lifecycles">Phases of lifecycles</a></li>
@@ -444,12 +446,17 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
 </li>
 </ul>
 
-  <h4>Sujet précédent</h4>
-  <p class="topless"><a href="css.html"
-                        title="Chapitre précédent">CSS</a></p>
-  <h4>Sujet suivant</h4>
-  <p class="topless"><a href="springBoot.html"
-                        title="Chapitre suivant">SpringBoot</a></p>
+  </div>
+  <div>
+    <h4>Sujet précédent</h4>
+    <p class="topless"><a href="css.html"
+                          title="Chapitre précédent">CSS</a></p>
+  </div>
+  <div>
+    <h4>Sujet suivant</h4>
+    <p class="topless"><a href="springBoot.html"
+                          title="Chapitre suivant">SpringBoot</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -466,7 +473,7 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -489,7 +496,7 @@ si une phase n’a pas de goal alors elle ne s’éxecutera pas.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>

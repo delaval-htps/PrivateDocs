@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Log4j2 &#8212; Documentation Private v0.1</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Documentation Private v0.1</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Log4j2</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="log4j2">
+<h1>Log4j2<a class="headerlink" href="#log4j2" title="Lien permanent vers cette rubrique">¶</a></h1>
+<section id="ordre-hierarchique">
+<h2>Ordre hierarchique<a class="headerlink" href="#ordre-hierarchique" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>priorité de log dans l’ordre croissant</p>
+<ul class="simple">
+<li><p>DEBUG</p></li>
+<li><p>INFO</p></li>
+<li><p>WARN</p></li>
+<li><p>ERROR</p></li>
+<li><p>FATAL</p></li>
+</ul>
+</section>
+<section id="config-maven">
+<h2>Config Maven<a class="headerlink" href="#config-maven" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>Ajouter les dépendences pour log4j2 dans le pom.xml</p>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
+
+            <span class="cm">&lt;!-- ===================== Log4j2 ====================== --&gt;</span>
+              <span class="nt">&lt;dependency&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.apache.logging.log4j<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>log4j-api<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;version&gt;</span>2.14.0<span class="nt">&lt;/version&gt;</span>
+              <span class="nt">&lt;/dependency&gt;</span>
+              <span class="nt">&lt;dependency&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.apache.logging.log4j<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>log4j-core<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;version&gt;</span>2.14.0<span class="nt">&lt;/version&gt;</span>
+              <span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="config-log4j2">
+<h2>Config Log4j2<a class="headerlink" href="#config-log4j2" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>On crée un fichier <strong>log4j2.xml</strong> de configuration que l’on place dans src/main/java/resources</p>
+<blockquote>
+<div></div></blockquote>
+<p>l’example ci dessous, montre une sotie dirigée vers la console avec un script qui permet de modifier le pattern en fonction des levels utilisés.</p>
+<p>il emploie également le <strong>highlight</strong> pour coloriser les lignes.</p>
+<p>Attention: utillisation d’une console ansi sinon il ne le detécte pas !!!</p>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE xml&gt;</span>
+<span class="nt">&lt;Configuration&gt;</span>
+<span class="nt">&lt;Appenders&gt;</span>
+    <span class="nt">&lt;Console</span> <span class="na">name=</span><span class="s">&quot;STDOUT&quot;</span> <span class="na">target=</span><span class="s">&quot;SYSTEM_OUT&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;PatternLayout&gt;</span>
+    <span class="nt">&lt;ScriptPatternSelector</span> <span class="na">defaultPattern=</span><span class="s">&quot;%highlight{%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n}{ERROR=red,TRACE=blue}&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;Script</span> <span class="na">name=</span><span class="s">&quot;LevelSelector&quot;</span> <span class="na">language=</span><span class="s">&quot;javascript&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;![CDATA[</span>
+<span class="cp">                        result= null;</span>
+<span class="cp">                        if (logEvent.getLevel() == org.apache.logging.log4j.Level.INFO) {</span>
+<span class="cp">                            result=&quot;INFO&quot;;</span>
+<span class="cp">                        }</span>
+
+<span class="cp">                        ]]&gt;</span>
+                    <span class="nt">&lt;/Script&gt;</span>
+                    <span class="nt">&lt;PatternMatch</span> <span class="na">key=</span><span class="s">&quot;INFO&quot;</span> <span class="na">pattern=</span><span class="s">&quot;%msg%n&quot;</span><span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;/ScriptPatternSelector&gt;</span>
+    <span class="nt">&lt;/PatternLayout&gt;</span>
+<span class="cm">&lt;!--       &lt;PatternLayout pattern=&quot;%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n&quot;/&gt; --&gt;</span>
+    <span class="nt">&lt;/Console&gt;</span>
+<span class="nt">&lt;/Appenders&gt;</span>
+<span class="nt">&lt;Loggers</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;Root</span> <span class="na">level=</span><span class="s">&quot;DEBUG&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;AppenderRef</span> <span class="na">ref=</span><span class="s">&quot;STDOUT&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Root&gt;</span>
+<span class="nt">&lt;/Loggers&gt;</span>
+<span class="nt">&lt;/Configuration&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table des matières</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Log4j2</a><ul>
+<li><a class="reference internal" href="#ordre-hierarchique">Ordre hierarchique</a></li>
+<li><a class="reference internal" href="#config-maven">Config Maven</a></li>
+<li><a class="reference internal" href="#config-log4j2">Config Log4j2</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Cette page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/java/logger.rst.txt"
+            rel="nofollow">Montrer le code source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Index général"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Documentation Private v0.1</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Log4j2</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, dorian delaval.
+      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+    </div>
+  </body>
+</html>

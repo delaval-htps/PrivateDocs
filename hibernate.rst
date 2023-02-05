@@ -7,4 +7,3 @@ Hibernate
 
    oneToOne
    oneToMany
-   manytoMany
