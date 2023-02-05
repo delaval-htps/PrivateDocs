@@ -20,7 +20,7 @@ Les entiers
 
 Les flottants
 +++++++++++++
-.. image:: _static/type-flottant.png
+.. image:: ../_static/type-flottant.png
     :width: 50%
     :alt: les types d'entiers
 

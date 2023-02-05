@@ -4,7 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Types en Java &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,6 +14,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     
@@ -46,9 +47,9 @@
           <div class="body" role="main">
             
   <section id="types-en-java">
-<h1>Types en Java<a class="headerlink" href="#types-en-java" title="Lien permanent vers ce titre">¶</a></h1>
+<h1>Types en Java<a class="headerlink" href="#types-en-java" title="Lien permanent vers cette rubrique">¶</a></h1>
 <section id="types-primitifs">
-<h2>Types Primitifs<a class="headerlink" href="#types-primitifs" title="Lien permanent vers ce titre">¶</a></h2>
+<h2>Types Primitifs<a class="headerlink" href="#types-primitifs" title="Lien permanent vers cette rubrique">¶</a></h2>
 <p>4 types primitfs en Java:</p>
 <ul class="simple">
 <li><p>les entiers</p></li>
@@ -57,42 +58,42 @@
 <li><p>les booleans</p></li>
 </ul>
 <section id="les-entiers">
-<h3>Les entiers<a class="headerlink" href="#les-entiers" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Les entiers<a class="headerlink" href="#les-entiers" title="Lien permanent vers cette rubrique">¶</a></h3>
 <a class="reference internal image-reference" href="_images/type-entier.png"><img alt="les types d'entiers" src="_images/type-entier.png" style="width: 50%;" /></a>
 </section>
 <section id="les-flottants">
-<h3>Les flottants<a class="headerlink" href="#les-flottants" title="Lien permanent vers ce titre">¶</a></h3>
-<a class="reference internal image-reference" href="_images/type-flottant.png"><img alt="les types d'entiers" src="_images/type-flottant.png" style="width: 50%;" /></a>
+<h3>Les flottants<a class="headerlink" href="#les-flottants" title="Lien permanent vers cette rubrique">¶</a></h3>
+<a class="reference internal image-reference" href="../_static/type-flottant.png"><img alt="les types d'entiers" src="../_static/type-flottant.png" style="width: 50%;" /></a>
 </section>
 <section id="les-caracteres">
-<h3>Les caractéres<a class="headerlink" href="#les-caracteres" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Les caractéres<a class="headerlink" href="#les-caracteres" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>mot clef: <strong>char</strong> .</p>
 <p>Java représente les caracteres en memoires sur 2 octets.</p>
 <p>On peut aussi obtenir leur valeur en int</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;E&#39;</span><span class="p">;</span>
-<span class="kt">char</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">Println</span><span class="p">(</span><span class="s">&quot; a = &quot;</span><span class="o">+</span> <span class="n">a</span><span class="p">);</span>
-<span class="c1">// affichera a = A</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">65</span><span class="p">;</span><span class="w"></span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">Println</span><span class="p">(</span><span class="s">&quot; a = &quot;</span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// affichera a = A</span><span class="w"></span>
 </pre></div>
 </div>
 <p>ci dessous, les charactéres ne disposant pas de graphisme :</p>
 <a class="reference internal image-reference" href="_images/type-char.png"><img alt="les types de caracteres" src="_images/type-char.png" style="width: 50%;" /></a>
 </section>
 <section id="les-booleans">
-<h3>Les booleans<a class="headerlink" href="#les-booleans" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Les booleans<a class="headerlink" href="#les-booleans" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>Ils sont notés soit <em>true</em> ou <em>false</em></p>
 </section>
 <section id="constante-de-type-primitifs">
-<h3>Constante de Type Primitifs<a class="headerlink" href="#constante-de-type-primitifs" title="Lien permanent vers ce titre">¶</a></h3>
+<h3>Constante de Type Primitifs<a class="headerlink" href="#constante-de-type-primitifs" title="Lien permanent vers cette rubrique">¶</a></h3>
 <p>En java on utilise le mot clef : <strong>final</strong></p>
 <p>Il est d”<em>usage</em> d’ecrire le nom de la constante en <strong>majuscule</strong></p>
 <p>Et on peut l’intialiser en différé soit un peu aprés sa déclaration.</p>
 <p>Donc <strong>final</strong> différe quelque peu de la notion de constante symbolique:</p>
 <p>pour résumer en Java, <strong>final</strong> permet de déclarer que la variable aura une valeur fixe et immuable une fois son initialisation effectuée</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span><span class="mi">20</span><span class="p">;</span>
-<span class="c1">// permet d&#39;ulitser la constante a partir d&#39;un Object et non d&#39;instance</span>
-<span class="c1">//et ceci partout puisqu&#39;elle est déclarée en public static</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// permet d&#39;ulitser la constante a partir d&#39;un Object et non d&#39;instance</span><span class="w"></span>
+<span class="c1">//et ceci partout puisqu&#39;elle est déclarée en public static</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -106,8 +107,9 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table des matières</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table des matières</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Types en Java</a><ul>
 <li><a class="reference internal" href="#types-primitifs">Types Primitifs</a><ul>
 <li><a class="reference internal" href="#les-entiers">Les entiers</a></li>
@@ -121,12 +123,17 @@
 </li>
 </ul>
 
-  <h4>Sujet précédent</h4>
-  <p class="topless"><a href="java.html"
-                        title="Chapitre précédent">Java</a></p>
-  <h4>Sujet suivant</h4>
-  <p class="topless"><a href="operateurs.html"
-                        title="Chapitre suivant">Les Opérateurs</a></p>
+  </div>
+  <div>
+    <h4>Sujet précédent</h4>
+    <p class="topless"><a href="java.html"
+                          title="Chapitre précédent">Java</a></p>
+  </div>
+  <div>
+    <h4>Sujet suivant</h4>
+    <p class="topless"><a href="operateurs.html"
+                          title="Chapitre suivant">Les Opérateurs</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -143,7 +150,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -167,7 +174,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>
