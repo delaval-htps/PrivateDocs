@@ -4,7 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>oneToMany &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,7 +14,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     
@@ -47,20 +46,20 @@
           <div class="body" role="main">
             
   <section id="onetomany">
-<h1>oneToMany<a class="headerlink" href="#onetomany" title="Lien permanent vers cette rubrique">¶</a></h1>
+<h1>oneToMany<a class="headerlink" href="#onetomany" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Pour une description plus détaillée cf le lien suivant</p>
 <p><a class="reference external" href="https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/">OneToMany relationship with JPA &amp; hibernate</a></p>
 <section id="unidirectionnel">
-<h2>Unidirectionnel<a class="headerlink" href="#unidirectionnel" title="Lien permanent vers cette rubrique">¶</a></h2>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Post</span><span class="p">{</span><span class="w"></span>
+<h2>Unidirectionnel<a class="headerlink" href="#unidirectionnel" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Post</span><span class="p">{</span>
 
-<span class="w">  </span><span class="nd">@OneToMany</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">cascade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="n">orphanRemoval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="n">fetch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FetchType</span><span class="p">.</span><span class="na">EAGER</span><span class="p">)</span><span class="w"></span>
+  <span class="nd">@OneToMany</span><span class="p">(</span>
+      <span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">,</span>
+      <span class="n">orphanRemoval</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="n">fetch</span> <span class="o">=</span> <span class="n">FetchType</span><span class="p">.</span><span class="na">EAGER</span><span class="p">)</span>
 
-<span class="w">  </span><span class="nd">@JoinColumn</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;produit_id&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// c&#39;est la FK qui sera dans la table &#39;comment&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">postComments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w"></span>
+  <span class="nd">@JoinColumn</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;produit_id&quot;</span><span class="p">)</span> <span class="c1">// c&#39;est la FK qui sera dans la table &#39;comment&#39;</span>
+      <span class="n">List</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span> <span class="n">postComments</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </pre></div>
 </div>
 <ul>
@@ -86,25 +85,25 @@
 </div>
 </section>
 <section id="bidirectionnel">
-<h2>Bidirectionnel<a class="headerlink" href="#bidirectionnel" title="Lien permanent vers cette rubrique">¶</a></h2>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Post</span><span class="p">{</span><span class="w"></span>
+<h2>Bidirectionnel<a class="headerlink" href="#bidirectionnel" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Post</span><span class="p">{</span>
 
-<span class="w">  </span><span class="nd">@OneToMany</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">mappedBy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;post&quot;</span><span class="w"> </span><span class="c1">// on fait référence à l&#39;attribut dans l&#39;autre classe: PostComment</span><span class="w"></span>
-<span class="w">      </span><span class="n">cascade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="n">orphanRemoval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">postComments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w"></span>
+  <span class="nd">@OneToMany</span><span class="p">(</span>
+      <span class="n">mappedBy</span> <span class="o">=</span> <span class="s">&quot;post&quot;</span> <span class="c1">// on fait référence à l&#39;attribut dans l&#39;autre classe: PostComment</span>
+      <span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">,</span>
+      <span class="n">orphanRemoval</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span> <span class="n">postComments</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>il n’y a plus de FetchType EAGER : <strong>on garde le fetch FetchType:LAZY par défaut d’hibernate</strong></p></li>
 <li><p>On supprime le <strong>&#64;JoinColumn et on le remplace par mappedBy</strong> avec comme référence l’attribut qui est désigné dans l’autre classe :PostComment</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PostComment</span><span class="p">{</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PostComment</span><span class="p">{</span>
 
-<span class="w">  </span><span class="nd">@ManyToOne</span><span class="p">(</span><span class="n">cascade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="nd">@JoinColumn</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;postID&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">//référence FK dans la table PostComment sur la colonne de Post: postID&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">Post</span><span class="w"> </span><span class="n">post</span><span class="p">;</span><span class="w"></span>
+  <span class="nd">@ManyToOne</span><span class="p">(</span><span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">)</span>
+  <span class="nd">@JoinColumn</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;postID&quot;</span><span class="p">)</span> <span class="c1">//référence FK dans la table PostComment sur la colonne de Post: postID&#39;</span>
+  <span class="kd">private</span> <span class="n">Post</span> <span class="n">post</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -115,35 +114,35 @@
 <a class="reference internal image-reference" href="_images/many-to-one.png"><img alt="_images/many-to-one.png" class="align-center" src="_images/many-to-one.png" style="width: 30%;" /></a>
 </section>
 <section id="helpers-method">
-<h2>Helpers Method<a class="headerlink" href="#helpers-method" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Helpers Method<a class="headerlink" href="#helpers-method" title="Lien permanent vers ce titre">¶</a></h2>
 <p>On utilise <strong>des Helpers Method dans la classe OneToMany</strong> pour permettre de simplifier la persistance en cascade.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addComment</span><span class="p">(</span><span class="n">PostComment</span><span class="w"> </span><span class="n">comment</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">     </span><span class="n">comments</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">comment</span><span class="p">);</span><span class="w"></span>
-<span class="w">     </span><span class="n">comment</span><span class="p">.</span><span class="na">setPost</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
-<span class="w"> </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">addComment</span><span class="p">(</span><span class="n">PostComment</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">comments</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">comment</span><span class="p">);</span>
+     <span class="n">comment</span><span class="p">.</span><span class="na">setPost</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+ <span class="p">}</span>
 
-<span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">removeComment</span><span class="p">(</span><span class="n">PostComment</span><span class="w"> </span><span class="n">comment</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">     </span><span class="n">comments</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">comment</span><span class="p">);</span><span class="w"></span>
-<span class="w">     </span><span class="n">comment</span><span class="p">.</span><span class="na">setPost</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w"></span>
-<span class="w"> </span><span class="p">}</span><span class="w"></span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeComment</span><span class="p">(</span><span class="n">PostComment</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">comments</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">comment</span><span class="p">);</span>
+     <span class="n">comment</span><span class="p">.</span><span class="na">setPost</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+ <span class="p">}</span>
 </pre></div>
 </div>
 </section>
 <section id="override-equals-hashcode">
-<h2>Override equals &amp; hashcode<a class="headerlink" href="#override-equals-hashcode" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Override equals &amp; hashcode<a class="headerlink" href="#override-equals-hashcode" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Dans la classe Many to One,il est recommandé de redefinir les methodes equals et hashcode</p>
 <p>en prennant en compte l’identifiant Id:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span><span class="w"></span>
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">o</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">PostComment</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">id</span><span class="p">.</span><span class="na">equals</span><span class="p">(((</span><span class="n">PostComment</span><span class="p">)</span><span class="w"> </span><span class="n">o</span><span class="p">).</span><span class="na">getId</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Object</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">o</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">PostComment</span> <span class="p">))</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="k">return</span> <span class="n">id</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">id</span><span class="p">.</span><span class="na">equals</span><span class="p">(((</span><span class="n">PostComment</span><span class="p">)</span> <span class="n">o</span><span class="p">).</span><span class="na">getId</span><span class="p">());</span>
+  <span class="p">}</span>
 
-<span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hashCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">getClass</span><span class="p">().</span><span class="na">hashCode</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">getClass</span><span class="p">().</span><span class="na">hashCode</span><span class="p">();</span>
+  <span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -156,9 +155,8 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="index.html">Table des matières</a></h3>
-    <ul>
+  <h3><a href="index.html">Table des matières</a></h3>
+  <ul>
 <li><a class="reference internal" href="#">oneToMany</a><ul>
 <li><a class="reference internal" href="#unidirectionnel">Unidirectionnel</a></li>
 <li><a class="reference internal" href="#bidirectionnel">Bidirectionnel</a></li>
@@ -168,17 +166,12 @@
 </li>
 </ul>
 
-  </div>
-  <div>
-    <h4>Sujet précédent</h4>
-    <p class="topless"><a href="oneToOne.html"
-                          title="Chapitre précédent">Test</a></p>
-  </div>
-  <div>
-    <h4>Sujet suivant</h4>
-    <p class="topless"><a href="sql.html"
-                          title="Chapitre suivant">SQL</a></p>
-  </div>
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="oneToOne.html"
+                        title="Chapitre précédent">Test</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="sql.html"
+                        title="Chapitre suivant">SQL</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -195,7 +188,7 @@
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -219,7 +212,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

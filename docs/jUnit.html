@@ -4,7 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>JUnit &amp; ses Annotations &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,7 +14,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     
@@ -47,99 +46,99 @@
           <div class="body" role="main">
             
   <section id="junit-ses-annotations">
-<h1>JUnit &amp; ses Annotations<a class="headerlink" href="#junit-ses-annotations" title="Lien permanent vers cette rubrique">¶</a></h1>
+<h1>JUnit &amp; ses Annotations<a class="headerlink" href="#junit-ses-annotations" title="Lien permanent vers ce titre">¶</a></h1>
 <section id="annotations-standards">
-<h2>Annotations Standards<a class="headerlink" href="#annotations-standards" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Annotations Standards<a class="headerlink" href="#annotations-standards" title="Lien permanent vers ce titre">¶</a></h2>
 <section id="beforeeach">
-<h3>&#64;BeforeEach<a class="headerlink" href="#beforeeach" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;BeforeEach<a class="headerlink" href="#beforeeach" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Exécutez une méthode avant chaque test. C’est un très bon emplacement pour installer ou organiser un prérequis pour vos tests.</p>
 </section>
 <section id="aftereach">
-<h3>&#64;AfterEach<a class="headerlink" href="#aftereach" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;AfterEach<a class="headerlink" href="#aftereach" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Exécutez une méthode après chaque test. C’est un très bon emplacement pour nettoyer ou satisfaire à une postcondition.</p>
 </section>
 <section id="beforeall">
-<h3>&#64;BeforeAll<a class="headerlink" href="#beforeall" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;BeforeAll<a class="headerlink" href="#beforeall" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Désignez une <strong>méthode statique</strong> pour qu’elle soit exécutée avant tous vos tests. Vous pouvez l’utiliser pour installer d’autres variables statiques pour vos tests.</p>
 </section>
 <section id="afterall">
-<h3>&#64;AfterAll<a class="headerlink" href="#afterall" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;AfterAll<a class="headerlink" href="#afterall" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Désignez une <strong>méthode statique</strong> pour qu’elle soit exécutée après tous vos tests. Vous pouvez utiliser ceci pour nettoyer les dépendances statiques.</p>
 </section>
 <section id="parametrizedtest">
-<h3>&#64;ParametrizedTest<a class="headerlink" href="#parametrizedtest" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;ParametrizedTest<a class="headerlink" href="#parametrizedtest" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Vous souhaitez réutiliser le même test avec plusieurs entrants (&#64;ValueSource) voire plusieurs entrants/sortants (&#64;CsvSource).</p>
 </section>
 <section id="timeout">
-<h3>&#64;Timeout<a class="headerlink" href="#timeout" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;Timeout<a class="headerlink" href="#timeout" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Si vous testez une méthode qui ne doit pas être trop lente, vous pouvez la forcer à échouer le test.</p>
 </section>
 </section>
 <section id="annotations-avancees">
-<h2>Annotations Avancées<a class="headerlink" href="#annotations-avancees" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Annotations Avancées<a class="headerlink" href="#annotations-avancees" title="Lien permanent vers ce titre">¶</a></h2>
 <section id="tag">
-<h3>&#64;tag<a class="headerlink" href="#tag" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;tag<a class="headerlink" href="#tag" title="Lien permanent vers ce titre">¶</a></h3>
 <p>On peut catégoriser un test grace a cette annotation . un test peut avoir plusieurs tag
 exemple:</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@tag</span><span class="p">(</span><span class="s">&quot;le nom de la catégorie des tests&quot;</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@tag</span><span class="p">(</span><span class="s">&quot;le nom de la catégorie des tests&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="displayname">
-<h3>&#64;DisplayName<a class="headerlink" href="#displayname" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;DisplayName<a class="headerlink" href="#displayname" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Permet de nommer les tests de facon plus lisible que le nom de la methode test
 exemple :</p>
 <blockquote>
-<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@DisplayName</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;Soit une entrée de valeur positive, lorsqu&#39;on applique la méthode , alors on doit avoir comme résultat ... &quot;</span><span class="p">)</span><span class="w"></span>
+<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@DisplayName</span> <span class="p">(</span><span class="s">&quot;Soit une entrée de valeur positive, lorsqu&#39;on applique la méthode , alors on doit avoir comme résultat ... &quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 </section>
 <section id="nested">
-<h3>&#64;Nested<a class="headerlink" href="#nested" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;Nested<a class="headerlink" href="#nested" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Permet de grouper vos tests dans une classe interne. Si un seul test echoué , le groupe échoue
 example:</p>
 <blockquote>
-<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Nested</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@Tag</span><span class="p">(</span><span class="s">&quot;TemperatureTests&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Réussir à convertir des températures&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">class</span> <span class="nc">TemperatureTests</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nd">@Test</span><span class="w"></span>
-<span class="w">            </span><span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Soit une T° à 0°C, lorsque l&#39;on convertit en °F, alors on obtient 32°F.&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">celsiusToFahrenheit_returnsAFahrenheitTempurature_whenCelsiusIsZero</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="n">Double</span><span class="w"> </span><span class="n">actualFahrenheit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculatorUnderTest</span><span class="p">.</span><span class="na">celsiusToFahrenheit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
-<span class="w">                    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">actualFahrenheit</span><span class="p">).</span><span class="na">isCloseTo</span><span class="p">(</span><span class="mf">32.0</span><span class="p">,</span><span class="w"> </span><span class="n">withinPercentage</span><span class="p">(</span><span class="mf">0.01</span><span class="p">));</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Nested</span>
+    <span class="nd">@Tag</span><span class="p">(</span><span class="s">&quot;TemperatureTests&quot;</span><span class="p">)</span>
+    <span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Réussir à convertir des températures&quot;</span><span class="p">)</span>
+    <span class="kd">class</span> <span class="nc">TemperatureTests</span> <span class="p">{</span>
+            <span class="nd">@Test</span>
+            <span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Soit une T° à 0°C, lorsque l&#39;on convertit en °F, alors on obtient 32°F.&quot;</span><span class="p">)</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">celsiusToFahrenheit_returnsAFahrenheitTempurature_whenCelsiusIsZero</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="n">Double</span> <span class="n">actualFahrenheit</span> <span class="o">=</span> <span class="n">calculatorUnderTest</span><span class="p">.</span><span class="na">celsiusToFahrenheit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
+                    <span class="n">assertThat</span><span class="p">(</span><span class="n">actualFahrenheit</span><span class="p">).</span><span class="na">isCloseTo</span><span class="p">(</span><span class="mf">32.0</span><span class="p">,</span> <span class="n">withinPercentage</span><span class="p">(</span><span class="mf">0.01</span><span class="p">));</span>
+            <span class="p">}</span>
 
-<span class="w">            </span><span class="nd">@Test</span><span class="w"></span>
-<span class="w">            </span><span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Soit une T° à 32°F, lorsque l&#39;on convertit en °C, alors on obtient 0°C.&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fahrenheitToCelsius_returnsZeroCelciusTempurature_whenThirtyTwo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="n">Double</span><span class="w"> </span><span class="n">actualCelsius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculatorUnderTest</span><span class="p">.</span><span class="na">fahrenheitToCelsius</span><span class="p">(</span><span class="mf">32.0</span><span class="p">);</span><span class="w"></span>
-<span class="w">                    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">actualCelsius</span><span class="p">).</span><span class="na">isCloseTo</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">withinPercentage</span><span class="p">(</span><span class="mf">0.01</span><span class="p">));</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+            <span class="nd">@Test</span>
+            <span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;Soit une T° à 32°F, lorsque l&#39;on convertit en °C, alors on obtient 0°C.&quot;</span><span class="p">)</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fahrenheitToCelsius_returnsZeroCelciusTempurature_whenThirtyTwo</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="n">Double</span> <span class="n">actualCelsius</span> <span class="o">=</span> <span class="n">calculatorUnderTest</span><span class="p">.</span><span class="na">fahrenheitToCelsius</span><span class="p">(</span><span class="mf">32.0</span><span class="p">);</span>
+                    <span class="n">assertThat</span><span class="p">(</span><span class="n">actualCelsius</span><span class="p">).</span><span class="na">isCloseTo</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">withinPercentage</span><span class="p">(</span><span class="mf">0.01</span><span class="p">));</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
 </section>
 <section id="extendwith">
-<h3>&#64;ExtendWith<a class="headerlink" href="#extendwith" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;ExtendWith<a class="headerlink" href="#extendwith" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Permet de modifier le déroulement des tests menés par Junit5
 entre autre uitlisation d’un logger class de log pour afficher les messages dans un log ou une sortie standard out au lieu d’utiliser des println</p>
 </section>
 <section id="disable">
-<h3>&#64;Disable<a class="headerlink" href="#disable" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;Disable<a class="headerlink" href="#disable" title="Lien permanent vers ce titre">¶</a></h3>
 <p>placé juste au dessus &#64;test , permet de taire un test pour le moment et de pouvoir y revenir aprés.
 Mettre un commentaire pour expliquer ex:</p>
 <blockquote>
-<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Disable</span><span class="p">(</span><span class="s">&quot;Stoppé car cela arrive tous les mardis&quot;</span><span class="p">)</span><span class="w"></span>
+<div><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Disable</span><span class="p">(</span><span class="s">&quot;Stoppé car cela arrive tous les mardis&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 </section>
 </section>
 <section id="assertj">
-<h2>AssertJ<a class="headerlink" href="#assertj" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>AssertJ<a class="headerlink" href="#assertj" title="Lien permanent vers ce titre">¶</a></h2>
 <p>c’est une librairie permettant d’utiliser des Assertions plus parlantes pour l’utilisateur.</p>
 <p>Elle est intéressante car elle comporte différents modules à utiliser pour des cas particuliers: exemple assertJ DB Module</p>
 <div class="admonition seealso">
@@ -150,7 +149,7 @@ Mettre un commentaire pour expliquer ex:</p>
 </div>
 </section>
 <section id="la-couverture-du-code">
-<h2>La couverture du code<a class="headerlink" href="#la-couverture-du-code" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>La couverture du code<a class="headerlink" href="#la-couverture-du-code" title="Lien permanent vers ce titre">¶</a></h2>
 <p><strong>La couverture des test = quantité de code couverte par les test / quantité de codes total</strong></p>
 <p>Pour connaitre la couverture du code par les tests, il faut d’abord savoir sur quel critére on se base pour compter la quantité de code :</p>
 <blockquote>
@@ -162,8 +161,8 @@ Mettre un commentaire pour expliquer ex:</p>
 </ul>
 </div></blockquote>
 <section id="eclemma-eclipse">
-<h3>EclEmma(Eclipse)<a class="headerlink" href="#eclemma-eclipse" title="Lien permanent vers cette rubrique">¶</a></h3>
-<p>il suffit d’utiliser le « coverage as «  JUnit Test sur la classe Test.</p>
+<h3>EclEmma(Eclipse)<a class="headerlink" href="#eclemma-eclipse" title="Lien permanent vers ce titre">¶</a></h3>
+<p>il suffit d’utiliser le « coverage as  » JUnit Test sur la classe Test.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/eclEmma.png"><img alt="_images/eclEmma.png" src="_images/eclEmma.png" style="width: 60%;" /></a>
 </div></blockquote>
@@ -171,12 +170,12 @@ Mettre un commentaire pour expliquer ex:</p>
 <img alt="_images/CoverageEclEmma.png" src="_images/CoverageEclEmma.png" />
 </section>
 <section id="jacoco">
-<h3>JACOCO<a class="headerlink" href="#jacoco" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>JACOCO<a class="headerlink" href="#jacoco" title="Lien permanent vers ce titre">¶</a></h3>
 <p><strong>Java Codes Coverage</strong></p>
 <p>Donne un rapport sur page html avec uniquement le pourcentage de couverture de code sur le src/main</p>
 </section>
 <section id="config">
-<h3>Config<a class="headerlink" href="#config" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Config<a class="headerlink" href="#config" title="Lien permanent vers ce titre">¶</a></h3>
 <dl>
 <dt>rajouter le plugin <strong>jacoco-maven-plugin</strong></dt><dd><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugin&gt;</span>
             <span class="nt">&lt;groupId&gt;</span>org.jacoco<span class="nt">&lt;/groupId&gt;</span>
@@ -203,7 +202,7 @@ Mettre un commentaire pour expliquer ex:</p>
 </dl>
 </section>
 <section id="excecution">
-<h3>Excecution<a class="headerlink" href="#excecution" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Excecution<a class="headerlink" href="#excecution" title="Lien permanent vers ce titre">¶</a></h3>
 <blockquote>
 <div><p>Executer dans le terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn clean package
@@ -222,9 +221,8 @@ Mettre un commentaire pour expliquer ex:</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="index.html">Table des matières</a></h3>
-    <ul>
+  <h3><a href="index.html">Table des matières</a></h3>
+  <ul>
 <li><a class="reference internal" href="#">JUnit &amp; ses Annotations</a><ul>
 <li><a class="reference internal" href="#annotations-standards">Annotations Standards</a><ul>
 <li><a class="reference internal" href="#beforeeach">&#64;BeforeEach</a></li>
@@ -255,17 +253,12 @@ Mettre un commentaire pour expliquer ex:</p>
 </li>
 </ul>
 
-  </div>
-  <div>
-    <h4>Sujet précédent</h4>
-    <p class="topless"><a href="test%20unitaire.html"
-                          title="Chapitre précédent">Les Tests</a></p>
-  </div>
-  <div>
-    <h4>Sujet suivant</h4>
-    <p class="topless"><a href="mockito.html"
-                          title="Chapitre suivant">Mockito</a></p>
-  </div>
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="test%20unitaire.html"
+                        title="Chapitre précédent">Les Tests</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="mockito.html"
+                        title="Chapitre suivant">Mockito</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -282,7 +275,7 @@ Mettre un commentaire pour expliquer ex:</p>
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -306,7 +299,7 @@ Mettre un commentaire pour expliquer ex:</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

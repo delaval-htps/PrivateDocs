@@ -4,7 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Tests d’Intégration &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,7 +14,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     
@@ -47,55 +46,55 @@
           <div class="body" role="main">
             
   <section id="tests-d-integration">
-<h1>Tests d’Intégration<a class="headerlink" href="#tests-d-integration" title="Lien permanent vers cette rubrique">¶</a></h1>
+<h1>Tests d’Intégration<a class="headerlink" href="#tests-d-integration" title="Lien permanent vers ce titre">¶</a></h1>
 <p>tests qui permettent de verifier la cohérence et efficacité de l’ensemble des composants du code (classes)
 Il en existe 2 types</p>
 <section id="les-test-d-integration-composants">
-<h2>Les test d’intégration Composants<a class="headerlink" href="#les-test-d-integration-composants" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Les test d’intégration Composants<a class="headerlink" href="#les-test-d-integration-composants" title="Lien permanent vers ce titre">¶</a></h2>
 <p>permettent de verifier si plusieurs unités de code fonctionnent entre elles dans un environnement isolé sans lien avec des composants extérieurs</p>
 <section id="creation-d-un-it-composant">
-<h3>Création d’un IT composant<a class="headerlink" href="#creation-d-un-it-composant" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Création d’un IT composant<a class="headerlink" href="#creation-d-un-it-composant" title="Lien permanent vers ce titre">¶</a></h3>
 <section id="convention">
-<h4>1. Convention<a class="headerlink" href="#convention" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h4>1. Convention<a class="headerlink" href="#convention" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Par convention on nomme une classe de test d’intégration <strong>avec IT à la fin</strong></p>
 <p>exemple: <strong>CalculatorServiceIT.java</strong></p>
 </section>
 <section id="creation">
-<h4>2. Création<a class="headerlink" href="#creation" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h4>2. Création<a class="headerlink" href="#creation" title="Lien permanent vers ce titre">¶</a></h4>
 <p>C’est le même principe qu’un <strong>test unitaire mais on n’utilise pas de mock</strong>.</p>
 <p>On crée directement une instance de la classe  dont on a besoin pour notre CUT dans la partie //GIVEN:</p>
 <blockquote>
-<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nn">com.openclassrooms.testing.calcul.service</span><span class="p">;</span><span class="w"></span>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.openclassrooms.testing.calcul.service</span><span class="p">;</span>
 
-<span class="kn">import static</span><span class="w"> </span><span class="nn">org.assertj.core.api.Assertions.assertThat</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import static</span> <span class="nn">org.assertj.core.api.Assertions.assertThat</span><span class="p">;</span>
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CalculatorServiceIT</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalculatorServiceIT</span> <span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// Mettre en place des objets réels non mockés</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Calculator</span><span class="w"> </span><span class="n">calculator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Calculator</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">SolutionFormatter</span><span class="w"> </span><span class="n">formatter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SolutionFormatterImpl</span><span class="p">();</span><span class="w"></span>
+    <span class="c1">// Mettre en place des objets réels non mockés</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Calculator</span> <span class="n">calculator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">();</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">SolutionFormatter</span> <span class="n">formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SolutionFormatterImpl</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// Initialiser la classe à tester</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CalculatorService</span><span class="w"> </span><span class="n">underTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CalculatorServiceImpl</span><span class="p">(</span><span class="n">calculator</span><span class="p">,</span><span class="w"> </span><span class="n">formatter</span><span class="p">);</span><span class="w"></span>
+    <span class="c1">// Initialiser la classe à tester</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">CalculatorService</span> <span class="n">underTest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CalculatorServiceImpl</span><span class="p">(</span><span class="n">calculator</span><span class="p">,</span> <span class="n">formatter</span><span class="p">);</span>
 
-<span class="w">    </span><span class="nd">@Test</span><span class="w"></span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">calculatorService_shouldCalculateASolution_whenGivenACalculationModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="c1">// GIVEN</span><span class="w"></span>
-<span class="w">            </span><span class="kd">final</span><span class="w"> </span><span class="n">CalculationModel</span><span class="w"> </span><span class="n">calculation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CalculationModel</span><span class="p">(</span><span class="n">CalculationType</span><span class="p">.</span><span class="na">ADDITION</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="c1">// WHEN</span><span class="w"></span>
-<span class="w">            </span><span class="kd">final</span><span class="w"> </span><span class="n">CalculationModel</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">underTest</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">calculation</span><span class="p">);</span><span class="w"></span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">calculatorService_shouldCalculateASolution_whenGivenACalculationModel</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// GIVEN</span>
+            <span class="kd">final</span> <span class="n">CalculationModel</span> <span class="n">calculation</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CalculationModel</span><span class="p">(</span><span class="n">CalculationType</span><span class="p">.</span><span class="na">ADDITION</span><span class="p">,</span>
+                            <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">);</span>
+            <span class="c1">// WHEN</span>
+            <span class="kd">final</span> <span class="n">CalculationModel</span> <span class="n">result</span> <span class="o">=</span> <span class="n">underTest</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">calculation</span><span class="p">);</span>
 
-<span class="w">            </span><span class="c1">// THEN</span><span class="w"></span>
-<span class="w">            </span><span class="n">assertThat</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">getSolution</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="mi">201</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+            <span class="c1">// THEN</span>
+            <span class="n">assertThat</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">getSolution</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="mi">201</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
 </section>
 <section id="lancement-des-it">
-<h4>3. lancement des IT<a class="headerlink" href="#lancement-des-it" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h4>3. lancement des IT<a class="headerlink" href="#lancement-des-it" title="Lien permanent vers ce titre">¶</a></h4>
 <p>On utilise Maven , sachant que <strong>mvn package</strong>, nous fait un build , les tests unitaires et le packaging des sources.</p>
 <p>Ici on va utiliser:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$mvn verify
@@ -105,26 +104,26 @@ Il en existe 2 types</p>
 </section>
 </section>
 <section id="les-test-d-integration-systeme-sit">
-<h2>Les Test d’intégration Système (SIT)<a class="headerlink" href="#les-test-d-integration-systeme-sit" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Les Test d’intégration Système (SIT)<a class="headerlink" href="#les-test-d-integration-systeme-sit" title="Lien permanent vers ce titre">¶</a></h2>
 <p>permettent de vérifier le fonctionnement de plusieurs unités au sein d’une config d’application avec des liens à des composants exterieures tels que BDD fichiers, API en réseau…</p>
 <section id="id1">
-<h3>Convention<a class="headerlink" href="#id1" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Convention<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
 <p><strong>On utilisera le FrameWork Spring qui propose des outils pour les SIT.</strong>
 le nom de classe se termine par <strong>SIT</strong> pour avoir le IT a la fin et que mvn puisse faire la différence avec les test unitaires</p>
 </section>
 <section id="annotations-spring">
-<h3>Annotations Spring<a class="headerlink" href="#annotations-spring" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Annotations Spring<a class="headerlink" href="#annotations-spring" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Du coup il faut utiliser les annotations suivantes:</p>
 <section id="webmvctest">
-<h4>1. &#64;WebMvcTest<a class="headerlink" href="#webmvctest" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h4>1. &#64;WebMvcTest<a class="headerlink" href="#webmvctest" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Pour Initialiser les classes utilisées sur lesquels ont veux faire le test SIT ( verifier le comportement )</p>
 </section>
 <section id="extendwith">
-<h4>2. &#64;ExtendWith<a class="headerlink" href="#extendwith" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h4>2. &#64;ExtendWith<a class="headerlink" href="#extendwith" title="Lien permanent vers ce titre">¶</a></h4>
 <p>on utilise (SpringExtension.class) : c’est Spring qui gére directemetnles Mocks et non mockito</p>
 </section>
 <section id="inject">
-<h4>3. &#64;Inject<a class="headerlink" href="#inject" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h4>3. &#64;Inject<a class="headerlink" href="#inject" title="Lien permanent vers ce titre">¶</a></h4>
 <p>On va injecter le service MockMvc (&#64;Inject = &#64;Autowired mais plus générique)
 l’injection de dépendance peut se faire parceque nous avons déclarer les classes injectées avec:</p>
 <blockquote>
@@ -138,47 +137,47 @@ l’injection de dépendance peut se faire parceque nous avons déclarer les cla
 </div></blockquote>
 </section>
 <section id="mockbean">
-<h4>4.&#64;MockBean<a class="headerlink" href="#mockbean" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h4>4.&#64;MockBean<a class="headerlink" href="#mockbean" title="Lien permanent vers ce titre">¶</a></h4>
 <p>on demande à Spring de nous créer les Mocks nécessaire a la réalisation du test</p>
 </section>
 </section>
 <section id="exemple-de-test-sit">
-<h3>Exemple de test SIT<a class="headerlink" href="#exemple-de-test-sit" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Exemple de test SIT<a class="headerlink" href="#exemple-de-test-sit" title="Lien permanent vers ce titre">¶</a></h3>
 <blockquote>
-<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nd">@WebMvcTest</span><span class="p">(</span><span class="n">controllers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">CalculatorController</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">CalculatorService</span><span class="p">.</span><span class="na">class</span><span class="p">})</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@ExtendWith</span><span class="p">(</span><span class="n">SpringExtension</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CalculateurControllerSIT</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span>    <span class="nd">@WebMvcTest</span><span class="p">(</span><span class="n">controllers</span> <span class="o">=</span> <span class="p">{</span><span class="n">CalculatorController</span><span class="p">.</span><span class="na">class</span><span class="p">,</span> <span class="n">CalculatorService</span><span class="p">.</span><span class="na">class</span><span class="p">})</span>
+    <span class="nd">@ExtendWith</span><span class="p">(</span><span class="n">SpringExtension</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalculateurControllerSIT</span> <span class="p">{</span>
 
-<span class="w">    </span><span class="nd">@Inject</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">MockMvc</span><span class="w"> </span><span class="n">mockMvc</span><span class="p">;</span><span class="w"></span>
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="n">MockMvc</span> <span class="n">mockMvc</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@MockBean</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SolutionFormatter</span><span class="w"> </span><span class="n">solutionFormatter</span><span class="p">;</span><span class="w"></span>
+    <span class="nd">@MockBean</span>
+    <span class="kd">private</span> <span class="n">SolutionFormatter</span> <span class="n">solutionFormatter</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@MockBean</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Calculator</span><span class="w"> </span><span class="n">calculator</span><span class="p">;</span><span class="w"></span>
+    <span class="nd">@MockBean</span>
+    <span class="kd">private</span> <span class="n">Calculator</span> <span class="n">calculator</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@Test</span><span class="w"></span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">givenACalculatorApp_whenRequestToAdd_thenSolutionisShow</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="c1">// GIVEN on mock calculatr et solutionFormatter</span><span class="w"></span>
-<span class="w">            </span><span class="n">when</span><span class="p">(</span><span class="n">calculator</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)).</span><span class="na">thenReturn</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="n">when</span><span class="p">(</span><span class="n">solutionFormatter</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="mi">5</span><span class="p">)).</span><span class="na">thenReturn</span><span class="p">(</span><span class="s">&quot;5&quot;</span><span class="p">);</span><span class="w"></span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenACalculatorApp_whenRequestToAdd_thenSolutionisShow</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+            <span class="c1">// GIVEN on mock calculatr et solutionFormatter</span>
+            <span class="n">when</span><span class="p">(</span><span class="n">calculator</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)).</span><span class="na">thenReturn</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+            <span class="n">when</span><span class="p">(</span><span class="n">solutionFormatter</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="mi">5</span><span class="p">)).</span><span class="na">thenReturn</span><span class="p">(</span><span class="s">&quot;5&quot;</span><span class="p">);</span>
 
 
-<span class="c1">// WHEN on récupére le résultat de la simulation de la requete http et on vérifie le succes</span><span class="w"></span>
-<span class="n">MvcResult</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mockMvc</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">MockMvcRequestBuilders</span><span class="p">.</span><span class="na">post</span><span class="p">(</span><span class="s">&quot;/calculator&quot;</span><span class="p">).</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;leftArgument&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;calculationType&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ADDITION&quot;</span><span class="p">).</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;rightArgument&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="p">))</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">MockMvcResultMatchers</span><span class="p">.</span><span class="na">status</span><span class="p">().</span><span class="na">is2xxSuccessful</span><span class="p">()).</span><span class="na">andReturn</span><span class="p">();</span><span class="w"></span>
+<span class="c1">// WHEN on récupére le résultat de la simulation de la requete http et on vérifie le succes</span>
+<span class="n">MvcResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">mockMvc</span>
+    <span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">MockMvcRequestBuilders</span><span class="p">.</span><span class="na">post</span><span class="p">(</span><span class="s">&quot;/calculator&quot;</span><span class="p">).</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;leftArgument&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;calculationType&quot;</span><span class="p">,</span> <span class="s">&quot;ADDITION&quot;</span><span class="p">).</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;rightArgument&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">))</span>
+    <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">MockMvcResultMatchers</span><span class="p">.</span><span class="na">status</span><span class="p">().</span><span class="na">is2xxSuccessful</span><span class="p">()).</span><span class="na">andReturn</span><span class="p">();</span>
 
-<span class="c1">// THEN on verifie les utilisations des mocks et que le résultat est bien 5 dans la réponse html avec l&#39;id solution</span><span class="w"></span>
-<span class="n">verify</span><span class="p">(</span><span class="n">calculator</span><span class="p">,</span><span class="w"> </span><span class="n">times</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="na">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="n">verify</span><span class="p">(</span><span class="n">solutionFormatter</span><span class="p">,</span><span class="w"> </span><span class="n">times</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="na">format</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
-<span class="n">assertThat</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">getResponse</span><span class="p">().</span><span class="na">getContentAsString</span><span class="p">()).</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;id=\&quot;solution\&quot;&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;&gt;5&lt;/span&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// THEN on verifie les utilisations des mocks et que le résultat est bien 5 dans la réponse html avec l&#39;id solution</span>
+<span class="n">verify</span><span class="p">(</span><span class="n">calculator</span><span class="p">,</span> <span class="n">times</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="na">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">verify</span><span class="p">(</span><span class="n">solutionFormatter</span><span class="p">,</span> <span class="n">times</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="na">format</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">assertThat</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">getResponse</span><span class="p">().</span><span class="na">getContentAsString</span><span class="p">()).</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;id=\&quot;solution\&quot;&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;&gt;5&lt;/span&quot;</span><span class="p">);</span>
 
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+            <span class="p">}</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -193,9 +192,8 @@ l’injection de dépendance peut se faire parceque nous avons déclarer les cla
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="index.html">Table des matières</a></h3>
-    <ul>
+  <h3><a href="index.html">Table des matières</a></h3>
+  <ul>
 <li><a class="reference internal" href="#">Tests d’Intégration</a><ul>
 <li><a class="reference internal" href="#les-test-d-integration-composants">Les test d’intégration Composants</a><ul>
 <li><a class="reference internal" href="#creation-d-un-it-composant">Création d’un IT composant</a><ul>
@@ -222,17 +220,12 @@ l’injection de dépendance peut se faire parceque nous avons déclarer les cla
 </li>
 </ul>
 
-  </div>
-  <div>
-    <h4>Sujet précédent</h4>
-    <p class="topless"><a href="mockito.html"
-                          title="Chapitre précédent">Mockito</a></p>
-  </div>
-  <div>
-    <h4>Sujet suivant</h4>
-    <p class="topless"><a href="test%20fonctionnel.html"
-                          title="Chapitre suivant">Tests fonctionnels</a></p>
-  </div>
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="mockito.html"
+                        title="Chapitre précédent">Mockito</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="test%20fonctionnel.html"
+                        title="Chapitre suivant">Tests fonctionnels</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -249,7 +242,7 @@ l’injection de dépendance peut se faire parceque nous avons déclarer les cla
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -273,7 +266,7 @@ l’injection de dépendance peut se faire parceque nous avons déclarer les cla
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

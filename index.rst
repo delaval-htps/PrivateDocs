@@ -10,7 +10,7 @@ Personnal Documentation
    :maxdepth: 2
    :caption: Contents:
 
-   java
+   ./java/java
    tests
    git & github
    gestion de Projet

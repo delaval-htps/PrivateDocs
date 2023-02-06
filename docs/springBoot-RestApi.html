@@ -4,7 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Création d’une REST API &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,7 +14,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     
@@ -47,17 +46,17 @@
           <div class="body" role="main">
             
   <section id="creation-d-une-rest-api">
-<h1>Création d’une REST API<a class="headerlink" href="#creation-d-une-rest-api" title="Lien permanent vers cette rubrique">¶</a></h1>
+<h1>Création d’une REST API<a class="headerlink" href="#creation-d-une-rest-api" title="Lien permanent vers ce titre">¶</a></h1>
 <section id="creation-projet">
-<h2>Creation Projet<a class="headerlink" href="#creation-projet" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Creation Projet<a class="headerlink" href="#creation-projet" title="Lien permanent vers ce titre">¶</a></h2>
 <section id="springboot-starter">
-<h3>SpringBoot Starter<a class="headerlink" href="#springboot-starter" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>SpringBoot Starter<a class="headerlink" href="#springboot-starter" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Uliliser Springboot initializer ou springboot Starter dans eclipse.</p>
 <p>Renseigner les différents stater à utiliser.</p>
 <p>N epas oublier d’importer le projet si uitlisation de SpringBoot initializer.</p>
 </section>
 <section id="springbootapplication">
-<h3>&#64;SpringBootApplication<a class="headerlink" href="#springbootapplication" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>&#64;SpringBootApplication<a class="headerlink" href="#springbootapplication" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Annotation utilisée pour permettre au container de SpringBoot de manipuler les classes. Elle se compose de trois Annotations:</p>
 <ul class="simple">
 <li><p><strong>&#64;SpringBootConfiguration</strong>: la classe sera utiliser pour la configuration.</p></li>
@@ -65,13 +64,13 @@
 <li><p><strong>&#64;ComponentScan</strong>: active le scanning des classes et packages dans lesquels il trouvera les beans.</p></li>
 </ul>
 <section id="class-application">
-<h4>Class Application<a class="headerlink" href="#class-application" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h4>Class Application<a class="headerlink" href="#class-application" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Class de démarrage du projet qui contient la <strong>methode main():</strong></p>
 <p>Cette dernière appele <strong>SpringApplication.run(&lt;nom de la classe d’application&gt;.class,args);</strong></p>
 <p>C’est cette methode run qui lancera l’application.</p>
 </section>
 <section id="ajout-de-code-dans-la-classe-application">
-<h4>Ajout de code dans la classe Application<a class="headerlink" href="#ajout-de-code-dans-la-classe-application" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h4>Ajout de code dans la classe Application<a class="headerlink" href="#ajout-de-code-dans-la-classe-application" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Pour lancer du code depuis cette class Application:</p>
 <ul class="simple">
 <li><p>Ne pas toucher a la methode <strong>SpringApplication.run(&lt;nom de la classe d’application&gt;.class,args);</strong></p></li>
@@ -81,7 +80,7 @@
 <p>Au démarrage, SpringBoot exécutera en premier la méthode run() overridée</p>
 </section>
 <section id="application-properties">
-<h4>application.properties<a class="headerlink" href="#application-properties" title="Lien permanent vers cette rubrique">¶</a></h4>
+<h4>application.properties<a class="headerlink" href="#application-properties" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Fichier de configuration ou l’on mets les parametres de configuration(propriétés):</p>
 <p>exemple:</p>
 <ul class="simple">
@@ -101,9 +100,8 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="index.html">Table des matières</a></h3>
-    <ul>
+  <h3><a href="index.html">Table des matières</a></h3>
+  <ul>
 <li><a class="reference internal" href="#">Création d’une REST API</a><ul>
 <li><a class="reference internal" href="#creation-projet">Creation Projet</a><ul>
 <li><a class="reference internal" href="#springboot-starter">SpringBoot Starter</a></li>
@@ -119,17 +117,12 @@
 </li>
 </ul>
 
-  </div>
-  <div>
-    <h4>Sujet précédent</h4>
-    <p class="topless"><a href="springBoot.html"
-                          title="Chapitre précédent">SpringBoot</a></p>
-  </div>
-  <div>
-    <h4>Sujet suivant</h4>
-    <p class="topless"><a href="datasource-initialisation.html"
-                          title="Chapitre suivant">datasource-initialisation</a></p>
-  </div>
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="springBoot.html"
+                        title="Chapitre précédent">SpringBoot</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="datasource-initialisation.html"
+                        title="Chapitre suivant">datasource-initialisation</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -146,7 +139,7 @@
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -170,7 +163,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

@@ -4,7 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>SQL &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,7 +14,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     
@@ -42,9 +41,9 @@
           <div class="body" role="main">
             
   <section id="sql">
-<h1>SQL<a class="headerlink" href="#sql" title="Lien permanent vers cette rubrique">¶</a></h1>
+<h1>SQL<a class="headerlink" href="#sql" title="Lien permanent vers ce titre">¶</a></h1>
 <section id="one-to-one">
-<h2>One to One<a class="headerlink" href="#one-to-one" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>One to One<a class="headerlink" href="#one-to-one" title="Lien permanent vers ce titre">¶</a></h2>
 <p>La relation 1:1 est semblable a celle de 1:Many , elle peut s’effectuer de deux maniéres:</p>
 <ul>
 <li><p>Créer un FK avec le PK de chaque table dans les 2 tables: cela consiste a créer deux 1:M entre les deux tables</p></li>
@@ -71,9 +70,9 @@
 </ul>
 </section>
 <section id="transaction">
-<h2>Transaction<a class="headerlink" href="#transaction" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Transaction<a class="headerlink" href="#transaction" title="Lien permanent vers ce titre">¶</a></h2>
 <section id="definition">
-<h3>Definition<a class="headerlink" href="#definition" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Definition<a class="headerlink" href="#definition" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Les transactions permettent de regrouper plusieurs requetes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -91,7 +90,7 @@
 </div>
 </section>
 <section id="utilisation">
-<h3>Utilisation<a class="headerlink" href="#utilisation" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Utilisation<a class="headerlink" href="#utilisation" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Par Défaut, Mysql est en mode “autocommit”, ie: chaque requete est directement commitée sans retour en arriéré  possible.</p>
 <p>Pour quitter ce mode on peut faire la commande suivante:</p>
 <div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span><span class="w"> </span><span class="n">autocommit</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
@@ -118,9 +117,8 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="index.html">Table des matières</a></h3>
-    <ul>
+  <h3><a href="index.html">Table des matières</a></h3>
+  <ul>
 <li><a class="reference internal" href="#">SQL</a><ul>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#transaction">Transaction</a><ul>
@@ -132,12 +130,9 @@
 </li>
 </ul>
 
-  </div>
-  <div>
-    <h4>Sujet précédent</h4>
-    <p class="topless"><a href="oneToMany.html"
-                          title="Chapitre précédent">oneToMany</a></p>
-  </div>
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="oneToMany.html"
+                        title="Chapitre précédent">oneToMany</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -154,7 +149,7 @@
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -174,7 +169,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

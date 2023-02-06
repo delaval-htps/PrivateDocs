@@ -4,7 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Commandes de Git &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,7 +14,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     
@@ -47,11 +46,11 @@
           <div class="body" role="main">
             
   <section id="commandes-de-git">
-<h1>Commandes de Git<a class="headerlink" href="#commandes-de-git" title="Lien permanent vers cette rubrique">¶</a></h1>
+<h1>Commandes de Git<a class="headerlink" href="#commandes-de-git" title="Lien permanent vers ce titre">¶</a></h1>
 <section id="initialisation">
-<h2>Initialisation<a class="headerlink" href="#initialisation" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Initialisation<a class="headerlink" href="#initialisation" title="Lien permanent vers ce titre">¶</a></h2>
 <section id="initialisation-git">
-<h3>Initialisation git<a class="headerlink" href="#initialisation-git" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Initialisation git<a class="headerlink" href="#initialisation-git" title="Lien permanent vers ce titre">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git init
 
 $ git flow init     // pour initialiser avec gitflow
@@ -59,7 +58,7 @@ $ git flow init     // pour initialiser avec gitflow
 </div>
 </section>
 <section id="config-depots">
-<h3>Config dépôts<a class="headerlink" href="#config-depots" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Config dépôts<a class="headerlink" href="#config-depots" title="Lien permanent vers ce titre">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Avec git remote</p>
@@ -77,16 +76,16 @@ $ git clone &lt;monDepotDistant&gt;   // pour cloner un depot distant en local
 </div>
 </section>
 <section id="liste-config-git">
-<h3>Liste config git<a class="headerlink" href="#liste-config-git" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Liste config git<a class="headerlink" href="#liste-config-git" title="Lien permanent vers ce titre">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --list
 </pre></div>
 </div>
 </section>
 </section>
 <section id="commandes-principales">
-<h2>Commandes principales<a class="headerlink" href="#commandes-principales" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Commandes principales<a class="headerlink" href="#commandes-principales" title="Lien permanent vers ce titre">¶</a></h2>
 <section id="branches">
-<h3>Branches<a class="headerlink" href="#branches" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Branches<a class="headerlink" href="#branches" title="Lien permanent vers ce titre">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git branch    //liste toutes les branches existantes
 
 $ git branch &lt;newBranch&gt;    //crée une nouvelle branches
@@ -100,7 +99,7 @@ $ git checkout &lt;branch&gt;     //se positionner sur la branch
 </div>
 </section>
 <section id="staging">
-<h3>Staging<a class="headerlink" href="#staging" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Staging<a class="headerlink" href="#staging" title="Lien permanent vers ce titre">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status    //affiche l&#39;état du staging dans la branch
 
 $ git add &lt;fichier&gt;     //ajout d&#39;un fichier dans le Staging
@@ -108,13 +107,13 @@ $ git add &lt;fichier&gt;     //ajout d&#39;un fichier dans le Staging
 </div>
 </section>
 <section id="commit">
-<h3>Commit<a class="headerlink" href="#commit" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>Commit<a class="headerlink" href="#commit" title="Lien permanent vers ce titre">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &quot;message du commit&quot;     // enregistre un commit et avance la HEAD a ce dernier
 </pre></div>
 </div>
 </section>
 <section id="history">
-<h3>History<a class="headerlink" href="#history" title="Lien permanent vers cette rubrique">¶</a></h3>
+<h3>History<a class="headerlink" href="#history" title="Lien permanent vers ce titre">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log [--oneline] [--graph] //liste des commits avec toutes les infos sur une branche
 
     options:
@@ -136,9 +135,8 @@ $ git add &lt;fichier&gt;     //ajout d&#39;un fichier dans le Staging
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="index.html">Table des matières</a></h3>
-    <ul>
+  <h3><a href="index.html">Table des matières</a></h3>
+  <ul>
 <li><a class="reference internal" href="#">Commandes de Git</a><ul>
 <li><a class="reference internal" href="#initialisation">Initialisation</a><ul>
 <li><a class="reference internal" href="#initialisation-git">Initialisation git</a></li>
@@ -157,17 +155,12 @@ $ git add &lt;fichier&gt;     //ajout d&#39;un fichier dans le Staging
 </li>
 </ul>
 
-  </div>
-  <div>
-    <h4>Sujet précédent</h4>
-    <p class="topless"><a href="git%20%26%20github.html"
-                          title="Chapitre précédent">Git &amp; Github</a></p>
-  </div>
-  <div>
-    <h4>Sujet suivant</h4>
-    <p class="topless"><a href="git%20flow.html"
-                          title="Chapitre suivant">Git flow</a></p>
-  </div>
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="git%20%26%20github.html"
+                        title="Chapitre précédent">Git &amp; Github</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="git%20flow.html"
+                        title="Chapitre suivant">Git flow</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -184,7 +177,7 @@ $ git add &lt;fichier&gt;     //ajout d&#39;un fichier dans le Staging
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -208,7 +201,7 @@ $ git add &lt;fichier&gt;     //ajout d&#39;un fichier dans le Staging
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

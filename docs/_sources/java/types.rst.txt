@@ -14,7 +14,7 @@ Types Primitifs
    
 Les entiers
 +++++++++++
-.. image:: _static/type-entier.png
+.. image:: ../_static/type-entier.png
     :width: 50%
     :alt: les types d'entiers
 
@@ -42,7 +42,7 @@ On peut aussi obtenir leur valeur en int
 
 ci dessous, les charactéres ne disposant pas de graphisme :
 
-.. image:: _static/type-char.png
+.. image:: ../_static/type-char.png
     :width: 50%
     :alt: les types de caracteres
 

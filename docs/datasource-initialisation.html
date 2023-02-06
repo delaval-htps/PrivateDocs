@@ -4,7 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>datasource-initialisation &#8212; Documentation Private v0.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,7 +14,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     
@@ -47,9 +46,9 @@
           <div class="body" role="main">
             
   <section id="datasource-initialisation">
-<h1>datasource-initialisation<a class="headerlink" href="#datasource-initialisation" title="Lien permanent vers cette rubrique">¶</a></h1>
+<h1>datasource-initialisation<a class="headerlink" href="#datasource-initialisation" title="Lien permanent vers ce titre">¶</a></h1>
 <section id="initialiser-la-bdd-avec-scripts-sql">
-<h2>Initialiser la BDD avec scripts SQL<a class="headerlink" href="#initialiser-la-bdd-avec-scripts-sql" title="Lien permanent vers cette rubrique">¶</a></h2>
+<h2>Initialiser la BDD avec scripts SQL<a class="headerlink" href="#initialiser-la-bdd-avec-scripts-sql" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Il suffit de mettre directement dans /src/main/resources les fichiers:</p>
 <ul class="simple">
 <li><p><em>schema.sql</em> : pour créer la database et les tables</p></li>
@@ -60,11 +59,11 @@
 <p class="admonition-title">Avertissement</p>
 <p>il faut penser a désactiver l” option <strong>spring.jpa.hibernate.dll-auto= none</strong>  dans application.properties pour ne pas laisser hibernate creér lui même la base de donnée en focntion des entities.</p>
 </div>
-<table class="docutils align-default" id="id1">
+<table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text"><strong>option spring.jpa.hibernate.dll-auto</strong></span><a class="headerlink" href="#id1" title="Lien permanent vers ce tableau">¶</a></caption>
 <colgroup>
-<col style="width: 23.1%" />
-<col style="width: 76.9%" />
+<col style="width: 23%" />
+<col style="width: 77%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>valeur</p></th>
@@ -99,26 +98,20 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="index.html">Table des matières</a></h3>
-    <ul>
+  <h3><a href="index.html">Table des matières</a></h3>
+  <ul>
 <li><a class="reference internal" href="#">datasource-initialisation</a><ul>
 <li><a class="reference internal" href="#initialiser-la-bdd-avec-scripts-sql">Initialiser la BDD avec scripts SQL</a></li>
 </ul>
 </li>
 </ul>
 
-  </div>
-  <div>
-    <h4>Sujet précédent</h4>
-    <p class="topless"><a href="springBoot-RestApi.html"
-                          title="Chapitre précédent">Création d’une REST API</a></p>
-  </div>
-  <div>
-    <h4>Sujet suivant</h4>
-    <p class="topless"><a href="hibernate.html"
-                          title="Chapitre suivant">Hibernate</a></p>
-  </div>
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="springBoot-RestApi.html"
+                        title="Chapitre précédent">Création d’une REST API</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="hibernate.html"
+                        title="Chapitre suivant">Hibernate</a></p>
   <div role="note" aria-label="source link">
     <h3>Cette page</h3>
     <ul class="this-page-menu">
@@ -135,7 +128,7 @@
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -159,7 +152,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, dorian delaval.
-      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>
