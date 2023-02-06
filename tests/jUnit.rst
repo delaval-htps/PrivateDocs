@@ -129,12 +129,12 @@ EclEmma(Eclipse)
 
 il suffit d'utiliser le "coverage as " JUnit Test sur la classe Test.
 
- .. image:: _static/eclEmma.png
+ .. image:: ../_static/eclEmma.png
     :width: 60%
 
 résultat s'affiche avec le pourcentage total aussi bien avec src/main que src/test qui nous intéresse pas puisque c'est le code du test
 
-.. image:: _static/CoverageEclEmma.png
+.. image:: ../_static/CoverageEclEmma.png
 
 JACOCO
 ======

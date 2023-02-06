@@ -4,7 +4,7 @@ Git flow
 
 .. sidebar:: Git flow
 
-    .. image:: _static/git-flow-schema.png
+    .. image:: ../_static/git-flow-schema.png
         :align: right
         :alt:  gitflow schema
 

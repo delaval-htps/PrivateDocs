@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tests fonctionnels &#8212; Documentation Private v0.1</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Tests d’acceptation" href="test%20acceptation.html" />
+    <link rel="prev" title="Tests d’Intégration" href="test%20integration.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="test%20acceptation.html" title="Tests d’acceptation"
+             accesskey="N">suivant</a> |</li>
+        <li class="right" >
+          <a href="test%20integration.html" title="Tests d’Intégration"
+             accesskey="P">précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="tests.html" accesskey="U">Tests</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tests fonctionnels</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="tests-fonctionnels">
+<h1>Tests fonctionnels<a class="headerlink" href="#tests-fonctionnels" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Appelés aussi <strong>End to End</strong>, ils servent a obtenir le bon résultat en partant de l’interface utilisateur, selon un scénario prédéfini.</p>
+<p>Ces tests utilisent une automatisation soit:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>par navigateur avec <strong>WebDriver de Selenium</strong> &lt;<a class="reference external" href="https://github.com/bonigarcia/webdrivermanager/">https://github.com/bonigarcia/webdrivermanager/</a>&gt;</p></li>
+<li><p>par interface mobile avec <strong>Appium</strong>.&lt;<a class="reference external" href="http://appium.io/">http://appium.io/</a>&gt;</p></li>
+</ul>
+</div></blockquote>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre">¶</a></h2>
+<section id="nomenclature-des-fichiers">
+<h3>nomenclature des fichiers<a class="headerlink" href="#nomenclature-des-fichiers" title="Lien permanent vers ce titre">¶</a></h3>
+<dl class="simple">
+<dt>Créer un package pour le test fonctionnel:</dt><dd><ul class="simple">
+<li><p><strong>package com.openclassrooms.testing.calcul.e2e</strong></p></li>
+<li><p>une classe test <strong>&lt;nomDuTestE2E&gt;</strong> pour End to End.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="annotations-spring">
+<h3>Annotations Spring<a class="headerlink" href="#annotations-spring" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Forcément, ils sont implémentés dans une application Spring. il faut donc utiliser les annotations suivantes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>&#64;ExtendWith(SpringExtension.class)</strong> : extension de Junit 5 pour Spring</p></li>
+<li><p><strong>&#64;SpringBootTest</strong> pour démarrer l’application avec SpringBootTest</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="parametrage-de-webdriver">
+<h3>Parametrage de WebDriver<a class="headerlink" href="#parametrage-de-webdriver" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On utilise webdrivermanager pour initialiser notre navigateur de test (port,setup, navigateur,url)</p>
+<blockquote>
+<div><ul>
+<li><p><strong>&#64;SpringBootTest(webEnvironnement = SpringBootTest.WebEnvironnement.RANDOM_PORT)</strong> pour indiquer d’utiliser un port aléatoire autre que ce utiliser par le seveur ou autre application</p></li>
+<li><p>Pour déclarer un port</p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@LocalServerPort</span>
+<span class="kd">private</span> <span class="n">Integer</span> <span class="n">port</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Pour initialiser le driver pour le navigateur firefox</p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@BeforeAll</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setUpFirefoxDriver</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">WebDriverManager</span><span class="p">.</span><span class="na">firefoxdriver</span><span class="p">().</span><span class="na">setup</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Pour créer une instance du driver pour le navigateur firefox</p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@BeforeEach</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUpWebDriver</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">webDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="p">();</span>
+    <span class="n">baseUrl</span> <span class="o">=</span> <span class="s">&quot;http://localhost:&quot;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&quot;/calculator&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Enfin pour quitter proprement le driver pour le navigateur firefox</p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@AfterEach</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">quitWebDriver</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">webDriver</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">webDriver</span><span class="p">.</span><span class="na">quit</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="example-de-test-e2e">
+<h2>Example de test E2E<a class="headerlink" href="#example-de-test-e2e" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Ce qui nous donne une classe comme celle ci</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.openclassrooms.testing.calcul.e2e</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">...</span>
+
+<span class="nd">@ExtendWith</span><span class="p">(</span><span class="n">SpringExtension</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="nd">@SpringBootTest</span><span class="p">(</span><span class="n">webEnvironment</span> <span class="o">=</span> <span class="n">SpringBootTest</span><span class="p">.</span><span class="na">WebEnvironment</span><span class="p">.</span><span class="na">RANDOM_PORT</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StudentMultiplicationJourneyE2E</span> <span class="p">{</span>
+
+    <span class="nd">@LocalServerPort</span>
+    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">port</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">WebDriver</span> <span class="n">webDriver</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">baseUrl</span><span class="p">;</span>
+
+    <span class="nd">@BeforeAll</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setUpFirefoxDriver</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">WebDriverManager</span><span class="p">.</span><span class="na">firefoxdriver</span><span class="p">().</span><span class="na">setup</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nd">@BeforeEach</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUpWebDriver</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">webDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="p">();</span>
+            <span class="n">baseUrl</span> <span class="o">=</span> <span class="s">&quot;http://localhost:&quot;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&quot;/calculator&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@AfterEach</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">quitWebDriver</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">webDriver</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">webDriver</span><span class="p">.</span><span class="na">quit</span><span class="p">();</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">aStudentUsesTheCalculatorToMultiplyTwoBySixteen</span><span class="p">()</span> <span class="p">{</span>
+
+            <span class="c1">// GIVEN</span>
+            <span class="n">webDriver</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">baseUrl</span><span class="p">);</span>
+            <span class="kd">final</span> <span class="n">WebElement</span> <span class="n">leftField</span> <span class="o">=</span> <span class="n">webDriver</span><span class="p">.</span><span class="na">findElement</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;left&quot;</span><span class="p">));</span>
+            <span class="kd">final</span> <span class="n">WebElement</span> <span class="n">typeDropdown</span> <span class="o">=</span> <span class="n">webDriver</span><span class="p">.</span><span class="na">findElement</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;type&quot;</span><span class="p">));</span>
+            <span class="kd">final</span> <span class="n">WebElement</span> <span class="n">rightField</span> <span class="o">=</span> <span class="n">webDriver</span><span class="p">.</span><span class="na">findElement</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;right&quot;</span><span class="p">));</span>
+            <span class="kd">final</span> <span class="n">WebElement</span> <span class="n">submitButton</span> <span class="o">=</span> <span class="n">webDriver</span><span class="p">.</span><span class="na">findElement</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;submit&quot;</span><span class="p">));</span>
+
+            <span class="c1">// WHEN</span>
+            <span class="n">leftField</span><span class="p">.</span><span class="na">sendKeys</span><span class="p">(</span><span class="s">&quot;2&quot;</span><span class="p">);</span>
+            <span class="n">typeDropdown</span><span class="p">.</span><span class="na">sendKeys</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">);</span>
+            <span class="n">rightField</span><span class="p">.</span><span class="na">sendKeys</span><span class="p">(</span><span class="s">&quot;16&quot;</span><span class="p">);</span>
+            <span class="n">submitButton</span><span class="p">.</span><span class="na">click</span><span class="p">();</span>
+
+            <span class="c1">// THEN</span>
+            <span class="kd">final</span> <span class="n">WebDriverWait</span> <span class="n">waiter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">webDriver</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+            <span class="kd">final</span> <span class="n">WebElement</span> <span class="n">solutionElement</span> <span class="o">=</span> <span class="n">waiter</span><span class="p">.</span><span class="na">until</span><span class="p">(</span>
+                            <span class="n">ExpectedConditions</span><span class="p">.</span><span class="na">presenceOfElementLocated</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;solution&quot;</span><span class="p">)));</span>
+            <span class="kd">final</span> <span class="n">String</span> <span class="n">solution</span> <span class="o">=</span> <span class="n">solutionElement</span><span class="p">.</span><span class="na">getText</span><span class="p">();</span>
+            <span class="n">assertThat</span><span class="p">(</span><span class="n">solution</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;32&quot;</span><span class="p">);</span> <span class="c1">// 2 x 16</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="pageobject">
+<h2>PageObject<a class="headerlink" href="#pageobject" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour eviter de refactoriser des test E2E qui seraient similaire et pour eviter que tout pete si on modifie la page du navigateur, on utilise une pageObject.</p>
+<p>Le principe est de créer une page web et de récupérer depuis cette dernière les elements qui nous intéresse</p>
+<p>On crée une pageObject avec une classe &lt;CalulatorPage&gt; dans le package E2E</p>
+<section id="declaration-des-attributs">
+<h3>Déclaration des attributs<a class="headerlink" href="#declaration-des-attributs" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On récupére les id qui nous intéresse:</p>
+<p>exemple:</p>
+</section>
+<section id="methode-d-operation-pageobject">
+<h3>Methode d’operation PageObject<a class="headerlink" href="#methode-d-operation-pageobject" title="Lien permanent vers ce titre">¶</a></h3>
+<p>une fois les elements récupérés , il nous faut appeler le resultat en ajoutant depuis notre PageObject une methode permettant de lancer le travail quel doit faire avec les elements. exemple pour le calcul:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span> <span class="n">String</span> <span class="nf">calculate</span><span class="p">(</span><span class="n">String</span> <span class="n">calculationTypeValue</span><span class="p">,</span> <span class="n">String</span> <span class="n">leftValue</span><span class="p">,</span> <span class="n">String</span> <span class="n">rightValue</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">leftArgument</span><span class="p">.</span><span class="na">sendKeys</span><span class="p">(</span><span class="n">leftValue</span><span class="p">);</span>
+<span class="n">calculationType</span><span class="p">.</span><span class="na">sendKeys</span><span class="p">(</span><span class="n">calculationTypeValue</span><span class="p">);</span>
+<span class="n">rightArgument</span><span class="p">.</span><span class="na">sendKeys</span><span class="p">(</span><span class="n">rightValue</span><span class="p">);</span>
+<span class="n">submitButton</span><span class="p">.</span><span class="na">click</span><span class="p">();</span>
+
+<span class="kd">final</span> <span class="n">WebDriverWait</span> <span class="n">waiter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">webDriver</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="n">waiter</span><span class="p">.</span><span class="na">until</span><span class="p">(</span><span class="n">ExpectedConditions</span><span class="p">.</span><span class="na">visibilityOf</span><span class="p">(</span><span class="n">solution</span><span class="p">));</span>
+
+<span class="k">return</span> <span class="n">solution</span><span class="p">.</span><span class="na">getText</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>on peut ensuite créer des methodes récupérant les id qui nous intéresse et appeler la méthode d’operation ici calcul avec ces arguments</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">String</span> <span class="nf">add</span><span class="p">(</span><span class="n">String</span> <span class="n">leftValue</span><span class="p">,</span> <span class="n">String</span> <span class="n">rightValue</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">calculate</span><span class="p">(</span><span class="n">ADDITION_SYMBOL</span><span class="p">,</span> <span class="n">leftValue</span><span class="p">,</span> <span class="n">rightValue</span><span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>cette methode récupére les id de la page web leftvalue et rightvalue pour faire l’addition en appelant notre methode opération</p>
+</section>
+<section id="modification-classe2e">
+<h3>Modification classE2E<a class="headerlink" href="#modification-classe2e" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On peut maintenant simplifier notre class test E2E en remplacant les GIVEN WHEN et THEN par l’appel de notre PageObject</p>
+<p>Avant:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">aStudentUsesTheCalculatorToAddTwoBySixteen</span><span class="p">()</span> <span class="p">{</span>
+
+            <span class="c1">// GIVEN</span>
+            <span class="n">webDriver</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">baseUrl</span><span class="p">);</span>
+            <span class="kd">final</span> <span class="n">WebElement</span> <span class="n">leftField</span> <span class="o">=</span> <span class="n">webDriver</span><span class="p">.</span><span class="na">findElement</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;left&quot;</span><span class="p">));</span>
+            <span class="kd">final</span> <span class="n">WebElement</span> <span class="n">typeDropdown</span> <span class="o">=</span> <span class="n">webDriver</span><span class="p">.</span><span class="na">findElement</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;type&quot;</span><span class="p">));</span>
+            <span class="kd">final</span> <span class="n">WebElement</span> <span class="n">rightField</span> <span class="o">=</span> <span class="n">webDriver</span><span class="p">.</span><span class="na">findElement</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;right&quot;</span><span class="p">));</span>
+            <span class="kd">final</span> <span class="n">WebElement</span> <span class="n">submitButton</span> <span class="o">=</span> <span class="n">webDriver</span><span class="p">.</span><span class="na">findElement</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;submit&quot;</span><span class="p">));</span>
+
+            <span class="c1">// WHEN</span>
+            <span class="n">leftField</span><span class="p">.</span><span class="na">sendKeys</span><span class="p">(</span><span class="s">&quot;2&quot;</span><span class="p">);</span>
+            <span class="n">typeDropdown</span><span class="p">.</span><span class="na">sendKeys</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="p">);</span>
+            <span class="n">rightField</span><span class="p">.</span><span class="na">sendKeys</span><span class="p">(</span><span class="s">&quot;16&quot;</span><span class="p">);</span>
+            <span class="n">submitButton</span><span class="p">.</span><span class="na">click</span><span class="p">();</span>
+
+            <span class="c1">// THEN</span>
+            <span class="kd">final</span> <span class="n">WebDriverWait</span> <span class="n">waiter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">webDriver</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+            <span class="kd">final</span> <span class="n">WebElement</span> <span class="n">solutionElement</span> <span class="o">=</span> <span class="n">waiter</span><span class="p">.</span><span class="na">until</span><span class="p">(</span>
+            <span class="n">ExpectedConditions</span><span class="p">.</span><span class="na">presenceOfElementLocated</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;solution&quot;</span><span class="p">)));</span>
+            <span class="kd">final</span> <span class="n">String</span> <span class="n">solution</span> <span class="o">=</span> <span class="n">solutionElement</span><span class="p">.</span><span class="na">getText</span><span class="p">();</span>
+            <span class="n">assertThat</span><span class="p">(</span><span class="n">solution</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;32&quot;</span><span class="p">);</span> <span class="c1">// 2 + 16</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Apres:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">aStudentUsesTheCalculatorToAddTwoToSixteen</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="p">{</span>
+            <span class="c1">// GIVEN</span>
+            <span class="n">webDriver</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">baseUrl</span><span class="p">);</span>
+            <span class="kd">final</span> <span class="n">CalculatorPage</span> <span class="n">calculatorPage</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CalculatorPage</span><span class="p">(</span><span class="n">webDriver</span><span class="p">);</span>
+
+            <span class="c1">// WHEN</span>
+            <span class="kd">final</span> <span class="n">String</span> <span class="n">solution</span> <span class="o">=</span> <span class="n">calculatorPage</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;16&quot;</span><span class="p">);</span>
+
+            <span class="c1">// THEN</span>
+            <span class="n">assertThat</span><span class="p">(</span><span class="n">solution</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;18&quot;</span><span class="p">);</span> <span class="c1">// 2 + 16</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table des matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tests fonctionnels</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#nomenclature-des-fichiers">nomenclature des fichiers</a></li>
+<li><a class="reference internal" href="#annotations-spring">Annotations Spring</a></li>
+<li><a class="reference internal" href="#parametrage-de-webdriver">Parametrage de WebDriver</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-de-test-e2e">Example de test E2E</a></li>
+<li><a class="reference internal" href="#pageobject">PageObject</a><ul>
+<li><a class="reference internal" href="#declaration-des-attributs">Déclaration des attributs</a></li>
+<li><a class="reference internal" href="#methode-d-operation-pageobject">Methode d’operation PageObject</a></li>
+<li><a class="reference internal" href="#modification-classe2e">Modification classE2E</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="test%20integration.html"
+                        title="Chapitre précédent">Tests d’Intégration</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="test%20acceptation.html"
+                        title="Chapitre suivant">Tests d’acceptation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Cette page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tests/test fonctionnel.rst.txt"
+            rel="nofollow">Montrer le code source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="test%20acceptation.html" title="Tests d’acceptation"
+             >suivant</a> |</li>
+        <li class="right" >
+          <a href="test%20integration.html" title="Tests d’Intégration"
+             >précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="tests.html" >Tests</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tests fonctionnels</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, dorian delaval.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

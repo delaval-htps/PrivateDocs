@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Git flow &#8212; Documentation Private v0.1</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Gestion de Projet" href="../gestion%20de%20Projet.html" />
+    <link rel="prev" title="Commandes de Git" href="git.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../gestion%20de%20Projet.html" title="Gestion de Projet"
+             accesskey="N">suivant</a> |</li>
+        <li class="right" >
+          <a href="git.html" title="Commandes de Git"
+             accesskey="P">précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="git%20%26%20github.html" accesskey="U">Git &amp; Github</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Git flow</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="git-flow">
+<h1>Git flow<a class="headerlink" href="#git-flow" title="Lien permanent vers ce titre">¶</a></h1>
+<aside class="sidebar">
+<p class="sidebar-title">Git flow</p>
+<img alt="gitflow schema" class="align-right" src="../_images/git-flow-schema.png" />
+</aside>
+<section id="initialisation">
+<h2>Initialisation<a class="headerlink" href="#initialisation" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Crée la branche develop et checkout dessus</p>
+<dl class="simple">
+<dt>::</dt><dd><p>$ git fow init</p>
+</dd>
+</dl>
+</section>
+<section id="les-branches">
+<h2>Les branches<a class="headerlink" href="#les-branches" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li><p><strong>master</strong>: la branch principale</p></li>
+<li><p><strong>develop</strong>: c’est la copie de la branch master au départ. c’est la branche de développement. C’est ici qu’on va tirer les branches pour travailler sur les features/releases, elle correspond à l’environnement de développement, on y prépare les changements en vue de la prochaine release dans master</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>on ne travaille pas sur master et develop : pas de commit et push !</p>
+</div>
+<ul class="simple">
+<li><p><strong>feature/&lt;nom de la feature&gt;</strong>: tirée de la branch develop, elle permet de travailler sur de nouvelles fonctionnalités. une fois terminée , on la merge a develop.</p></li>
+<li><p><strong>release/&lt;nom de la release( version n°)&gt;</strong>: tirée de la bracnh develop . Elle regroupe toutes les features ajoutées depuis la derniere release. on fait les derniere vérification dessus read me, correction de bug et ensuite on la merge dur develop et master avec un changement de tag !</p></li>
+<li><p><strong>hotfix/&lt;xxx&gt;</strong>: on l’utilise en cas d’extrème urgence : dédié a la correction des bugs de la production master. on la tire de cette dernière et une fois le bug corrigé on merge sur develop et master.</p></li>
+</ul>
+</section>
+<section id="gestion-d-une-feature">
+<h2>Gestion d’une feature<a class="headerlink" href="#gestion-d-une-feature" title="Lien permanent vers ce titre">¶</a></h2>
+<section id="creation">
+<h3>Création<a class="headerlink" href="#creation" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Pour créer une feature</p>
+<dl class="simple">
+<dt>::</dt><dd><p>$ git flow feature start &lt;nom de la feature&gt;</p>
+</dd>
+</dl>
+</section>
+<section id="publication">
+<h3>publication<a class="headerlink" href="#publication" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Pour publier sur un serveur distant notre feature:</p>
+<dl class="simple">
+<dt>::</dt><dd><p>$ git flow feature publish &lt; nom de la feature&gt;</p>
+</dd>
+</dl>
+</section>
+<section id="fin-de-la-feature">
+<h3>fin de la feature<a class="headerlink" href="#fin-de-la-feature" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Une fois qu’on a terminé notre feature, il suffit de taper la commande</p>
+<dl class="simple">
+<dt>::</dt><dd><p>$ git flow feature finish &lt;nom de la feature&gt;</p>
+</dd>
+</dl>
+<p>Git Flow va donc :</p>
+<ul class="simple">
+<li><p><strong>fusionner la branche feature/main avec develop</strong></p></li>
+<li><p><strong>supprimer la branche feature/main en local et sur notre serveur</strong></p></li>
+<li><p><strong>nous balancer sur la branche develop.</strong></p></li>
+</ul>
+</section>
+</section>
+<section id="gestion-d-une-realease">
+<h2>Gestion d’une realease<a class="headerlink" href="#gestion-d-une-realease" title="Lien permanent vers ce titre">¶</a></h2>
+<section id="id1">
+<h3>Création<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Pour créer une realease</p>
+<dl class="simple">
+<dt>::</dt><dd><p>$ git flow release start &lt;v0.1&gt;</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>publication<a class="headerlink" href="#id2" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Pour publier sur un serveur distant notre release:</p>
+<dl class="simple">
+<dt>::</dt><dd><p>$ git flow release publish &lt; v0.1&gt;</p>
+</dd>
+</dl>
+</section>
+<section id="fin-de-la-release">
+<h3>fin de la release<a class="headerlink" href="#fin-de-la-release" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Une fois qu’on a terminé notre release, il suffit de taper la commande</p>
+<dl class="simple">
+<dt>::</dt><dd><p>$ git flow release finish &lt;V0.1&gt;</p>
+</dd>
+</dl>
+<p>Git Flow va donc :</p>
+<ul class="simple">
+<li><p><strong>merger notre release avec la master</strong></p></li>
+<li><p><strong>tagger notre realease</strong></p></li>
+<li><p><strong>merger la release avec develop</strong></p></li>
+<li><p><strong>supprimer la branche release en local et sur notre serveur</strong></p></li>
+<li><p><strong>nous balancer sur la branche develop.</strong></p></li>
+</ul>
+<p>reste à publier les modifications de version:</p>
+<dl class="simple">
+<dt>::</dt><dd><p>git push –tags</p>
+</dd>
+</dl>
+<p>publier les modification sur la master</p>
+<dl class="simple">
+<dt>::</dt><dd><p>git push origin master</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="gestion-d-une-hotfix">
+<h2>Gestion d’une hotfix<a class="headerlink" href="#gestion-d-une-hotfix" title="Lien permanent vers ce titre">¶</a></h2>
+<section id="id3">
+<h3>Création<a class="headerlink" href="#id3" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Pour créer une hotfix</p>
+<dl class="simple">
+<dt>::</dt><dd><p>$ git flow hotfix start bug</p>
+</dd>
+</dl>
+</section>
+<section id="fin-de-la-hotfix">
+<h3>fin de la hotfix<a class="headerlink" href="#fin-de-la-hotfix" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Une fois qu’on a terminé notre hotfix, il suffit de taper la commande</p>
+<dl class="simple">
+<dt>::</dt><dd><p>$ git flow hotfix finish bug</p>
+</dd>
+</dl>
+<p>Git Flow va donc :</p>
+<ul class="simple">
+<li><p><strong>merger notre hotfix avec la master</strong></p></li>
+<li><p><strong>tagger notre hotfix</strong></p></li>
+<li><p><strong>merger la hotfix avec develop</strong></p></li>
+<li><p><strong>supprimer la branche hotfix en local et sur notre serveur</strong></p></li>
+<li><p><strong>nous balancer sur la branche develop.</strong></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table des matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Git flow</a><ul>
+<li><a class="reference internal" href="#initialisation">Initialisation</a></li>
+<li><a class="reference internal" href="#les-branches">Les branches</a></li>
+<li><a class="reference internal" href="#gestion-d-une-feature">Gestion d’une feature</a><ul>
+<li><a class="reference internal" href="#creation">Création</a></li>
+<li><a class="reference internal" href="#publication">publication</a></li>
+<li><a class="reference internal" href="#fin-de-la-feature">fin de la feature</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gestion-d-une-realease">Gestion d’une realease</a><ul>
+<li><a class="reference internal" href="#id1">Création</a></li>
+<li><a class="reference internal" href="#id2">publication</a></li>
+<li><a class="reference internal" href="#fin-de-la-release">fin de la release</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gestion-d-une-hotfix">Gestion d’une hotfix</a><ul>
+<li><a class="reference internal" href="#id3">Création</a></li>
+<li><a class="reference internal" href="#fin-de-la-hotfix">fin de la hotfix</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="git.html"
+                        title="Chapitre précédent">Commandes de Git</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="../gestion%20de%20Projet.html"
+                        title="Chapitre suivant">Gestion de Projet</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Cette page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/git/git flow.rst.txt"
+            rel="nofollow">Montrer le code source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="../gestion%20de%20Projet.html" title="Gestion de Projet"
+             >suivant</a> |</li>
+        <li class="right" >
+          <a href="git.html" title="Commandes de Git"
+             >précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="git%20%26%20github.html" >Git &amp; Github</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Git flow</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, dorian delaval.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

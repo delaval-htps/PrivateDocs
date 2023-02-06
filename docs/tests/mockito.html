@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Mockito &#8212; Documentation Private v0.1</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Tests d’Intégration" href="test%20integration.html" />
+    <link rel="prev" title="JUnit &amp; ses Annotations" href="jUnit.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="test%20integration.html" title="Tests d’Intégration"
+             accesskey="N">suivant</a> |</li>
+        <li class="right" >
+          <a href="jUnit.html" title="JUnit &amp; ses Annotations"
+             accesskey="P">précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="tests.html" accesskey="U">Tests</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Mockito</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="mockito">
+<h1>Mockito<a class="headerlink" href="#mockito" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Un mock sert à simuler une classe A pour pouvoir tester un autre classe B qui utilise la classe A.
+démarche a suivre pour déterminer les mocks:</p>
+<ul class="simple">
+<li><p>Identifiez un comportement unique que vous testez avec votre classe sous-test (CUT).</p></li>
+<li><p>Demandez-vous quelles classes sont nécessaires au comportement à tester.</p></li>
+<li><p>Hormis votre CUT, envisagez toutes les autres classes pour le mocking.</p></li>
+<li><p>Ne mockez pas les classes qui ne servent quasiment qu’à porter des valeurs.</p></li>
+<li><p>Installez les mocks requis.</p></li>
+<li><p>Testez votre CUT.</p></li>
+<li><p>Vérifiez que vos mocks ont été correctement utilisés.</p></li>
+</ul>
+<section id="config-mvn">
+<h2>Config Mvn<a class="headerlink" href="#config-mvn" title="Lien permanent vers ce titre">¶</a></h2>
+<p>on modifie le <strong>pom.xml</strong></p>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.junit.jupiter<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>junit-jupiter-api<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>5.5.1<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+...
+<span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.mockito<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>mockito-junit-jupiter<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>3.7.7<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="config-eclipse">
+<h2>Config eclipse<a class="headerlink" href="#config-eclipse" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour l’autocompletion des elelements de mockito:</p>
+<p>Dans <strong>windows/preferences/java/editor/ContentAssist/Favorites</strong> ajouter:</p>
+<ul class="simple">
+<li><p>org.Mockito.ArgumentMatchers.*</p></li>
+<li><p>org.mockito.Mockito.*</p></li>
+</ul>
+</section>
+<section id="creation-d-un-mock">
+<h2>Creation d’un Mock<a class="headerlink" href="#creation-d-un-mock" title="Lien permanent vers ce titre">¶</a></h2>
+<section id="declaration">
+<h3>Déclaration<a class="headerlink" href="#declaration" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Utilisation dans la classe test d’un mock de l’annotation de Junit <strong>&#64;ExtendWith(MockitoExtension.class) et &#64;Mock</strong></p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@ExtendWith</span><span class="p">(</span><span class="n">MockitoExtension</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalculatorServiceTest</span> <span class="p">{</span>
+
+  <span class="nd">@Mock</span>
+  <span class="n">Calculator</span> <span class="n">calculator</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="utilisation">
+<h3>Utilisation<a class="headerlink" href="#utilisation" title="Lien permanent vers ce titre">¶</a></h3>
+<section id="static">
+<h4>1) Static<a class="headerlink" href="#static" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Un exemple d’utilisation dans une methode de test:</p>
+<ul class="simple">
+<li><p><strong>GIVEN</strong> : on utilise le mock pour <strong>simuler avec « When the x method is called then return y »</strong></p></li>
+<li><p><strong>WHEN</strong> : on récupére le résultat de la methode de la classe a tester</p></li>
+<li><dl class="simple">
+<dt><strong>THEN</strong> :</dt><dd><ul>
+<li><p>on verifie que <strong>la classe mockée a bien été utilisée avec verify(mock).methode();</strong></p></li>
+<li><p>on verifie avec <strong>asserThat</strong> que le resultat de la methode de la classe a tester est correct</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span>  <span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">calulate_shouldUseCalculator_forMultiply</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// GIVEN</span>
+  <span class="n">when</span><span class="p">(</span><span class="n">calculator</span><span class="p">.</span><span class="na">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)).</span><span class="na">thenReturn</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+  <span class="c1">// WHEN</span>
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">classUnderTest</span>
+      <span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="k">new</span> <span class="n">CalculationModel</span><span class="p">(</span><span class="n">CalculationType</span><span class="p">.</span><span class="na">MULTIPLICATION</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)).</span><span class="na">getSolution</span><span class="p">();</span>
+
+  <span class="c1">// THEN</span>
+  <span class="n">verify</span><span class="p">(</span><span class="n">calculator</span><span class="p">).</span><span class="na">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="n">assertThat</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="generique">
+<h4>2) Générique<a class="headerlink" href="#generique" title="Lien permanent vers ce titre">¶</a></h4>
+<section id="a-any">
+<h5>a) any()<a class="headerlink" href="#a-any" title="Lien permanent vers ce titre">¶</a></h5>
+<p>on peut simuler le mock sans paramètres précis avec <strong>any()</strong></p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">when</span><span class="p">(</span><span class="n">calculator</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">class</span><span class="p">),</span> <span class="n">any</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>dans tous les cas , cela donnera 3 comme résultat et on peut faire de même avec la methode <strong>verify()</strong></p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">verify</span><span class="p">(</span><span class="n">calculator</span><span class="p">).</span><span class="na">add</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">class</span><span class="p">),</span> <span class="n">any</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">class</span><span class="p">));</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="b-times-never">
+<h5>b) times()/never()<a class="headerlink" href="#b-times-never" title="Lien permanent vers ce titre">¶</a></h5>
+<p>on peut verifier combien de fois la methode du mock a été utilisée avec times() en paramètres</p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">verify</span><span class="p">(</span><span class="n">calculator</span><span class="p">,</span><span class="n">times</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="na">add</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">class</span><span class="p">),</span> <span class="n">any</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">class</span><span class="p">));</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>ici il faut qu’elle soit appelée 1 fois seulement si on ne veut pas qu’elle soit appelé on utilise soit:
+* times(0)
+* never()</p>
+</section>
+</section>
+<section id="exceptions">
+<h4>3) Exceptions<a class="headerlink" href="#exceptions" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Si on veut configurer un mock pour lancer une exception on remplace <strong>thenReturn() par thenThrows()</strong>.</p>
+<p>Et pour le When on utilisera <strong>assertThrows()</strong> pour verifier si une exception est levée par la methode de la CUT:</p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">calculate_shouldThrowIllegalArgumentException_forADivisionBy0</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// GIVEN</span>
+    <span class="n">when</span><span class="p">(</span><span class="n">calculator</span><span class="p">.</span><span class="na">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)).</span><span class="na">thenThrow</span><span class="p">(</span><span class="k">new</span> <span class="n">ArithmeticException</span><span class="p">());</span>
+
+    <span class="c1">// WHEN</span>
+    <span class="n">assertThrows</span><span class="p">(</span><span class="n">IllegalArgumentException</span><span class="p">.</span><span class="na">class</span><span class="p">,</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">classUnderTest</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span>
+                    <span class="k">new</span> <span class="n">CalculationModel</span><span class="p">(</span><span class="n">CalculationType</span><span class="p">.</span><span class="na">DIVISION</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)));</span>
+
+    <span class="c1">// THEN</span>
+    <span class="n">verify</span><span class="p">(</span><span class="n">calculator</span><span class="p">,</span> <span class="n">times</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="na">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+</section>
+<section id="fonctions-avancees">
+<h2>Fonctions avancées<a class="headerlink" href="#fonctions-avancees" title="Lien permanent vers ce titre">¶</a></h2>
+<section id="argumentcaptor">
+<h3>ArgumentCaptor<a class="headerlink" href="#argumentcaptor" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Permet <strong>d’enregistrer les arguments utilisés lors de l’appel du mock</strong> pour par la suite en assertion verifier par exemple que ce sont les bons arguments escomptés</p>
+<section id="id1">
+<h4>1) Déclaration<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Exemple sur la classe CalculationModel:</p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span> <span class="n">ArgumentCaptor</span><span class="o">&lt;</span><span class="n">CalculationModel</span><span class="o">&gt;</span> <span class="n">calculationModelCaptor</span> <span class="o">=</span>
+<span class="n">ArgumentCaptor</span><span class="p">.</span><span class="na">forClass</span><span class="p">(</span><span class="n">CalculationModel</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="verification">
+<h4>2) Verification<a class="headerlink" href="#verification" title="Lien permanent vers ce titre">¶</a></h4>
+<p>On verifie que calculatorService a bien utilisé les arguments de calculationModel
+et ensuite on récupere dans une liste cette suite d’argument.</p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">verify</span><span class="p">(</span><span class="n">calculatorService</span><span class="p">,</span> <span class="n">times</span><span class="p">(</span><span class="mi">4</span><span class="p">)).</span><span class="na">calculate</span><span class="p">(</span><span class="n">calculationModelCaptor</span><span class="p">.</span><span class="na">capture</span><span class="p">());</span>
+<span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">CalculationModel</span><span class="o">&gt;</span> <span class="n">calculationModels</span> <span class="o">=</span> <span class="n">calculationModelCaptor</span><span class="p">.</span><span class="na">getAllValues</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="cas-de-verification">
+<h4>3) Cas de Verification<a class="headerlink" href="#cas-de-verification" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Le but est juste de vérifier si l’appel de la methode a tester a bien récupérer le bon nombre d’argument et si ils ont correctement été récupérés:</p>
+<ul class="simple">
+<li><p><strong>//GIVEN</strong> :on capture les arguments CaculculationModel utilisé par batchCalculatorService lors de l’appel de la methode batchCalculate() avec calculationModelCaptor</p></li>
+<li><p><strong>//THEN</strong> :on verifie que lorsqu’on appelle batchCalculate (operations) , il y a bien eu 4 appel de calculatorService et on capture les calculationModels avec calculationModelCaptor.capture()</p></li>
+<li><p><strong>//THEN</strong> : on verifie que les calculationModels capturés (recupérés avec calculatioModelCaptor.getAllValue() correspondent au tuple que l’on a ecrit en dure par rapport à la liste d’opérations qu’on a dans // GIVEN. cela se fait en utilisant extracting ( &lt;class&gt; :: &lt;methode get&gt;) voir les lambdas…</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenOperationsList_whenbatchCalculate_thenCallsServiceWithCorrectArguments</span><span class="p">()</span>
+<span class="kd">throws</span> <span class="n">IOException</span><span class="p">,</span> <span class="n">URISyntaxException</span> <span class="p">{</span>
+  <span class="c1">// GIVEN</span>
+  <span class="kd">final</span> <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">operations</span> <span class="o">=</span>
+      <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;2 + 2&quot;</span><span class="p">,</span> <span class="s">&quot;5 - 4&quot;</span><span class="p">,</span> <span class="s">&quot;6 x 8&quot;</span><span class="p">,</span> <span class="s">&quot;9 / 3&quot;</span><span class="p">).</span><span class="na">stream</span><span class="p">();</span>
+  <span class="kd">final</span> <span class="n">ArgumentCaptor</span><span class="o">&lt;</span><span class="n">CalculationModel</span><span class="o">&gt;</span> <span class="n">calculationModelCaptor</span> <span class="o">=</span>
+      <span class="n">ArgumentCaptor</span><span class="p">.</span><span class="na">forClass</span><span class="p">(</span><span class="n">CalculationModel</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+
+  <span class="c1">// WHEN</span>
+  <span class="n">batchCalculatorService</span><span class="p">.</span><span class="na">batchCalculate</span><span class="p">(</span><span class="n">operations</span><span class="p">);</span>
+
+  <span class="c1">// THEN</span>
+  <span class="n">verify</span><span class="p">(</span><span class="n">calculatorService</span><span class="p">,</span> <span class="n">times</span><span class="p">(</span><span class="mi">4</span><span class="p">)).</span><span class="na">calculate</span><span class="p">(</span><span class="n">calculationModelCaptor</span><span class="p">.</span><span class="na">capture</span><span class="p">());</span>
+  <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">CalculationModel</span><span class="o">&gt;</span> <span class="n">calculationModels</span> <span class="o">=</span> <span class="n">calculationModelCaptor</span><span class="p">.</span><span class="na">getAllValues</span><span class="p">();</span>
+  <span class="n">assertThat</span><span class="p">(</span><span class="n">calculationModels</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">extracting</span><span class="p">(</span><span class="n">CalculationModel</span><span class="p">::</span><span class="n">getLeftArgument</span><span class="p">,</span>
+                  <span class="n">CalculationModel</span><span class="p">::</span><span class="n">getType</span><span class="p">,</span>
+                  <span class="n">CalculationModel</span><span class="p">::</span><span class="n">getRightArgument</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">containsExactly</span><span class="p">(</span>
+          <span class="n">tuple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">CalculationType</span><span class="p">.</span><span class="na">ADDITION</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+          <span class="n">tuple</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">CalculationType</span><span class="p">.</span><span class="na">SUBTRACTION</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+          <span class="n">tuple</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">CalculationType</span><span class="p">.</span><span class="na">MULTIPLICATION</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+          <span class="n">tuple</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">CalculationType</span><span class="p">.</span><span class="na">DIVISION</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="invocationonmock">
+<h3>InvocationOnMock<a class="headerlink" href="#invocationonmock" title="Lien permanent vers ce titre">¶</a></h3>
+<p>on veut <strong>donner une réponse spécifique en fonction de n’importe quel argument entré</strong> lors de l’appel du mock pour ensuite verifier le résultat de notre methode du CUT.</p>
+<p>on utilise <strong>l’interface invocation heritant de InvocationOnMock que l’on redéfinit avec une lambdas</strong> pour déclarer le résultat que l’on souhaite en fonction des arguments données a notre mock.</p>
+<p>Deux alternatives s’offre a nous :</p>
+<section id="lambdas-avec-invocation">
+<h4>1) lambdas avec Invocation<a class="headerlink" href="#lambdas-avec-invocation" title="Lien permanent vers ce titre">¶</a></h4>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenOperationsList_whenbatchCalculate_thenCallsServiceAndReturnsAnswer</span><span class="p">()</span>
+    <span class="kd">throws</span> <span class="n">IOException</span><span class="p">,</span> <span class="n">URISyntaxException</span> <span class="p">{</span>
+  <span class="c1">// GIVEN</span>
+  <span class="kd">final</span> <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">operations</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;2 + 2&quot;</span><span class="p">,</span> <span class="s">&quot;5 - 4&quot;</span><span class="p">,</span> <span class="s">&quot;6 x 8&quot;</span><span class="p">,</span> <span class="s">&quot;9 / 3&quot;</span><span class="p">).</span><span class="na">stream</span><span class="p">();</span>
+  <span class="n">when</span><span class="p">(</span><span class="n">calculatorService</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">CalculationModel</span><span class="p">.</span><span class="na">class</span><span class="p">)))</span>
+  <span class="p">.</span><span class="na">then</span><span class="p">(</span><span class="n">invocation</span> <span class="o">-&gt;</span> <span class="p">{</span>
+        <span class="kd">final</span> <span class="n">CalculationModel</span> <span class="n">model</span> <span class="o">=</span> <span class="n">invocation</span><span class="p">.</span><span class="na">getArgument</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">CalculationModel</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="na">getType</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">ADDITION</span><span class="p">:</span>
+          <span class="n">model</span><span class="p">.</span><span class="na">setSolution</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+          <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">SUBTRACTION</span><span class="p">:</span>
+          <span class="n">model</span><span class="p">.</span><span class="na">setSolution</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+          <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">MULTIPLICATION</span><span class="p">:</span>
+          <span class="n">model</span><span class="p">.</span><span class="na">setSolution</span><span class="p">(</span><span class="mi">48</span><span class="p">);</span>
+          <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">DIVISION</span><span class="p">:</span>
+          <span class="n">model</span><span class="p">.</span><span class="na">setSolution</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+          <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="p">:</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">model</span><span class="p">;</span>
+      <span class="p">});</span>
+
+  <span class="c1">// WHEN</span>
+  <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">CalculationModel</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="n">batchCalculatorService</span><span class="p">.</span><span class="na">batchCalculate</span><span class="p">(</span><span class="n">operations</span><span class="p">);</span>
+
+  <span class="c1">// THEN</span>
+  <span class="n">verify</span><span class="p">(</span><span class="n">calculatorService</span><span class="p">,</span> <span class="n">times</span><span class="p">(</span><span class="mi">4</span><span class="p">)).</span><span class="na">calculate</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">CalculationModel</span><span class="p">.</span><span class="na">class</span><span class="p">));</span>
+  <span class="n">assertThat</span><span class="p">(</span><span class="n">results</span><span class="p">).</span><span class="na">extracting</span><span class="p">(</span><span class="s">&quot;solution&quot;</span><span class="p">).</span><span class="na">containsExactly</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="les-then-chaines">
+<h4>2) Les Then() chainés<a class="headerlink" href="#les-then-chaines" title="Lien permanent vers ce titre">¶</a></h4>
+<p>on vas simplement mettre a la suite des then() qui corrrespondront respectivement a leur arguments entrées</p>
+<blockquote>
+<div><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Test</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenOperationsList_whenbatchCalculate_thenCallsServiceAndReturnsAnswer2</span><span class="p">()</span>
+                    <span class="kd">throws</span> <span class="n">IOException</span><span class="p">,</span> <span class="n">URISyntaxException</span> <span class="p">{</span>
+            <span class="c1">// GIVEN</span>
+            <span class="kd">final</span> <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">operations</span> <span class="o">=</span>
+                <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;2 + 2&quot;</span><span class="p">,</span> <span class="s">&quot;5 - 4&quot;</span><span class="p">,</span> <span class="s">&quot;6 x 8&quot;</span><span class="p">,</span> <span class="s">&quot;9 / 3&quot;</span><span class="p">).</span><span class="na">stream</span><span class="p">();</span>
+
+<span class="n">when</span><span class="p">(</span><span class="n">calculatorService</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">CalculationModel</span><span class="p">.</span><span class="na">class</span><span class="p">)))</span>
+                            <span class="p">.</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span> <span class="n">CalculationModel</span><span class="p">(</span><span class="n">CalculationType</span><span class="p">.</span><span class="na">ADDITION</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+                            <span class="p">.</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span> <span class="n">CalculationModel</span><span class="p">(</span><span class="n">CalculationType</span><span class="p">.</span><span class="na">SUBTRACTION</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+                            <span class="p">.</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span> <span class="n">CalculationModel</span><span class="p">(</span><span class="n">CalculationType</span><span class="p">.</span><span class="na">MULTIPLICATION</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">48</span><span class="p">))</span>
+                            <span class="p">.</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span> <span class="n">CalculationModel</span><span class="p">(</span><span class="n">CalculationType</span><span class="p">.</span><span class="na">DIVISION</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+
+            <span class="c1">// WHEN</span>
+            <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">CalculationModel</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span>
+                <span class="n">batchCalculatorService</span><span class="p">.</span><span class="na">batchCalculate</span><span class="p">(</span><span class="n">operations</span><span class="p">);</span>
+
+            <span class="c1">// THEN</span>
+            <span class="n">verify</span><span class="p">(</span><span class="n">calculatorService</span><span class="p">,</span> <span class="n">times</span><span class="p">(</span><span class="mi">4</span><span class="p">)).</span><span class="na">calculate</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">CalculationModel</span><span class="p">.</span><span class="na">class</span><span class="p">));</span>
+            <span class="n">assertThat</span><span class="p">(</span><span class="n">results</span><span class="p">).</span><span class="na">extracting</span><span class="p">(</span><span class="s">&quot;solution&quot;</span><span class="p">).</span><span class="na">containsExactly</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="spy">
+<h3>&#64;Spy<a class="headerlink" href="#spy" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On ne peut pas mocker une methode d’une classe définit en final avec &#64;Mock
+mais on peut tout de meme utiliser &#64;spy sur la classe pour récupérer des méthodes non final.</p>
+<p>En gros , c’est un mock partiel de la classe</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table des matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Mockito</a><ul>
+<li><a class="reference internal" href="#config-mvn">Config Mvn</a></li>
+<li><a class="reference internal" href="#config-eclipse">Config eclipse</a></li>
+<li><a class="reference internal" href="#creation-d-un-mock">Creation d’un Mock</a><ul>
+<li><a class="reference internal" href="#declaration">Déclaration</a></li>
+<li><a class="reference internal" href="#utilisation">Utilisation</a><ul>
+<li><a class="reference internal" href="#static">1) Static</a></li>
+<li><a class="reference internal" href="#generique">2) Générique</a><ul>
+<li><a class="reference internal" href="#a-any">a) any()</a></li>
+<li><a class="reference internal" href="#b-times-never">b) times()/never()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exceptions">3) Exceptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fonctions-avancees">Fonctions avancées</a><ul>
+<li><a class="reference internal" href="#argumentcaptor">ArgumentCaptor</a><ul>
+<li><a class="reference internal" href="#id1">1) Déclaration</a></li>
+<li><a class="reference internal" href="#verification">2) Verification</a></li>
+<li><a class="reference internal" href="#cas-de-verification">3) Cas de Verification</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#invocationonmock">InvocationOnMock</a><ul>
+<li><a class="reference internal" href="#lambdas-avec-invocation">1) lambdas avec Invocation</a></li>
+<li><a class="reference internal" href="#les-then-chaines">2) Les Then() chainés</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#spy">&#64;Spy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="jUnit.html"
+                        title="Chapitre précédent">JUnit &amp; ses Annotations</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="test%20integration.html"
+                        title="Chapitre suivant">Tests d’Intégration</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Cette page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tests/mockito.rst.txt"
+            rel="nofollow">Montrer le code source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="test%20integration.html" title="Tests d’Intégration"
+             >suivant</a> |</li>
+        <li class="right" >
+          <a href="jUnit.html" title="JUnit &amp; ses Annotations"
+             >précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="tests.html" >Tests</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Mockito</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, dorian delaval.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

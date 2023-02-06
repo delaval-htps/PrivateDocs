@@ -67,7 +67,7 @@ Bidirectionnel
 
 Dans notre classe PostComment, on ajoute un attribut post et on utilise le @JoinColum pour obtenir un fk sur cette table Post
 
-.. image::  docs/_images/many-to-one.png
+.. image::  ../_static/many-to-one.png
   :width: 30%
   :align: center
 

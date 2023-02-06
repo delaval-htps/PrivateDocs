@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Commandes de Git &#8212; Documentation Private v0.1</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Git flow" href="git%20flow.html" />
+    <link rel="prev" title="Git &amp; Github" href="git%20%26%20github.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="git%20flow.html" title="Git flow"
+             accesskey="N">suivant</a> |</li>
+        <li class="right" >
+          <a href="git%20%26%20github.html" title="Git &amp; Github"
+             accesskey="P">précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="git%20%26%20github.html" accesskey="U">Git &amp; Github</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Commandes de Git</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="commandes-de-git">
+<h1>Commandes de Git<a class="headerlink" href="#commandes-de-git" title="Lien permanent vers ce titre">¶</a></h1>
+<section id="initialisation">
+<h2>Initialisation<a class="headerlink" href="#initialisation" title="Lien permanent vers ce titre">¶</a></h2>
+<section id="initialisation-git">
+<h3>Initialisation git<a class="headerlink" href="#initialisation-git" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git init
+
+$ git flow init     // pour initialiser avec gitflow
+</pre></div>
+</div>
+</section>
+<section id="config-depots">
+<h3>Config dépôts<a class="headerlink" href="#config-depots" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Avec git remote</p>
+<ul class="simple">
+<li><p>origin    =    le depot local forké sur Github</p></li>
+<li><p>upstream  =    le depot distant d’origine</p></li>
+</ul>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git remove -v     // liste tous les repertoires distants existants
+
+$ git remote add &lt; nomDepotLocal &gt; &lt; url: https://mondepotdistant &gt;     //nomDepotLocal pointera sur mondepotdistant
+
+$ git clone &lt;monDepotDistant&gt;   // pour cloner un depot distant en local
+</pre></div>
+</div>
+</section>
+<section id="liste-config-git">
+<h3>Liste config git<a class="headerlink" href="#liste-config-git" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --list
+</pre></div>
+</div>
+</section>
+</section>
+<section id="commandes-principales">
+<h2>Commandes principales<a class="headerlink" href="#commandes-principales" title="Lien permanent vers ce titre">¶</a></h2>
+<section id="branches">
+<h3>Branches<a class="headerlink" href="#branches" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git branch    //liste toutes les branches existantes
+
+$ git branch &lt;newBranch&gt;    //crée une nouvelle branches
+
+$ git branch -d &lt;branch&gt;    //supprime la branches
+
+$ git branch -D &lt;branch&gt;    //supprime en force la branche en force même si des modifs dessus et sans Commit
+
+$ git checkout &lt;branch&gt;     //se positionner sur la branch
+</pre></div>
+</div>
+</section>
+<section id="staging">
+<h3>Staging<a class="headerlink" href="#staging" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status    //affiche l&#39;état du staging dans la branch
+
+$ git add &lt;fichier&gt;     //ajout d&#39;un fichier dans le Staging
+</pre></div>
+</div>
+</section>
+<section id="commit">
+<h3>Commit<a class="headerlink" href="#commit" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &quot;message du commit&quot;     // enregistre un commit et avance la HEAD a ce dernier
+</pre></div>
+</div>
+</section>
+<section id="history">
+<h3>History<a class="headerlink" href="#history" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log [--oneline] [--graph] //liste des commits avec toutes les infos sur une branche
+
+    options:
+        --oneline   donne juste la liste de tous les commits (une ligne pour chaque commit)
+        --graph     crée une sorte de graph , permet de voir la création d&#39;autre branche
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git reflog    // liste toutes les actions faites (commit, checkout,merge...) sur toutes les branches
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table des matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Commandes de Git</a><ul>
+<li><a class="reference internal" href="#initialisation">Initialisation</a><ul>
+<li><a class="reference internal" href="#initialisation-git">Initialisation git</a></li>
+<li><a class="reference internal" href="#config-depots">Config dépôts</a></li>
+<li><a class="reference internal" href="#liste-config-git">Liste config git</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#commandes-principales">Commandes principales</a><ul>
+<li><a class="reference internal" href="#branches">Branches</a></li>
+<li><a class="reference internal" href="#staging">Staging</a></li>
+<li><a class="reference internal" href="#commit">Commit</a></li>
+<li><a class="reference internal" href="#history">History</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="git%20%26%20github.html"
+                        title="Chapitre précédent">Git &amp; Github</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="git%20flow.html"
+                        title="Chapitre suivant">Git flow</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Cette page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/git/git.rst.txt"
+            rel="nofollow">Montrer le code source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="git%20flow.html" title="Git flow"
+             >suivant</a> |</li>
+        <li class="right" >
+          <a href="git%20%26%20github.html" title="Git &amp; Github"
+             >précédent</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Documentation Private v0.1</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="git%20%26%20github.html" >Git &amp; Github</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Commandes de Git</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, dorian delaval.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

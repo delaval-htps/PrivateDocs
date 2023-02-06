@@ -19,7 +19,7 @@ Démarche a suivre
 =================
 On commence par les Test d'accaptation et ensuite on descend la pyramide
 
-.. image:: _static/ATDD.png
+.. image:: ../_static/ATDD.png
     :width: 60%
     :align: center
     :alt: Attd
@@ -29,7 +29,7 @@ Convention
 
 Tout comme les tests unitaires RED-GREEN-REFACTOR on a le schéma suivant:
 
-.. image:: _static/ATDD-RGR.png
+.. image:: ../_static/ATDD-RGR.png
     :width: 60%
     :align: center
     :alt: RED-GREEN-REFACTOR

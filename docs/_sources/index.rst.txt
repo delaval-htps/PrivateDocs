@@ -11,13 +11,13 @@ Personnal Documentation
    :caption: Contents:
 
    ./java/java
-   tests
-   git & github
+   ./tests/tests
+   ./git/git & github
    gestion de Projet
    css
    maven
-   springBoot
-   hibernate
+   ./springboot/springBoot
+   ./hibernate/hibernate
    sql
    
 

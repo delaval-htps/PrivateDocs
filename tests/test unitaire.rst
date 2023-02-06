@@ -7,7 +7,7 @@ Pyramides des tests
 
 
 
- .. image:: _static/pyramid-test.png
+ .. image:: ../_static/pyramid-test.png
     :width: 60%
     :align: center
 
@@ -84,7 +84,7 @@ Exemple : givenTwoPostiveIntegers_whenAdded_thenTheyShouldBeSummed()
 Methode Arrange_Act_Assert
 ==========================
 
- .. image:: _static/methode_AAA.png
+ .. image:: ../_static/methode_AAA.png
     :width: 60%
     :align: center
 
@@ -92,7 +92,7 @@ Methode du Red Red Green
 ========================
  la refactorisation c'est rendre le code plus lisible et/ou plus élégant sans changer son comportement pour conserver le vert ie le test validé...
 
- .. image:: _static/RedGreen.png
+ .. image:: ../_static/RedGreen.png
     :width: 60%
     :align: center
 
