@@ -1,0 +1,26 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting esbonio
+  Downloading esbonio-0.16.0-py3-none-any.whl (123 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.5/123.5 KB 2.5 MB/s eta 0:00:00
+Collecting appdirs
+  Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+Collecting pyspellchecker
+  Downloading pyspellchecker-0.7.1-py3-none-any.whl (2.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.5/2.5 MB 23.2 MB/s eta 0:00:00
+Collecting pygls>=1.0.0
+  Downloading pygls-1.0.0-py3-none-any.whl (39 kB)
+Requirement already satisfied: sphinx in /usr/lib/python3/dist-packages (from esbonio) (4.3.2)
+Collecting typeguard<3,>=2.10.0
+  Downloading typeguard-2.13.3-py3-none-any.whl (17 kB)
+Collecting lsprotocol
+  Downloading lsprotocol-2022.0.0a10-py3-none-any.whl (69 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.3/69.3 KB 15.1 MB/s eta 0:00:00
+Collecting cattrs
+  Downloading cattrs-22.2.0-py3-none-any.whl (35 kB)
+Collecting attrs
+  Downloading attrs-22.2.0-py3-none-any.whl (60 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.0/60.0 KB 16.4 MB/s eta 0:00:00
+Collecting exceptiongroup
+  Downloading exceptiongroup-1.1.0-py3-none-any.whl (14 kB)
+Installing collected packages: appdirs, typeguard, pyspellchecker, exceptiongroup, attrs, cattrs, lsprotocol, pygls, esbonio
+Successfully installed appdirs-1.4.4 attrs-22.2.0 cattrs-22.2.0 esbonio-0.16.0 exceptiongroup-1.1.0 lsprotocol-2022.0.0a10 pygls-1.0.0 pyspellchecker-0.7.1 typeguard-2.13.3
